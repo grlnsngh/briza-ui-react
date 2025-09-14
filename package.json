@@ -1,17 +1,17 @@
 {
-  "name": "@briza-ui/react",
-  "version": "0.0.0",
+  "name": "briza-ui-react",
+  "version": "0.1.0-beta.3",
+  "description": "A modern React UI component library built with TypeScript and Vite",
   "type": "module",
-  "main": "./dist/briza-ui-react.umd.cjs",
-  "module": "./dist/briza-ui-react.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/briza-ui-react.umd.js",
+  "module": "./dist/briza-ui-react.es.js",
   "exports": {
     ".": {
-      "import": "./dist/briza-ui-react.js",
-      "require": "./dist/briza-ui-react.umd.cjs",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/briza-ui-react.es.js",
+      "require": "./dist/briza-ui-react.umd.js"
     },
-    "./dist/style.css": "./dist/style.css"
+    "./style.css": "./dist/briza-ui-react.css"
   },
   "files": [
     "dist"
@@ -35,11 +35,13 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b tsconfig.build.json && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "publish-beta": "npm run build && npm publish --tag beta && npm dist-tag add briza-ui-react@$(node -p \"require('./package.json').version\") latest",
+    "publish-latest": "npm run build && npm publish"
   },
   "dependencies": {
     "react": "^19.1.1",
