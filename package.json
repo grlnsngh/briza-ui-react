@@ -23,11 +23,11 @@
     "library",
     "briza"
   ],
-  "author": "",
+  "author": "Gurleen Singh",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/grlnsngh/briza-ui-react"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
