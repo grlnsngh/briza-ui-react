@@ -3,8 +3,8 @@ name: Deploy Storybook to GitHub Pages
 on:
   push:
     branches:
-      - prod  # Deploy when pushing to prod branch
-  workflow_dispatch:  # Allow manual triggering
+      - prod # Deploy when pushing to prod branch
+  workflow_dispatch: # Allow manual triggering
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -24,7 +24,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,8 +32,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
-          cache: 'npm'
+          node-version: "22"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm ci
@@ -48,7 +48,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload the storybook-static directory
-          path: './storybook-static'
+          path: "./storybook-static"
 
       - name: Deploy to GitHub Pages
         id: deployment
