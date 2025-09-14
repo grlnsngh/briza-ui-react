@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Header } from "./Header";
-import styles from "./page.module.css";
+import { Header } from "../Header";
+import styles from "./Page.module.css";
 
 type User = {
   name: string;
