@@ -1,7 +1,4 @@
-naon:
-  push:
-    branches: [ main ]
-  workflow_dispatch:Deploy Storybook to GitHub Pages
+name: Deploy Storybook to GitHub Pages
 
 on:
   push:
