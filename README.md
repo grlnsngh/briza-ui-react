@@ -1,6 +1,10 @@
 # Briza UI React
 
-[![Storybook](https://img.shields.io/badge/Storybook-Hosted%20on%20GitHub%20Pages-blue)](https://grlnsngh.github.io/briza-ui-react/)
+<a href="https://grlnsngh.github.io/briza-ui-react/" target="_blank"><img src="https://img.shields.io/badge/Storybook-Hosted%20on%20GitHub%20Pages-blue" alt="Storybook"></a>
+
+A modern, lightweight React UI component library built with TypeScript and Vite.za UI React
+
+[![Storybook](https://img.shields.io/badge/Storybook-Hosted%20on%20GitHub%20Pages-blue)](https://grlnsngh.github.io/briza-ui-react/){:target="\_blank"}
 
 A modern, lightweight React UI component library built with TypeScript and Vite.
 
