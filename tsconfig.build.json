@@ -15,6 +15,11 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/index.ts", "src/components/**/*"],
-  "exclude": ["src/**/*.stories.ts", "src/**/*.test.ts", "src/**/*.spec.ts", "node_modules"]
+  "include": ["src/index.ts", "src/components/**/*", "src/types/**/*"],
+  "exclude": [
+    "src/**/*.stories.ts",
+    "src/**/*.test.ts",
+    "src/**/*.spec.ts",
+    "node_modules"
+  ]
 }
