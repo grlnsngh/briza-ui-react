@@ -1,5 +1,7 @@
 # Briza UI React
 
+[![Storybook](https://img.shields.io/badge/Storybook-Hosted%20on%20GitHub%20Pages-blue)](https://grlnsngh.github.io/briza-ui-react/)
+
 A modern, lightweight React UI component library built with TypeScript and Vite.
 
 ## Installation
