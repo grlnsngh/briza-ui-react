@@ -1,6 +1,6 @@
 # Briza UI React
 
-<a href="https://grlnsngh.github.io/briza-ui-react/" target="_blank">
+<a href="https://grlnsngh.github.io/briza-ui-react/" target="_blank" rel="noopener noreferrer">
   <img src="https://img.shields.io/badge/Storybook-Hosted%20on%20GitHub%20Pages-blue" alt="Storybook">
 </a>
 
