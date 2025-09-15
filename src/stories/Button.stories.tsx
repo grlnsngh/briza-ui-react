@@ -38,17 +38,18 @@ export const Colors: Story = {
     <div
       style={{
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "row",
         gap: "16px",
         alignItems: "center",
+        flexWrap: "wrap",
       }}
     >
-      <Button color="default">Default Button</Button>
-      <Button color="primary">Primary Button</Button>
-      <Button color="secondary">Secondary Button</Button>
-      <Button color="success">Success Button</Button>
-      <Button color="warning">Warning Button</Button>
-      <Button color="danger">Danger Button</Button>
+      <Button color="default">Default</Button>
+      <Button color="primary">Primary</Button>
+      <Button color="secondary">Secondary</Button>
+      <Button color="success">Success</Button>
+      <Button color="warning">Warning</Button>
+      <Button color="danger">Danger</Button>
     </div>
   ),
 };
