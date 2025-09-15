@@ -28,7 +28,6 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
   radius?: ButtonRadius;
   isLoading?: boolean;
-  loadingIcon?: React.ReactNode;
   children: React.ReactNode;
 }
 
@@ -38,7 +37,6 @@ export const Button: React.FC<ButtonProps> = ({
   size = "md",
   radius = "md",
   isLoading = false,
-  loadingIcon,
   children,
   className = "",
   disabled,
@@ -78,7 +76,7 @@ export const Button: React.FC<ButtonProps> = ({
     <button className={buttonClass} disabled={disabled || isLoading} {...props}>
       {isLoading && (
         <span className={styles["button__loading-icon"]}>
-          {loadingIcon || defaultLoadingIcon}
+          {defaultLoadingIcon}
         </span>
       )}
       {children}
