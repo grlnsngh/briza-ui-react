@@ -32,6 +32,37 @@
   transform: none !important;
 }
 
+/* Size variants */
+.button--xs {
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.button--sm {
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.button--md {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.button--lg {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.button--xl {
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
 /* Color variants */
 .button--default {
   background-color: #d4d4d8;

@@ -1,2 +1,2 @@
-export { Button } from "./components/Button";
-export type { ButtonColor, ButtonVariant } from "./components/Button";
+export { Button } from './components/Button';
+export type { ButtonColor, ButtonVariant, ButtonSize } from './components/Button';
