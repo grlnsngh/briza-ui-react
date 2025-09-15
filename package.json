@@ -1,6 +1,6 @@
 {
   "name": "briza-ui-react",
-  "version": "0.1.0-beta.9",
+  "version": "0.1.0-beta.10",
   "description": "A modern React UI component library built with TypeScript and Vite",
   "type": "module",
   "main": "./dist/briza-ui-react.umd.js",
@@ -38,7 +38,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "publish-beta": "npm version prerelease --preid=beta --no-git-tag-version && npm run build && npm publish --tag beta",
-    "publish-latest": "npm run build && npm publish"
+    "publish-latest": "npm version minor --no-git-tag-version && npm run build && npm publish"
   },
   "dependencies": {
     "react": ">=18.0.0",
