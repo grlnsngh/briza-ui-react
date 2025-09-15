@@ -332,3 +332,19 @@ export const IconOnly: Story = {
     );
   },
 };
+
+export const WithLongText: Story = {
+  render: () => {
+    return (
+      <div
+        style={{
+          maxWidth: "300px",
+        }}
+      >
+        <Button color="primary" style={{ maxWidth: "250px" }}>
+          Long text wraps after it hits the max width of the component
+        </Button>
+      </div>
+    );
+  },
+};

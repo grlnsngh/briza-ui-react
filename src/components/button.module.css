@@ -7,10 +7,13 @@
   cursor: pointer;
   transition: all 0.2s ease;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  white-space: normal;
+  word-wrap: break-word;
+  text-align: center;
 }
 
 .button:hover {
