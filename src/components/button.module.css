@@ -93,6 +93,33 @@
   cursor: not-allowed;
 }
 
+/* Icon-only buttons */
+.button--icon-only {
+  padding: 8px;
+  width: auto;
+  aspect-ratio: 1;
+}
+
+.button--icon-only.button--xs {
+  padding: 4px;
+}
+
+.button--icon-only.button--sm {
+  padding: 6px;
+}
+
+.button--icon-only.button--md {
+  padding: 8px;
+}
+
+.button--icon-only.button--lg {
+  padding: 12px;
+}
+
+.button--icon-only.button--xl {
+  padding: 16px;
+}
+
 .button__loading-icon {
   margin-right: 8px;
   display: inline-flex;

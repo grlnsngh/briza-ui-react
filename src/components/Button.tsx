@@ -30,6 +30,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean;
   startContent?: React.ReactNode;
   endContent?: React.ReactNode;
+  isIconOnly?: boolean;
   children: React.ReactNode;
 }
 
@@ -41,6 +42,7 @@ export const Button: React.FC<ButtonProps> = ({
   isLoading = false,
   startContent,
   endContent,
+  isIconOnly = false,
   children,
   className = "",
   disabled,
@@ -50,7 +52,7 @@ export const Button: React.FC<ButtonProps> = ({
     styles[`button--${variant}`]
   } ${styles[`button--${size}`]} ${styles[`button--radius-${radius}`]} ${
     isLoading ? styles["button--loading"] : ""
-  } ${className}`.trim();
+  } ${isIconOnly ? styles["button--icon-only"] : ""} ${className}`.trim();
 
   const defaultLoadingIcon = (
     <svg
@@ -83,12 +85,20 @@ export const Button: React.FC<ButtonProps> = ({
           {defaultLoadingIcon}
         </span>
       )}
-      {startContent && (
-        <span className={styles["button__start-content"]}>{startContent}</span>
-      )}
-      {children}
-      {endContent && (
-        <span className={styles["button__end-content"]}>{endContent}</span>
+      {isIconOnly ? (
+        children
+      ) : (
+        <>
+          {startContent && (
+            <span className={styles["button__start-content"]}>
+              {startContent}
+            </span>
+          )}
+          {children}
+          {endContent && (
+            <span className={styles["button__end-content"]}>{endContent}</span>
+          )}
+        </>
       )}
     </button>
   );
