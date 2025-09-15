@@ -71,53 +71,33 @@ export const Variants: Story = {
     <div
       style={{
         display: "flex",
-        flexDirection: "column",
-        gap: "24px",
-        alignItems: "flex-start",
+        flexDirection: "row",
+        gap: "16px",
+        alignItems: "center",
+        flexWrap: "wrap",
       }}
     >
-      <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-        <span style={{ minWidth: "80px", fontWeight: "bold" }}>Solid:</span>
-        <Button variant="solid" color="primary">
-          Solid
-        </Button>
-      </div>
-      <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-        <span style={{ minWidth: "80px", fontWeight: "bold" }}>Faded:</span>
-        <Button variant="faded" color="primary">
-          Faded
-        </Button>
-      </div>
-      <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-        <span style={{ minWidth: "80px", fontWeight: "bold" }}>Bordered:</span>
-        <Button variant="bordered" color="primary">
-          Bordered
-        </Button>
-      </div>
-      <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-        <span style={{ minWidth: "80px", fontWeight: "bold" }}>Light:</span>
-        <Button variant="light" color="primary">
-          Light
-        </Button>
-      </div>
-      <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-        <span style={{ minWidth: "80px", fontWeight: "bold" }}>Flat:</span>
-        <Button variant="flat" color="primary">
-          Flat
-        </Button>
-      </div>
-      <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-        <span style={{ minWidth: "80px", fontWeight: "bold" }}>Shadow:</span>
-        <Button variant="shadow" color="primary">
-          Shadow
-        </Button>
-      </div>
-      <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-        <span style={{ minWidth: "80px", fontWeight: "bold" }}>Glowing:</span>
-        <Button variant="glowing" color="primary">
-          Glowing
-        </Button>
-      </div>
+      <Button variant="solid" color="primary">
+        Solid
+      </Button>
+      <Button variant="faded" color="primary">
+        Faded
+      </Button>
+      <Button variant="bordered" color="primary">
+        Bordered
+      </Button>
+      <Button variant="light" color="primary">
+        Light
+      </Button>
+      <Button variant="flat" color="primary">
+        Flat
+      </Button>
+      <Button variant="shadow" color="primary">
+        Shadow
+      </Button>
+      <Button variant="glowing" color="primary">
+        Glowing
+      </Button>
     </div>
   ),
 };
