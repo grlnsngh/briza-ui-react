@@ -33,11 +33,8 @@
     "react-dom": ">=18.0.0"
   },
   "scripts": {
-    "dev": "vite",
     "build": "tsc -b tsconfig.build.json && vite build",
     "test": "vitest",
-    "test:ui": "vitest --ui",
-    "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "publish-beta": "npm version prerelease --preid=beta --no-git-tag-version && npm run build && npm publish --tag beta",

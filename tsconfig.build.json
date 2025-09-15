@@ -15,7 +15,12 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/index.ts", "src/components/**/*", "src/types/**/*"],
+  "include": [
+    "src/index.ts",
+    "src/components/**/*",
+    "src/types/**/*",
+    "src/vite-env.d.ts"
+  ],
   "exclude": [
     "src/**/*.stories.ts",
     "src/**/*.test.ts",

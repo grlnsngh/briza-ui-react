@@ -4,10 +4,8 @@ This folder contains additional documentation for the Briza UI React component l
 
 ## Components
 
-- Button: A customizable button component
-- Header: A header component with user info
-- Page: A page layout component
+- Button: A customizable button component with multiple variants, sizes, and states
 
 ## Usage
 
-See the Storybook for interactive examples.
+See the Storybook for interactive examples and component documentation.
