@@ -36,6 +36,10 @@ const meta: Meta<typeof Button> = {
       control: { type: "select" },
       options: ["xs", "sm", "md", "lg", "xl"],
     },
+    radius: {
+      control: { type: "select" },
+      options: ["none", "sm", "md", "lg", "full"],
+    },
     disabled: {
       control: { type: "boolean" },
     },
@@ -142,6 +146,36 @@ export const Sizes: Story = {
       </Button>
       <Button size="xl" color="primary">
         XL
+      </Button>
+    </div>
+  ),
+};
+
+export const Radius: Story = {
+  render: () => (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        gap: "16px",
+        alignItems: "center",
+        flexWrap: "wrap",
+      }}
+    >
+      <Button radius="none" color="primary">
+        None
+      </Button>
+      <Button radius="sm" color="primary">
+        SM
+      </Button>
+      <Button radius="md" color="primary">
+        MD
+      </Button>
+      <Button radius="lg" color="primary">
+        LG
+      </Button>
+      <Button radius="full" color="primary">
+        Full
       </Button>
     </div>
   ),

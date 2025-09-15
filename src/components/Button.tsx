@@ -20,10 +20,13 @@ export type ButtonVariant =
 
 export type ButtonSize = "xs" | "sm" | "md" | "lg" | "xl";
 
+export type ButtonRadius = "none" | "sm" | "md" | "lg" | "full";
+
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   color?: ButtonColor;
   variant?: ButtonVariant;
   size?: ButtonSize;
+  radius?: ButtonRadius;
   children: React.ReactNode;
 }
 
@@ -31,13 +34,16 @@ export const Button: React.FC<ButtonProps> = ({
   color = "default",
   variant = "solid",
   size = "md",
+  radius = "md",
   children,
   className = "",
   ...props
 }) => {
   const buttonClass = `${styles.button} ${styles[`button--${color}`]} ${
     styles[`button--${variant}`]
-  } ${styles[`button--${size}`]} ${className}`.trim();
+  } ${styles[`button--${size}`]} ${
+    styles[`button--radius-${radius}`]
+  } ${className}`.trim();
 
   return (
     <button className={buttonClass} {...props}>

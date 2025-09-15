@@ -63,6 +63,27 @@
   font-weight: 600;
 }
 
+/* Radius variants */
+.button--radius-none {
+  border-radius: 0;
+}
+
+.button--radius-sm {
+  border-radius: 2px;
+}
+
+.button--radius-md {
+  border-radius: 4px;
+}
+
+.button--radius-lg {
+  border-radius: 8px;
+}
+
+.button--radius-full {
+  border-radius: 9999px;
+}
+
 /* Color variants */
 .button--default {
   background-color: #d4d4d8;
