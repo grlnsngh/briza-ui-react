@@ -28,6 +28,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
   radius?: ButtonRadius;
   isLoading?: boolean;
+  startContent?: React.ReactNode;
+  endContent?: React.ReactNode;
   children: React.ReactNode;
 }
 
@@ -37,6 +39,8 @@ export const Button: React.FC<ButtonProps> = ({
   size = "md",
   radius = "md",
   isLoading = false,
+  startContent,
+  endContent,
   children,
   className = "",
   disabled,
@@ -79,7 +83,13 @@ export const Button: React.FC<ButtonProps> = ({
           {defaultLoadingIcon}
         </span>
       )}
+      {startContent && (
+        <span className={styles["button__start-content"]}>{startContent}</span>
+      )}
       {children}
+      {endContent && (
+        <span className={styles["button__end-content"]}>{endContent}</span>
+      )}
     </button>
   );
 };

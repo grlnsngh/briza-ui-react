@@ -216,3 +216,53 @@ export const Loading: Story = {
     );
   },
 };
+
+export const WithIcons: Story = {
+  render: () => {
+    const startIcon = (
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+      </svg>
+    );
+
+    const endIcon = (
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
+      </svg>
+    );
+
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: "16px",
+          alignItems: "center",
+          flexWrap: "wrap",
+        }}
+      >
+        <Button color="primary" startContent={startIcon}>
+          Star Button
+        </Button>
+        <Button color="secondary" endContent={endIcon}>
+          Next Button
+        </Button>
+        <Button color="success" startContent={startIcon} endContent={endIcon}>
+          Complete Button
+        </Button>
+      </div>
+    );
+  },
+};
