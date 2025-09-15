@@ -34,13 +34,7 @@ const meta: Meta<typeof Button> = {
     },
     size: {
       control: { type: "select" },
-      options: [
-        "xs",
-        "sm",
-        "md",
-        "lg",
-        "xl",
-      ],
+      options: ["xs", "sm", "md", "lg", "xl"],
     },
     disabled: {
       control: { type: "boolean" },
@@ -134,11 +128,21 @@ export const Sizes: Story = {
         flexWrap: "wrap",
       }}
     >
-      <Button size="xs" color="primary">XS</Button>
-      <Button size="sm" color="primary">SM</Button>
-      <Button size="md" color="primary">MD</Button>
-      <Button size="lg" color="primary">LG</Button>
-      <Button size="xl" color="primary">XL</Button>
+      <Button size="xs" color="primary">
+        XS
+      </Button>
+      <Button size="sm" color="primary">
+        SM
+      </Button>
+      <Button size="md" color="primary">
+        MD
+      </Button>
+      <Button size="lg" color="primary">
+        LG
+      </Button>
+      <Button size="xl" color="primary">
+        XL
+      </Button>
     </div>
   ),
 };
