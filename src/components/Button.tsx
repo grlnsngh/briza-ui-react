@@ -9,19 +9,30 @@ export type ButtonColor =
   | "warning"
   | "danger";
 
+export type ButtonVariant =
+  | "solid"
+  | "faded"
+  | "bordered"
+  | "light"
+  | "flat"
+  | "shadow"
+  | "glowing";
+
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   color?: ButtonColor;
+  variant?: ButtonVariant;
   children: React.ReactNode;
 }
 
 export const Button: React.FC<ButtonProps> = ({
   color = "default",
+  variant = "solid",
   children,
   className = "",
   ...props
 }) => {
-  const buttonClass = `${styles.button} ${
-    styles[`button--${color}`]
+  const buttonClass = `${styles.button} ${styles[`button--${color}`]} ${
+    styles[`button--${variant}`]
   } ${className}`.trim();
 
   return (

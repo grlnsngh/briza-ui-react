@@ -50,3 +50,212 @@
   background-color: var(--color-destructive);
   color: var(--color-destructive-foreground);
 }
+
+/* Variant styles */
+.button--faded {
+  opacity: 0.6;
+}
+
+.button--faded:hover {
+  opacity: 0.8;
+}
+
+/* Faded variant borders - match background colors */
+.button--faded.button--default {
+  border: 1px solid #d4d4d8;
+}
+
+.button--faded.button--primary {
+  border: 1px solid var(--color-primary);
+}
+
+.button--faded.button--secondary {
+  border: 1px solid #8b5cf6;
+}
+
+.button--faded.button--success {
+  border: 1px solid var(--color-success);
+}
+
+.button--faded.button--warning {
+  border: 1px solid #eab308;
+}
+
+.button--faded.button--danger {
+  border: 1px solid var(--color-destructive);
+}
+
+.button--bordered {
+  background-color: white !important;
+  border: 1px solid !important;
+}
+
+.button--light {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.button--light:hover {
+  background-color: transparent !important;
+  filter: none;
+  transform: none;
+}
+
+.button--flat {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  border: none !important;
+}
+
+.button--flat:hover {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  filter: none;
+  transform: none;
+}
+
+.button--shadow {
+  box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.25),
+    0 4px 10px -2px rgba(0, 0, 0, 0.1);
+}
+
+.button--shadow:hover {
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.35),
+    0 8px 20px -4px rgba(0, 0, 0, 0.15);
+}
+
+.button--glowing {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.button--glowing:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Glowing variant colors - glow matches button background color */
+.button--glowing.button--default {
+  box-shadow: 0 0 20px rgba(212, 212, 216, 0.6);
+}
+
+.button--glowing.button--default:hover {
+  box-shadow: 0 0 30px rgba(212, 212, 216, 0.8);
+}
+
+.button--glowing.button--primary {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+}
+
+.button--glowing.button--primary:hover {
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
+}
+
+.button--glowing.button--secondary {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+}
+
+.button--glowing.button--secondary:hover {
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.8);
+}
+
+.button--glowing.button--success {
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+}
+
+.button--glowing.button--success:hover {
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.8);
+}
+
+.button--glowing.button--warning {
+  box-shadow: 0 0 20px rgba(234, 179, 8, 0.6);
+}
+
+.button--glowing.button--warning:hover {
+  box-shadow: 0 0 30px rgba(234, 179, 8, 0.8);
+}
+
+.button--glowing.button--danger {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+}
+
+.button--glowing.button--danger:hover {
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.8);
+}
+
+/* Flat variant colors - ensure dark text on light background */
+.button--flat.button--default {
+  color: var(--color-foreground) !important;
+}
+
+.button--flat.button--primary {
+  color: var(--color-primary) !important;
+}
+
+.button--flat.button--secondary {
+  color: #8b5cf6 !important;
+}
+
+.button--flat.button--success {
+  color: var(--color-success) !important;
+}
+
+.button--flat.button--warning {
+  color: #eab308 !important;
+}
+
+.button--flat.button--danger {
+  color: var(--color-destructive) !important;
+}
+
+/* Bordered variant colors */
+.button--bordered.button--default {
+  border-color: #d4d4d8 !important;
+  color: #d4d4d8 !important;
+}
+
+.button--bordered.button--primary {
+  border-color: var(--color-primary) !important;
+  color: var(--color-primary) !important;
+}
+
+.button--bordered.button--secondary {
+  border-color: #8b5cf6 !important;
+  color: #8b5cf6 !important;
+}
+
+.button--bordered.button--success {
+  border-color: var(--color-success) !important;
+  color: var(--color-success) !important;
+}
+
+.button--bordered.button--warning {
+  border-color: #eab308 !important;
+  color: #eab308 !important;
+}
+
+.button--bordered.button--danger {
+  border-color: var(--color-destructive) !important;
+  color: var(--color-destructive) !important;
+}
+
+/* Light variant colors */
+.button--light.button--default {
+  color: #d4d4d8 !important;
+}
+
+.button--light.button--primary {
+  color: var(--color-primary) !important;
+}
+
+.button--light.button--secondary {
+  color: #8b5cf6 !important;
+}
+
+.button--light.button--success {
+  color: var(--color-success) !important;
+}
+
+.button--light.button--warning {
+  color: #eab308 !important;
+}
+
+.button--light.button--danger {
+  color: var(--color-destructive) !important;
+}
