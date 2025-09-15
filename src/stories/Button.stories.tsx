@@ -32,6 +32,9 @@ const meta: Meta<typeof Button> = {
         "glowing",
       ],
     },
+    disabled: {
+      control: { type: "boolean" },
+    },
   },
 };
 
@@ -100,4 +103,12 @@ export const Variants: Story = {
       </Button>
     </div>
   ),
+};
+
+export const Disabled: Story = {
+  args: {
+    color: "primary",
+    disabled: true,
+    children: "Disabled Button",
+  },
 };
