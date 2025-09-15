@@ -1,3 +1,4 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "../components/Button";
 
@@ -41,6 +42,9 @@ const meta: Meta<typeof Button> = {
       options: ["none", "sm", "md", "lg", "full"],
     },
     disabled: {
+      control: { type: "boolean" },
+    },
+    isLoading: {
       control: { type: "boolean" },
     },
   },
@@ -179,4 +183,36 @@ export const Radius: Story = {
       </Button>
     </div>
   ),
+};
+
+export const Loading: Story = {
+  render: () => {
+    const [isLoading, setIsLoading] = React.useState(false);
+
+    const handleClick = () => {
+      setIsLoading(true);
+    };
+
+    const handleReset = () => {
+      setIsLoading(false);
+    };
+
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: "16px",
+          alignItems: "center",
+        }}
+      >
+        <Button color="primary" isLoading={isLoading} onClick={handleClick}>
+          {isLoading ? "Loading..." : "Start Loading"}
+        </Button>
+        <Button color="secondary" onClick={handleReset}>
+          Reset Loading State
+        </Button>
+      </div>
+    );
+  },
 };
