@@ -348,3 +348,64 @@ export const WithLongText: Story = {
     );
   },
 };
+
+export const PolymorphicExamples: StoryObj<typeof Button> = {
+  render: () => {
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "16px",
+          alignItems: "flex-start",
+        }}
+      >
+        <div>
+          <h3>Default Button (renders as &lt;button&gt;)</h3>
+          <Button color="primary" onClick={() => alert("Button clicked!")}>
+            Standard Button
+          </Button>
+        </div>
+
+        <div>
+          <h3>Link Button (renders as &lt;a&gt;)</h3>
+          <Button as="a" href="#home" color="secondary">
+            Navigation Link
+          </Button>
+        </div>
+
+        <div>
+          <h3>Div Button (renders as &lt;div&gt;)</h3>
+          <Button
+            as="div"
+            color="success"
+            onClick={() => alert("Div clicked!")}
+          >
+            Custom Div Element
+          </Button>
+        </div>
+
+        <div>
+          <h3>Span Button (renders as &lt;span&gt;)</h3>
+          <Button as="span" color="warning" size="sm">
+            Inline Span Element
+          </Button>
+        </div>
+
+        <div>
+          <h3>External Link (renders as &lt;a&gt; with target="_blank")</h3>
+          <Button
+            as="a"
+            href="https://github.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            color="danger"
+            variant="bordered"
+          >
+            Open GitHub
+          </Button>
+        </div>
+      </div>
+    );
+  },
+};
