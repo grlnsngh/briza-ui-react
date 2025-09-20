@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { spacing, colors, radius } from "../../theme";
+import {
+  StoryContainer,
+  SectionHeader,
+  TokenGrid,
+  TokenCard,
+  CodeBlock,
+  CopyableText,
+} from "./shared";
 
 const meta: Meta = {
   title: "Design System/Spacing",
@@ -45,7 +53,7 @@ gap: spacing[6],
 export default meta;
 type Story = StoryObj;
 
-// Helper component to visualize spacing
+// Enhanced spacing visualizer with better accessibility
 const SpacingVisualizer: React.FC<{
   size: string;
   value: string;
@@ -54,53 +62,33 @@ const SpacingVisualizer: React.FC<{
   const [showMeasurement, setShowMeasurement] = useState(false);
 
   return (
-    <div
-      style={{
-        padding: "1rem",
-        border: `1px solid ${colors.default[200]}`,
-        borderRadius: radius.md,
-        backgroundColor: colors.background,
-      }}
+    <TokenCard
+      title={`spacing[${size}]`}
+      description={`${value} (${parseFloat(value) * 16}px)`}
     >
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          marginBottom: "1rem",
+          marginBottom: spacing[4],
         }}
       >
-        <div>
-          <div
-            style={{
-              fontSize: "1rem",
-              fontWeight: "600",
-              color: colors.foreground,
-            }}
-          >
-            spacing[{size}]
-          </div>
-          <div
-            style={{
-              fontSize: "0.875rem",
-              color: colors.default[600],
-              fontFamily: "monospace",
-            }}
-          >
-            {value} ({parseFloat(value) * 16}px)
-          </div>
-        </div>
+        <CopyableText text={`spacing[${size}]`} label="spacing token" />
         <button
           onClick={() => setShowMeasurement(!showMeasurement)}
           style={{
             fontSize: "0.75rem",
-            padding: "0.25rem 0.5rem",
+            padding: `${spacing[1]} ${spacing[2]}`,
             backgroundColor: colors.primary[100],
             color: colors.primary[700],
             border: `1px solid ${colors.primary[300]}`,
             borderRadius: radius.sm,
             cursor: "pointer",
           }}
+          aria-label={`${
+            showMeasurement ? "Hide" : "Show"
+          } measurements for spacing ${size}`}
         >
           {showMeasurement ? "Hide" : "Show"} Measurements
         </button>
@@ -112,7 +100,7 @@ const SpacingVisualizer: React.FC<{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: "1rem",
+          gap: spacing[4],
         }}
       >
         {/* Horizontal spacing */}
@@ -135,6 +123,7 @@ const SpacingVisualizer: React.FC<{
                 backgroundColor: colors.primary.DEFAULT,
                 borderRadius: radius.sm,
               }}
+              aria-label="First element"
             />
             <div
               style={{
@@ -143,6 +132,7 @@ const SpacingVisualizer: React.FC<{
                 backgroundColor: colors.secondary.DEFAULT,
                 borderRadius: radius.sm,
               }}
+              aria-label="Second element"
             />
             {showMeasurement && (
               <div
@@ -185,6 +175,7 @@ const SpacingVisualizer: React.FC<{
                 backgroundColor: colors.success.DEFAULT,
                 borderRadius: radius.sm,
               }}
+              aria-label="First element"
             />
             <div
               style={{
@@ -193,6 +184,7 @@ const SpacingVisualizer: React.FC<{
                 backgroundColor: colors.warning.DEFAULT,
                 borderRadius: radius.sm,
               }}
+              aria-label="Second element"
             />
             {showMeasurement && (
               <div
@@ -216,102 +208,43 @@ const SpacingVisualizer: React.FC<{
           </div>
         )}
       </div>
-    </div>
+    </TokenCard>
   );
 };
 
 export const SpacingScale: Story = {
   render: () => (
-    <div
-      style={{
-        fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-        padding: "2rem",
-      }}
-    >
-      <div style={{ marginBottom: "2rem" }}>
-        <h1
-          style={{
-            fontSize: "2rem",
-            fontWeight: "700",
-            color: colors.foreground,
-            marginBottom: "0.5rem",
-          }}
-        >
-          📏 Spacing Scale
-        </h1>
-        <p
-          style={{
-            fontSize: "1rem",
-            color: colors.default[600],
-            lineHeight: "1.6",
-          }}
-        >
-          Our spacing scale provides consistent layout spacing. Click "Show
-          Measurements" to see spacing in action.
-        </p>
-      </div>
+    <StoryContainer>
+      <SectionHeader
+        title="Spacing Scale"
+        description="Our spacing scale provides consistent layout spacing. Click 'Show Measurements' to see spacing in action."
+        icon="📏"
+      />
 
-      <div
-        style={{
-          display: "grid",
-          gap: "1.5rem",
-          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-        }}
-      >
+      <TokenGrid gap={4} minWidth="320px">
         {Object.entries(spacing).map(([size, value]) => (
           <SpacingVisualizer key={size} size={size} value={value as string} />
         ))}
-      </div>
-    </div>
+      </TokenGrid>
+    </StoryContainer>
   ),
 };
 
 export const SpacingPatterns: Story = {
   render: () => (
-    <div
-      style={{
-        fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-        padding: "2rem",
-      }}
-    >
-      <div style={{ marginBottom: "2rem" }}>
-        <h1
-          style={{
-            fontSize: "2rem",
-            fontWeight: "700",
-            color: colors.foreground,
-            marginBottom: "0.5rem",
-          }}
-        >
-          🎯 Common Spacing Patterns
-        </h1>
-        <p
-          style={{
-            fontSize: "1rem",
-            color: colors.default[600],
-            lineHeight: "1.6",
-          }}
-        >
-          Examples of how spacing tokens are used in common UI patterns and
-          components.
-        </p>
-      </div>
+    <StoryContainer>
+      <SectionHeader
+        title="Common Spacing Patterns"
+        description="Examples of how spacing tokens are used in common UI patterns and components."
+        icon="🎯"
+      />
 
-      <div style={{ display: "grid", gap: "2rem" }}>
+      <TokenGrid gap={6} minWidth="400px">
         {/* Card Layout Pattern */}
-        <div>
-          <h2
-            style={{
-              fontSize: "1.25rem",
-              fontWeight: "600",
-              color: colors.foreground,
-              marginBottom: "1rem",
-            }}
-          >
-            Card Layout (spacing[4] internal, spacing[6] between)
-          </h2>
+        <TokenCard
+          title="Card Layout (spacing[4] internal, spacing[6] between)"
+          variant="primary"
+        >
           <div
             style={{
               display: "grid",
@@ -366,33 +299,19 @@ export const SpacingPatterns: Story = {
               </div>
             ))}
           </div>
-          <div
-            style={{
-              marginTop: "1rem",
-              padding: "1rem",
-              backgroundColor: colors.default[50],
-              borderRadius: radius.md,
-              fontSize: "0.875rem",
-              fontFamily: "monospace",
-              color: colors.default[700],
-            }}
-          >
-            gap: spacing[6], padding: spacing[4]
+          <div style={{ marginTop: "1rem" }}>
+            <CodeBlock
+              code="gap: spacing[6], padding: spacing[4]"
+              showCopy={false}
+            />
           </div>
-        </div>
+        </TokenCard>
 
         {/* Form Layout Pattern */}
-        <div>
-          <h2
-            style={{
-              fontSize: "1.25rem",
-              fontWeight: "600",
-              color: colors.foreground,
-              marginBottom: "1rem",
-            }}
-          >
-            Form Layout (spacing[4] between fields, spacing[2] labels)
-          </h2>
+        <TokenCard
+          title="Form Layout (spacing[4] between fields, spacing[2] labels)"
+          variant="secondary"
+        >
           <div
             style={{
               maxWidth: "400px",
@@ -468,34 +387,19 @@ export const SpacingPatterns: Story = {
               Submit
             </button>
           </div>
-          <div
-            style={{
-              marginTop: "1rem",
-              padding: "1rem",
-              backgroundColor: colors.default[50],
-              borderRadius: radius.md,
-              fontSize: "0.875rem",
-              fontFamily: "monospace",
-              color: colors.default[700],
-            }}
-          >
-            marginBottom: spacing[4], labelMargin: spacing[2], padding:
-            spacing[3]
+          <div style={{ marginTop: "1rem" }}>
+            <CodeBlock
+              code="marginBottom: spacing[4], labelMargin: spacing[2], padding: spacing[3]"
+              showCopy={false}
+            />
           </div>
-        </div>
+        </TokenCard>
 
         {/* Navigation Pattern */}
-        <div>
-          <h2
-            style={{
-              fontSize: "1.25rem",
-              fontWeight: "600",
-              color: colors.foreground,
-              marginBottom: "1rem",
-            }}
-          >
-            Navigation (spacing[2] vertical, spacing[6] horizontal)
-          </h2>
+        <TokenCard
+          title="Navigation (spacing[2] vertical, spacing[6] horizontal)"
+          variant="success"
+        >
           <nav
             style={{
               display: "flex",
@@ -526,57 +430,28 @@ export const SpacingPatterns: Story = {
               </button>
             ))}
           </nav>
-          <div
-            style={{
-              marginTop: "1rem",
-              padding: "1rem",
-              backgroundColor: colors.default[50],
-              borderRadius: radius.md,
-              fontSize: "0.875rem",
-              fontFamily: "monospace",
-              color: colors.default[700],
-            }}
-          >
-            gap: spacing[6], itemPadding: spacing[2] spacing[3]
+          <div style={{ marginTop: "1rem" }}>
+            <CodeBlock
+              code="gap: spacing[6], itemPadding: spacing[2] spacing[3]"
+              showCopy={false}
+            />
           </div>
-        </div>
-      </div>
-    </div>
+        </TokenCard>
+      </TokenGrid>
+    </StoryContainer>
   ),
 };
 
 export const SpacingReference: Story = {
   render: () => (
-    <div
-      style={{
-        fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-        padding: "2rem",
-      }}
-    >
-      <div style={{ marginBottom: "2rem" }}>
-        <h1
-          style={{
-            fontSize: "2rem",
-            fontWeight: "700",
-            color: colors.foreground,
-            marginBottom: "0.5rem",
-          }}
-        >
-          📚 Spacing Reference
-        </h1>
-        <p
-          style={{
-            fontSize: "1rem",
-            color: colors.default[600],
-            lineHeight: "1.6",
-          }}
-        >
-          Quick reference guide for when to use different spacing values.
-        </p>
-      </div>
+    <StoryContainer>
+      <SectionHeader
+        title="Spacing Reference"
+        description="Quick reference guide for when to use different spacing values."
+        icon="📚"
+      />
 
-      <div style={{ display: "grid", gap: "1.5rem" }}>
+      <TokenGrid>
         {[
           {
             range: "spacing[0] - spacing[1]",
@@ -586,7 +461,7 @@ export const SpacingReference: Story = {
               "Border widths",
               "Subtle element separation",
             ],
-            color: colors.default,
+            variant: "default" as const,
           },
           {
             range: "spacing[1.5] - spacing[3]",
@@ -596,13 +471,13 @@ export const SpacingReference: Story = {
               "Input padding",
               "Small component gaps",
             ],
-            color: colors.primary,
+            variant: "primary" as const,
           },
           {
             range: "spacing[4] - spacing[6]",
             usage: "Component spacing, layout gaps",
             examples: ["Card padding", "Form field gaps", "Component margins"],
-            color: colors.secondary,
+            variant: "secondary" as const,
           },
           {
             range: "spacing[8] - spacing[12]",
@@ -612,58 +487,27 @@ export const SpacingReference: Story = {
               "Container padding",
               "Major layout spacing",
             ],
-            color: colors.success,
+            variant: "success" as const,
           },
           {
             range: "spacing[16] - spacing[24]",
             usage: "Page-level spacing, major sections",
             examples: ["Page margins", "Hero sections", "Major content blocks"],
-            color: colors.warning,
+            variant: "warning" as const,
           },
         ].map((category, index) => (
-          <div
+          <TokenCard
             key={index}
-            style={{
-              padding: "1.5rem",
-              backgroundColor: category.color[50],
-              border: `1px solid ${category.color[200]}`,
-              borderRadius: radius.lg,
-            }}
+            title={category.range}
+            description={category.usage}
+            variant={category.variant}
           >
-            <h3
-              style={{
-                fontSize: "1.125rem",
-                fontWeight: "600",
-                color: category.color[800],
-                marginBottom: "0.5rem",
-              }}
-            >
-              {category.range}
-            </h3>
-            <p
-              style={{
-                fontSize: "0.875rem",
-                color: category.color[700],
-                marginBottom: "1rem",
-                lineHeight: "1.5",
-              }}
-            >
-              {category.usage}
-            </p>
             <div>
-              <strong
-                style={{
-                  fontSize: "0.875rem",
-                  color: category.color[800],
-                }}
-              >
-                Common uses:
-              </strong>
+              <strong style={{ fontSize: "0.875rem" }}>Common uses:</strong>
               <ul
                 style={{
                   margin: "0.5rem 0 0 1.5rem",
                   fontSize: "0.875rem",
-                  color: category.color[700],
                 }}
               >
                 {category.examples.map((example, i) => (
@@ -671,9 +515,9 @@ export const SpacingReference: Story = {
                 ))}
               </ul>
             </div>
-          </div>
+          </TokenCard>
         ))}
-      </div>
+      </TokenGrid>
 
       {/* Usage Code */}
       <div style={{ marginTop: "2rem" }}>
@@ -687,38 +531,20 @@ export const SpacingReference: Story = {
         >
           Code Examples
         </h2>
-        <div
-          style={{
-            backgroundColor: colors.default[50],
-            padding: "1.5rem",
-            borderRadius: radius.lg,
-            fontFamily: "monospace",
-            fontSize: "0.875rem",
-          }}
-        >
-          <div style={{ marginBottom: "1rem", color: colors.default[700] }}>
-            {`// Import spacing tokens`}
-            <br />
-            {`import { spacing } from '@/theme';`}
-          </div>
-          <div style={{ marginBottom: "1rem", color: colors.default[700] }}>
-            {`// Use in styles`}
-            <br />
-            {`padding: spacing[4],`}
-            <br />
-            {`margin: spacing[2],`}
-            <br />
-            {`gap: spacing[6],`}
-          </div>
-          <div style={{ color: colors.default[700] }}>
-            {`// Combine with other properties`}
-            <br />
-            {`padding: \`\${spacing[3]} \${spacing[4]}\`,`}
-            <br />
-            {`margin: \`\${spacing[2]} 0\`,`}
-          </div>
-        </div>
+        <CodeBlock
+          code={`// Import spacing tokens
+import { spacing } from '@/theme';
+
+// Use in styles
+padding: spacing[4],
+margin: spacing[2],
+gap: spacing[6],
+
+// Combine with other properties
+padding: \`\${spacing[3]} \${spacing[4]}\`,
+margin: \`\${spacing[2]} 0\`,`}
+        />
       </div>
-    </div>
+    </StoryContainer>
   ),
 };

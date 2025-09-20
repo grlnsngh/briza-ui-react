@@ -1,6 +1,13 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { typography, colors, radius } from "../../theme";
+import { typography, colors, radius, spacing } from "../../theme";
+import {
+  StoryContainer,
+  SectionHeader,
+  TokenGrid,
+  TokenCard,
+  CodeBlock,
+} from "./shared";
 
 const meta: Meta = {
   title: "Design System/Typography",
@@ -53,347 +60,124 @@ const longText =
 
 export const FontSizes: Story = {
   render: () => (
-    <div
-      style={{
-        fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-        padding: "2rem",
-      }}
-    >
-      <div style={{ marginBottom: "2rem" }}>
-        <h1
-          style={{
-            fontSize: "2rem",
-            fontWeight: "700",
-            color: colors.foreground,
-            marginBottom: "0.5rem",
-          }}
-        >
-          📐 Font Sizes
-        </h1>
-        <p
-          style={{
-            fontSize: "1rem",
-            color: colors.default[600],
-            lineHeight: "1.6",
-          }}
-        >
-          Our type scale provides consistent sizing for different content types
-          and hierarchies.
-        </p>
-      </div>
+    <StoryContainer>
+      <SectionHeader
+        title="Font Sizes"
+        description="Our type scale provides consistent sizing for different content types and hierarchies."
+        icon="📐"
+      />
 
-      <div style={{ display: "grid", gap: "1.5rem" }}>
+      <TokenGrid gap={4} minWidth="400px">
         {Object.entries(typography.fontSize).map(([size, value]) => (
-          <div
+          <TokenCard
             key={size}
-            style={{
-              padding: "1.5rem",
-              backgroundColor: colors.background,
-              border: `1px solid ${colors.default[200]}`,
-              borderRadius: radius.lg,
-            }}
+            title={size}
+            description={`${value} (${parseInt(value) * 16}px)`}
           >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "baseline",
-                marginBottom: "0.75rem",
-                paddingBottom: "0.5rem",
-                borderBottom: `1px solid ${colors.default[100]}`,
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1rem",
-                  fontWeight: "600",
-                  color: colors.foreground,
-                  margin: 0,
-                }}
-              >
-                {size}
-              </h3>
-              <div
-                style={{
-                  fontSize: "0.75rem",
-                  color: colors.default[500],
-                  fontFamily: "monospace",
-                }}
-              >
-                {value} ({parseInt(value) * 16}px)
-              </div>
-            </div>
             <div
               style={{
                 fontSize: value as string,
                 lineHeight: typography.lineHeight.normal,
                 color: colors.foreground,
+                marginBottom: spacing[2],
               }}
             >
               {sampleText}
             </div>
-            <div
-              style={{
-                marginTop: "0.5rem",
-                fontSize: "0.75rem",
-                color: colors.default[500],
-                fontFamily: "monospace",
-              }}
-            >
-              typography.fontSize.{size}
-            </div>
-          </div>
+            <CodeBlock code={`typography.fontSize.${size}`} showCopy={false} />
+          </TokenCard>
         ))}
-      </div>
-    </div>
+      </TokenGrid>
+    </StoryContainer>
   ),
 };
 
 export const FontWeights: Story = {
   render: () => (
-    <div
-      style={{
-        fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-        padding: "2rem",
-      }}
-    >
-      <div style={{ marginBottom: "2rem" }}>
-        <h1
-          style={{
-            fontSize: "2rem",
-            fontWeight: "700",
-            color: colors.foreground,
-            marginBottom: "0.5rem",
-          }}
-        >
-          ⚖️ Font Weights
-        </h1>
-        <p
-          style={{
-            fontSize: "1rem",
-            color: colors.default[600],
-            lineHeight: "1.6",
-          }}
-        >
-          Font weights help establish visual hierarchy and emphasis in text
-          content.
-        </p>
-      </div>
+    <StoryContainer>
+      <SectionHeader
+        title="Font Weights"
+        description="Font weights help establish visual hierarchy and emphasis in text content."
+        icon="⚖️"
+      />
 
-      <div style={{ display: "grid", gap: "1.5rem" }}>
+      <TokenGrid gap={4} minWidth="400px">
         {Object.entries(typography.fontWeight).map(([weight, value]) => (
-          <div
+          <TokenCard
             key={weight}
-            style={{
-              padding: "1.5rem",
-              backgroundColor: colors.background,
-              border: `1px solid ${colors.default[200]}`,
-              borderRadius: radius.lg,
-            }}
+            title={weight}
+            description={`Weight: ${value}`}
           >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "baseline",
-                marginBottom: "0.75rem",
-                paddingBottom: "0.5rem",
-                borderBottom: `1px solid ${colors.default[100]}`,
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1rem",
-                  fontWeight: "600",
-                  color: colors.foreground,
-                  margin: 0,
-                  textTransform: "capitalize",
-                }}
-              >
-                {weight}
-              </h3>
-              <div
-                style={{
-                  fontSize: "0.75rem",
-                  color: colors.default[500],
-                  fontFamily: "monospace",
-                }}
-              >
-                {value}
-              </div>
-            </div>
             <div
               style={{
                 fontSize: typography.fontSize.lg,
                 fontWeight: value as string,
                 lineHeight: typography.lineHeight.normal,
                 color: colors.foreground,
+                marginBottom: spacing[2],
               }}
             >
               {sampleText}
             </div>
-            <div
-              style={{
-                marginTop: "0.5rem",
-                fontSize: "0.75rem",
-                color: colors.default[500],
-                fontFamily: "monospace",
-              }}
-            >
-              typography.fontWeight.{weight}
-            </div>
-          </div>
+            <CodeBlock
+              code={`typography.fontWeight.${weight}`}
+              showCopy={false}
+            />
+          </TokenCard>
         ))}
-      </div>
-    </div>
+      </TokenGrid>
+    </StoryContainer>
   ),
 };
 
 export const LineHeights: Story = {
   render: () => (
-    <div
-      style={{
-        fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-        padding: "2rem",
-      }}
-    >
-      <div style={{ marginBottom: "2rem" }}>
-        <h1
-          style={{
-            fontSize: "2rem",
-            fontWeight: "700",
-            color: colors.foreground,
-            marginBottom: "0.5rem",
-          }}
-        >
-          📏 Line Heights
-        </h1>
-        <p
-          style={{
-            fontSize: "1rem",
-            color: colors.default[600],
-            lineHeight: "1.6",
-          }}
-        >
-          Line heights control the vertical spacing between lines of text,
-          affecting readability and visual density.
-        </p>
-      </div>
+    <StoryContainer>
+      <SectionHeader
+        title="Line Heights"
+        description="Line heights control the vertical spacing between lines of text, affecting readability and visual density."
+        icon="📏"
+      />
 
-      <div style={{ display: "grid", gap: "1.5rem" }}>
+      <TokenGrid gap={4} minWidth="400px">
         {Object.entries(typography.lineHeight).map(([height, value]) => (
-          <div
+          <TokenCard
             key={height}
-            style={{
-              padding: "1.5rem",
-              backgroundColor: colors.background,
-              border: `1px solid ${colors.default[200]}`,
-              borderRadius: radius.lg,
-            }}
+            title={height}
+            description={`Line height: ${value}`}
           >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "baseline",
-                marginBottom: "0.75rem",
-                paddingBottom: "0.5rem",
-                borderBottom: `1px solid ${colors.default[100]}`,
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1rem",
-                  fontWeight: "600",
-                  color: colors.foreground,
-                  margin: 0,
-                  textTransform: "capitalize",
-                }}
-              >
-                {height}
-              </h3>
-              <div
-                style={{
-                  fontSize: "0.75rem",
-                  color: colors.default[500],
-                  fontFamily: "monospace",
-                }}
-              >
-                {value}
-              </div>
-            </div>
             <div
               style={{
                 fontSize: typography.fontSize.base,
                 lineHeight: value as string,
                 color: colors.foreground,
+                marginBottom: spacing[2],
               }}
             >
               {longText}
             </div>
-            <div
-              style={{
-                marginTop: "0.5rem",
-                fontSize: "0.75rem",
-                color: colors.default[500],
-                fontFamily: "monospace",
-              }}
-            >
-              typography.lineHeight.{height}
-            </div>
-          </div>
+            <CodeBlock
+              code={`typography.lineHeight.${height}`}
+              showCopy={false}
+            />
+          </TokenCard>
         ))}
-      </div>
-    </div>
+      </TokenGrid>
+    </StoryContainer>
   ),
 };
 
 export const TypographyShowcase: Story = {
   render: () => (
-    <div
-      style={{
-        fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-        padding: "2rem",
-      }}
-    >
-      <div style={{ marginBottom: "3rem" }}>
-        <h1
-          style={{
-            fontSize: "2rem",
-            fontWeight: "700",
-            color: colors.foreground,
-            marginBottom: "0.5rem",
-          }}
-        >
-          🎯 Typography in Action
-        </h1>
-        <p
-          style={{
-            fontSize: "1rem",
-            color: colors.default[600],
-            lineHeight: "1.6",
-          }}
-        >
-          See how different typography tokens work together in real content
-          scenarios.
-        </p>
-      </div>
+    <StoryContainer maxWidth="800px">
+      <SectionHeader
+        title="Typography in Action"
+        description="See how different typography tokens work together in real content scenarios."
+        icon="🎯"
+      />
 
       {/* Article Example */}
-      <div
-        style={{
-          maxWidth: "800px",
-          margin: "0 auto",
-          padding: "2rem",
-          backgroundColor: colors.background,
-          border: `1px solid ${colors.default[200]}`,
-          borderRadius: radius.lg,
-        }}
-      >
+      <TokenCard title="Article Example" variant="default">
         {/* Heading Hierarchy */}
         <h1
           style={{
@@ -401,7 +185,7 @@ export const TypographyShowcase: Story = {
             fontWeight: typography.fontWeight.bold,
             lineHeight: typography.lineHeight.tight,
             color: colors.foreground,
-            marginBottom: "1rem",
+            marginBottom: spacing[4],
           }}
         >
           Design System Typography
@@ -496,20 +280,11 @@ export const TypographyShowcase: Story = {
           >
             Usage Example
           </h4>
-          <code
-            style={{
-              fontSize: typography.fontSize.sm,
-              fontFamily: 'Monaco, Menlo, "Ubuntu Mono", monospace',
-              color: colors.default[700],
-              lineHeight: typography.lineHeight.relaxed,
-              display: "block",
-              whiteSpace: "pre",
-            }}
-          >
-            {`fontSize: typography.fontSize.lg,
+          <CodeBlock
+            code={`fontSize: typography.fontSize.lg,
 fontWeight: typography.fontWeight.medium,
 lineHeight: typography.lineHeight.normal,`}
-          </code>
+          />
         </div>
 
         {/* Caption */}
@@ -524,7 +299,7 @@ lineHeight: typography.lineHeight.normal,`}
         >
           Example of a complete typography hierarchy using design tokens
         </p>
-      </div>
+      </TokenCard>
 
       {/* Typography Reference */}
       <div style={{ marginTop: "3rem" }}>
@@ -539,101 +314,53 @@ lineHeight: typography.lineHeight.normal,`}
           Quick Reference
         </h2>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gap: "1rem",
-          }}
-        >
-          <div
-            style={{
-              padding: "1rem",
-              backgroundColor: colors.primary[50],
-              border: `1px solid ${colors.primary[200]}`,
-              borderRadius: radius.md,
-            }}
+        <TokenGrid gap={4} minWidth="300px">
+          <TokenCard
+            title="Button Text"
+            description="fontSize.sm + fontWeight.medium"
+            variant="primary"
           >
-            <h4
-              style={{
-                color: colors.primary[800],
-                margin: "0 0 0.5rem 0",
-                fontSize: typography.fontSize.base,
-                fontWeight: typography.fontWeight.medium,
-              }}
-            >
-              Button Text
-            </h4>
             <div
               style={{
                 fontSize: typography.fontSize.sm,
                 fontWeight: typography.fontWeight.medium,
-                color: colors.primary[700],
               }}
             >
-              fontSize.sm + fontWeight.medium
+              Example Button Text
             </div>
-          </div>
+          </TokenCard>
 
-          <div
-            style={{
-              padding: "1rem",
-              backgroundColor: colors.secondary[50],
-              border: `1px solid ${colors.secondary[200]}`,
-              borderRadius: radius.md,
-            }}
+          <TokenCard
+            title="Body Text"
+            description="fontSize.base + fontWeight.normal"
+            variant="secondary"
           >
-            <h4
-              style={{
-                color: colors.secondary[800],
-                margin: "0 0 0.5rem 0",
-                fontSize: typography.fontSize.base,
-                fontWeight: typography.fontWeight.medium,
-              }}
-            >
-              Body Text
-            </h4>
             <div
               style={{
-                fontSize: typography.fontSize.sm,
+                fontSize: typography.fontSize.base,
                 fontWeight: typography.fontWeight.normal,
-                color: colors.secondary[700],
               }}
             >
-              fontSize.base + fontWeight.normal
+              Example body text with proper readability
             </div>
-          </div>
+          </TokenCard>
 
-          <div
-            style={{
-              padding: "1rem",
-              backgroundColor: colors.success[50],
-              border: `1px solid ${colors.success[200]}`,
-              borderRadius: radius.md,
-            }}
+          <TokenCard
+            title="Headings"
+            description="fontSize.xl+ + fontWeight.semibold+"
+            variant="success"
           >
-            <h4
-              style={{
-                color: colors.success[800],
-                margin: "0 0 0.5rem 0",
-                fontSize: typography.fontSize.base,
-                fontWeight: typography.fontWeight.medium,
-              }}
-            >
-              Headings
-            </h4>
             <div
               style={{
-                fontSize: typography.fontSize.sm,
-                fontWeight: typography.fontWeight.normal,
-                color: colors.success[700],
+                fontSize: typography.fontSize.xl,
+                fontWeight: typography.fontWeight.semibold,
               }}
             >
-              fontSize.xl+ + fontWeight.semibold+
+              Example Heading
             </div>
-          </div>
-        </div>
+          </TokenCard>
+        </TokenGrid>
       </div>
-    </div>
+    </StoryContainer>
   ),
 };

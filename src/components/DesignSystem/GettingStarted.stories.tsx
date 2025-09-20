@@ -2,6 +2,13 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { linkTo } from "@storybook/addon-links";
 import { colors, typography, spacing, radius, shadows } from "../../theme";
+import {
+  StoryContainer,
+  SectionHeader,
+  TokenGrid,
+  TokenCard,
+  CodeBlock,
+} from "./shared";
 
 const meta: Meta = {
   title: "Design System/Getting Started",
@@ -44,224 +51,135 @@ type Story = StoryObj;
 
 export const QuickStart: Story = {
   render: () => (
-    <div
-      style={{
-        fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-        padding: "2rem",
-        maxWidth: "1000px",
-        margin: "0 auto",
-      }}
-    >
-      <div style={{ marginBottom: "3rem" }}>
-        <h1
-          style={{
-            fontSize: "2.5rem",
-            fontWeight: "700",
-            color: colors.foreground,
-            marginBottom: "1rem",
-          }}
-        >
-          🚀 Quick Start Guide
-        </h1>
-        <p
-          style={{
-            fontSize: "1.125rem",
-            color: colors.default[600],
-            lineHeight: "1.6",
-            marginBottom: "2rem",
-          }}
-        >
-          Get up and running with Briza UI design tokens in minutes. Follow this
-          guide to start building consistent interfaces.
-        </p>
-      </div>
+    <StoryContainer maxWidth="1000px">
+      <SectionHeader
+        title="Quick Start Guide"
+        description="Get up and running with Briza UI design tokens in minutes. Follow this guide to start building consistent interfaces."
+        icon="🚀"
+      />
 
-      {/* Step 1: Installation */}
-      <div style={{ marginBottom: "3rem" }}>
-        <h2
-          style={{
-            fontSize: "1.5rem",
-            fontWeight: "600",
-            color: colors.foreground,
-            marginBottom: "1rem",
-            display: "flex",
-            alignItems: "center",
-            gap: "0.5rem",
-          }}
-        >
-          <span
+      {/* Step-by-step guide with vertical layout and padding for step indicators */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: spacing[6],
+          paddingLeft: spacing[8], // Add padding for step indicators
+          position: "relative",
+        }}
+      >
+        {/* Step 1: Installation */}
+        <div style={{ position: "relative" }}>
+          <div
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
+              position: "absolute",
+              left: "-2rem",
+              top: "1rem",
               width: "2rem",
               height: "2rem",
+              borderRadius: "50%",
               backgroundColor: colors.primary.DEFAULT,
               color: colors.primary.foreground,
-              borderRadius: radius.full,
-              fontSize: "1rem",
-              fontWeight: "700",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontWeight: typography.fontWeight.bold,
+              fontSize: typography.fontSize.sm,
+              boxShadow: shadows.md,
             }}
           >
             1
-          </span>
-          Installation
-        </h2>
-        <div
-          style={{
-            backgroundColor: colors.default[50],
-            padding: "1.5rem",
-            borderRadius: radius.lg,
-            border: `1px solid ${colors.default[200]}`,
-            marginBottom: "1rem",
-          }}
-        >
-          <pre
-            style={{
-              margin: 0,
-              fontFamily: 'Monaco, Menlo, "Ubuntu Mono", monospace',
-              fontSize: "0.875rem",
-              color: colors.default[800],
-            }}
-          >
-            {`npm i briza-ui-react
+          </div>
+          <TokenCard title="Installation" variant="primary">
+            <p
+              style={{
+                fontSize: typography.fontSize.sm,
+                color: colors.default[600],
+                margin: 0,
+                marginBottom: spacing[3],
+                lineHeight: "1.5",
+              }}
+            >
+              Start by installing the Briza UI React package in your project:
+            </p>
+            <CodeBlock
+              code={`npm i briza-ui-react
 
 # or with yarn
 yarn add briza-ui-react`}
-          </pre>
+            />
+          </TokenCard>
         </div>
-      </div>
 
-      {/* Step 2: Import Tokens */}
-      <div style={{ marginBottom: "3rem" }}>
-        <h2
-          style={{
-            fontSize: "1.5rem",
-            fontWeight: "600",
-            color: colors.foreground,
-            marginBottom: "1rem",
-            display: "flex",
-            alignItems: "center",
-            gap: "0.5rem",
-          }}
-        >
-          <span
+        {/* Step 2: Import Tokens */}
+        <div style={{ position: "relative" }}>
+          <div
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
+              position: "absolute",
+              left: "-2rem",
+              top: "1rem",
               width: "2rem",
               height: "2rem",
+              borderRadius: "50%",
               backgroundColor: colors.secondary.DEFAULT,
               color: colors.secondary.foreground,
-              borderRadius: radius.full,
-              fontSize: "1rem",
-              fontWeight: "700",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontWeight: typography.fontWeight.bold,
+              fontSize: typography.fontSize.sm,
+              boxShadow: shadows.md,
             }}
           >
             2
-          </span>
-          Import Design Tokens
-        </h2>
-        <p
-          style={{
-            fontSize: "1rem",
-            color: colors.default[600],
-            lineHeight: "1.6",
-            marginBottom: "1rem",
-          }}
-        >
-          Import the design tokens you need in your components:
-        </p>
-        <div
-          style={{
-            backgroundColor: colors.default[50],
-            padding: "1.5rem",
-            borderRadius: radius.lg,
-            border: `1px solid ${colors.default[200]}`,
-            marginBottom: "1rem",
-          }}
-        >
-          <pre
-            style={{
-              margin: 0,
-              fontFamily: 'Monaco, Menlo, "Ubuntu Mono", monospace',
-              fontSize: "0.875rem",
-              color: colors.default[800],
-            }}
+          </div>
+          <TokenCard
+            title="Import Design Tokens"
+            description="Import the design tokens you need in your components:"
+            variant="secondary"
           >
-            {`import { 
+            <CodeBlock
+              code={`import { 
   colors, 
   spacing, 
   typography, 
   radius, 
   shadows 
 } from 'briza-ui-react/theme';`}
-          </pre>
+            />
+          </TokenCard>
         </div>
-      </div>
 
-      {/* Step 3: Use in Components */}
-      <div style={{ marginBottom: "3rem" }}>
-        <h2
-          style={{
-            fontSize: "1.5rem",
-            fontWeight: "600",
-            color: colors.foreground,
-            marginBottom: "1rem",
-            display: "flex",
-            alignItems: "center",
-            gap: "0.5rem",
-          }}
-        >
-          <span
+        {/* Step 3: Use in Components */}
+        <div style={{ position: "relative" }}>
+          <div
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
+              position: "absolute",
+              left: "-2rem",
+              top: "1rem",
               width: "2rem",
               height: "2rem",
+              borderRadius: "50%",
               backgroundColor: colors.success.DEFAULT,
               color: colors.success.foreground,
-              borderRadius: radius.full,
-              fontSize: "1rem",
-              fontWeight: "700",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontWeight: typography.fontWeight.bold,
+              fontSize: typography.fontSize.sm,
+              boxShadow: shadows.md,
             }}
           >
             3
-          </span>
-          Use in Your Components
-        </h2>
-        <p
-          style={{
-            fontSize: "1rem",
-            color: colors.default[600],
-            lineHeight: "1.6",
-            marginBottom: "1rem",
-          }}
-        >
-          Start using design tokens in your component styles:
-        </p>
-        <div
-          style={{
-            backgroundColor: colors.default[50],
-            padding: "1.5rem",
-            borderRadius: radius.lg,
-            border: `1px solid ${colors.default[200]}`,
-            marginBottom: "1rem",
-          }}
-        >
-          <pre
-            style={{
-              margin: 0,
-              fontFamily: 'Monaco, Menlo, "Ubuntu Mono", monospace',
-              fontSize: "0.875rem",
-              color: colors.default[800],
-              lineHeight: "1.5",
-            }}
+          </div>
+          <TokenCard
+            title="Use in Your Components"
+            description="Start using design tokens in your component styles:"
+            variant="success"
           >
-            {`const Button = ({ children, variant = 'primary' }) => (
+            <div style={{ marginBottom: spacing[6] }}>
+              <CodeBlock
+                code={`const Button = ({ children, variant = 'primary' }) => (
   <button
     style={{
       // Use color tokens
@@ -288,78 +206,166 @@ yarn add briza-ui-react`}
     {children}
   </button>
 );`}
-          </pre>
-        </div>
+              />
+            </div>
 
-        {/* Live Example */}
-        <div
-          style={{
-            padding: "1.5rem",
-            backgroundColor: colors.background,
-            border: `1px solid ${colors.default[200]}`,
-            borderRadius: radius.lg,
-            marginTop: "1rem",
-          }}
-        >
-          <h4
-            style={{
-              fontSize: "1rem",
-              fontWeight: "600",
-              color: colors.foreground,
-              marginBottom: "1rem",
-            }}
-          >
-            Live Result:
-          </h4>
-          <div style={{ display: "flex", gap: spacing[3], flexWrap: "wrap" }}>
-            {(
-              ["primary", "secondary", "success", "warning", "danger"] as const
-            ).map((variant) => {
-              const colorVariant = colors[variant];
-              return (
-                <button
-                  key={variant}
+            {/* Live Example Section with better visual separation */}
+            <div
+              style={{
+                borderTop: `2px solid ${colors.success[200]}`,
+                paddingTop: spacing[5],
+                marginTop: spacing[2],
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  marginBottom: spacing[4],
+                }}
+              >
+                <h4
                   style={{
-                    backgroundColor: colorVariant.DEFAULT,
-                    color: colorVariant.foreground,
-                    padding: `${spacing[2]} ${spacing[4]}`,
-                    borderRadius: radius.md,
-                    fontSize: typography.fontSize.sm,
-                    fontWeight: typography.fontWeight.medium,
-                    boxShadow: shadows.sm,
-                    border: "none",
-                    cursor: "pointer",
-                    textTransform: "capitalize",
-                    transition: "transform 0.2s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "translateY(-1px)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "translateY(0)";
+                    fontSize: typography.fontSize.base,
+                    fontWeight: typography.fontWeight.semibold,
+                    color: colors.foreground,
+                    margin: 0,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: spacing[2],
                   }}
                 >
-                  {variant}
-                </button>
-              );
-            })}
-          </div>
+                  <span style={{ fontSize: "1.25rem" }}>🎯</span>
+                  Live Result:
+                </h4>
+                <span
+                  style={{
+                    fontSize: typography.fontSize.xs,
+                    color: colors.success[600],
+                    backgroundColor: colors.success[100],
+                    padding: `${spacing[1]} ${spacing[2]}`,
+                    borderRadius: radius.sm,
+                    fontWeight: typography.fontWeight.medium,
+                  }}
+                >
+                  Interactive Demo
+                </span>
+              </div>
+
+              <div
+                style={{
+                  padding: spacing[5],
+                  backgroundColor: colors.background,
+                  border: `1px solid ${colors.default[200]}`,
+                  borderRadius: radius.lg,
+                  boxShadow: shadows.sm,
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    gap: spacing[3],
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                  }}
+                >
+                  {(
+                    [
+                      "primary",
+                      "secondary",
+                      "success",
+                      "warning",
+                      "danger",
+                    ] as const
+                  ).map((variant) => {
+                    const colorVariant = colors[variant];
+                    return (
+                      <button
+                        key={variant}
+                        style={{
+                          backgroundColor: colorVariant.DEFAULT,
+                          color: colorVariant.foreground,
+                          padding: `${spacing[2]} ${spacing[4]}`,
+                          borderRadius: radius.md,
+                          fontSize: typography.fontSize.sm,
+                          fontWeight: typography.fontWeight.medium,
+                          boxShadow: shadows.sm,
+                          border: "none",
+                          cursor: "pointer",
+                          textTransform: "capitalize",
+                          transition:
+                            "transform 0.2s ease, box-shadow 0.2s ease",
+                          minWidth: "80px",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.transform = "translateY(-1px)";
+                          e.currentTarget.style.boxShadow = shadows.md;
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.transform = "translateY(0)";
+                          e.currentTarget.style.boxShadow = shadows.sm;
+                        }}
+                      >
+                        {variant}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </TokenCard>
         </div>
       </div>
 
       {/* Best Practices */}
-      <div style={{ marginBottom: "3rem" }}>
-        <h2
+      <div style={{ marginTop: spacing[16] }}>
+        <div
           style={{
-            fontSize: "1.5rem",
-            fontWeight: "600",
-            color: colors.foreground,
-            marginBottom: "1rem",
+            display: "flex",
+            alignItems: "center",
+            gap: spacing[3],
+            marginBottom: spacing[8],
+            paddingBottom: spacing[4],
+            borderBottom: `2px solid ${colors.default[200]}`,
           }}
         >
-          💡 Best Practices
-        </h2>
-        <div style={{ display: "grid", gap: "1rem" }}>
+          <div
+            style={{
+              fontSize: "2rem",
+              background: `linear-gradient(135deg, ${colors.warning[400]}, ${colors.warning[600]})`,
+              padding: spacing[3],
+              borderRadius: radius.lg,
+              boxShadow: shadows.md,
+            }}
+          >
+            💡
+          </div>
+          <div>
+            <h2
+              style={{
+                fontSize: typography.fontSize["2xl"],
+                fontWeight: typography.fontWeight.bold,
+                color: colors.foreground,
+                margin: 0,
+                marginBottom: spacing[1],
+              }}
+            >
+              Best Practices
+            </h2>
+            <p
+              style={{
+                fontSize: typography.fontSize.sm,
+                color: colors.default[600],
+                margin: 0,
+                lineHeight: "1.5",
+              }}
+            >
+              Follow these guidelines to get the most out of design tokens
+            </p>
+          </div>
+        </div>
+        <TokenGrid gap={6} minWidth="280px">
           {[
             {
               icon: "🎨",
@@ -389,81 +395,68 @@ yarn add briza-ui-react`}
               example: "Use different spacing values for different breakpoints",
             },
           ].map((tip, index) => (
-            <div
+            <TokenCard
               key={index}
-              style={{
-                padding: "1.5rem",
-                backgroundColor: colors.background,
-                border: `1px solid ${colors.default[200]}`,
-                borderRadius: radius.lg,
-              }}
+              title={tip.title}
+              description={tip.description}
             >
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: "1rem",
-                }}
-              >
-                <span style={{ fontSize: "1.5rem" }}>{tip.icon}</span>
-                <div>
-                  <h3
-                    style={{
-                      fontSize: "1.125rem",
-                      fontWeight: "600",
-                      color: colors.foreground,
-                      marginBottom: "0.5rem",
-                    }}
-                  >
-                    {tip.title}
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: "0.875rem",
-                      color: colors.default[600],
-                      lineHeight: "1.5",
-                      marginBottom: "0.5rem",
-                    }}
-                  >
-                    {tip.description}
-                  </p>
-                  <code
-                    style={{
-                      fontSize: "0.75rem",
-                      color: colors.primary[700],
-                      backgroundColor: colors.primary[50],
-                      padding: "0.25rem 0.5rem",
-                      borderRadius: radius.sm,
-                    }}
-                  >
-                    {tip.example}
-                  </code>
-                </div>
+              <div style={{ fontSize: "1.5rem", marginBottom: spacing[3] }}>
+                {tip.icon}
               </div>
-            </div>
+              <CodeBlock code={tip.example} showCopy={false} />
+            </TokenCard>
           ))}
-        </div>
+        </TokenGrid>
       </div>
 
       {/* Next Steps */}
-      <div>
-        <h2
-          style={{
-            fontSize: "1.5rem",
-            fontWeight: "600",
-            color: colors.foreground,
-            marginBottom: "1rem",
-          }}
-        >
-          🎯 Next Steps
-        </h2>
+      <div style={{ marginTop: spacing[16] }}>
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            gap: "1rem",
+            display: "flex",
+            alignItems: "center",
+            gap: spacing[3],
+            marginBottom: spacing[8],
+            paddingBottom: spacing[4],
+            borderBottom: `2px solid ${colors.default[200]}`,
           }}
         >
+          <div
+            style={{
+              fontSize: "2rem",
+              background: `linear-gradient(135deg, ${colors.primary[400]}, ${colors.primary[600]})`,
+              padding: spacing[3],
+              borderRadius: radius.lg,
+              boxShadow: shadows.md,
+            }}
+          >
+            🎯
+          </div>
+          <div>
+            <h2
+              style={{
+                fontSize: typography.fontSize["2xl"],
+                fontWeight: typography.fontWeight.bold,
+                color: colors.foreground,
+                margin: 0,
+                marginBottom: spacing[1],
+              }}
+            >
+              Next Steps
+            </h2>
+            <p
+              style={{
+                fontSize: typography.fontSize.sm,
+                color: colors.default[600],
+                margin: 0,
+                lineHeight: "1.5",
+              }}
+            >
+              Continue your journey with these detailed guides
+            </p>
+          </div>
+        </div>
+        <TokenGrid gap={6} minWidth="280px">
           {[
             {
               title: "Explore Colors",
@@ -499,126 +492,106 @@ yarn add briza-ui-react`}
               storyName: "BorderRadius",
             },
           ].map((item, index) => (
-            <a
+            <button
               key={index}
-              href={`?path=/story/${item.storyId}`}
-              onClick={(e) => {
-                e.preventDefault();
-                // Use Storybook's linkTo with story ID
-                linkTo(item.storyId)();
-              }}
+              type="button"
               style={{
-                padding: "1.5rem",
-                backgroundColor: item.color[50],
-                border: `1px solid ${item.color[200]}`,
-                borderRadius: radius.lg,
-                transition: "transform 0.2s ease",
+                position: "relative",
+                transition: "transform 0.2s ease, box-shadow 0.2s ease",
                 cursor: "pointer",
-                textDecoration: "none",
-                display: "block",
+                border: "none",
+                background: "transparent",
+                padding: 0,
+                width: "100%",
+                textAlign: "left",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.transform = "translateY(-4px)";
+                e.currentTarget.style.boxShadow =
+                  "0 8px 25px rgba(0, 0, 0, 0.15)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "none";
               }}
+              onClick={() => linkTo(item.storyId)()}
+              aria-label={`Navigate to ${item.title} documentation`}
             >
-              <h3
-                style={{
-                  fontSize: "1.125rem",
-                  fontWeight: "600",
-                  color: item.color[800],
-                  marginBottom: "0.5rem",
-                }}
+              <TokenCard
+                title={item.title}
+                description={item.description}
+                variant="default"
               >
-                {item.title}
-              </h3>
-              <p
-                style={{
-                  fontSize: "0.875rem",
-                  color: item.color[700],
-                  lineHeight: "1.5",
-                  marginBottom: "1rem",
-                }}
-              >
-                {item.description}
-              </p>
-              <span
-                style={{
-                  fontSize: "0.875rem",
-                  color: item.color[600],
-                  fontWeight: "500",
-                }}
-              >
-                Explore →
-              </span>
-            </a>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    marginTop: spacing[3],
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "32px",
+                      height: "32px",
+                      borderRadius: radius.md,
+                      backgroundColor: item.color[100],
+                      border: `2px solid ${item.color[300]}`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "12px",
+                        height: "12px",
+                        borderRadius: "50%",
+                        backgroundColor: item.color.DEFAULT,
+                      }}
+                    />
+                  </div>
+                  <span
+                    style={{
+                      fontSize: typography.fontSize.sm,
+                      color: item.color[600],
+                      fontWeight: typography.fontWeight.semibold,
+                      display: "flex",
+                      alignItems: "center",
+                      gap: spacing[1],
+                    }}
+                  >
+                    Explore
+                    <span style={{ fontSize: "1.2em" }}>→</span>
+                  </span>
+                </div>
+              </TokenCard>
+            </button>
           ))}
-        </div>
+        </TokenGrid>
       </div>
-    </div>
+    </StoryContainer>
   ),
 };
 
 export const CheatSheet: Story = {
   render: () => (
-    <div
-      style={{
-        fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-        padding: "2rem",
-      }}
-    >
-      <div style={{ marginBottom: "2rem" }}>
-        <h1
-          style={{
-            fontSize: "2rem",
-            fontWeight: "700",
-            color: colors.foreground,
-            marginBottom: "0.5rem",
-          }}
-        >
-          📋 Design Tokens Cheat Sheet
-        </h1>
-        <p
-          style={{
-            fontSize: "1rem",
-            color: colors.default[600],
-            lineHeight: "1.6",
-          }}
-        >
-          Quick reference for all available design tokens and their common use
-          cases.
-        </p>
-      </div>
+    <StoryContainer>
+      <SectionHeader
+        title="Design Tokens Cheat Sheet"
+        description="Quick reference for all available design tokens and their common use cases."
+        icon="📋"
+      />
 
-      <div style={{ display: "grid", gap: "2rem" }}>
+      <TokenGrid gap={6} minWidth="300px">
         {/* Colors */}
-        <div
-          style={{
-            padding: "1.5rem",
-            backgroundColor: colors.background,
-            border: `1px solid ${colors.default[200]}`,
-            borderRadius: radius.lg,
-          }}
-        >
-          <h2
-            style={{
-              fontSize: "1.25rem",
-              fontWeight: "600",
-              color: colors.foreground,
-              marginBottom: "1rem",
-            }}
-          >
-            🎨 Colors
-          </h2>
+        <TokenCard title="🎨 Colors" variant="primary">
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-              gap: "0.5rem",
-              fontSize: "0.875rem",
+              gap: spacing[2],
+              fontSize: typography.fontSize.sm,
               fontFamily: "monospace",
             }}
           >
@@ -629,33 +602,16 @@ export const CheatSheet: Story = {
             <div>colors.danger.DEFAULT</div>
             <div>colors.default.DEFAULT</div>
           </div>
-        </div>
+        </TokenCard>
 
         {/* Spacing */}
-        <div
-          style={{
-            padding: "1.5rem",
-            backgroundColor: colors.background,
-            border: `1px solid ${colors.default[200]}`,
-            borderRadius: radius.lg,
-          }}
-        >
-          <h2
-            style={{
-              fontSize: "1.25rem",
-              fontWeight: "600",
-              color: colors.foreground,
-              marginBottom: "1rem",
-            }}
-          >
-            📏 Spacing
-          </h2>
+        <TokenCard title="📏 Spacing" variant="secondary">
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
-              gap: "0.5rem",
-              fontSize: "0.875rem",
+              gap: spacing[2],
+              fontSize: typography.fontSize.sm,
               fontFamily: "monospace",
             }}
           >
@@ -666,33 +622,16 @@ export const CheatSheet: Story = {
             <div>spacing[6] → 24px</div>
             <div>spacing[8] → 32px</div>
           </div>
-        </div>
+        </TokenCard>
 
         {/* Typography */}
-        <div
-          style={{
-            padding: "1.5rem",
-            backgroundColor: colors.background,
-            border: `1px solid ${colors.default[200]}`,
-            borderRadius: radius.lg,
-          }}
-        >
-          <h2
-            style={{
-              fontSize: "1.25rem",
-              fontWeight: "600",
-              color: colors.foreground,
-              marginBottom: "1rem",
-            }}
-          >
-            📝 Typography
-          </h2>
+        <TokenCard title="📝 Typography" variant="success">
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-              gap: "0.5rem",
-              fontSize: "0.875rem",
+              gap: spacing[2],
+              fontSize: typography.fontSize.sm,
               fontFamily: "monospace",
             }}
           >
@@ -703,83 +642,78 @@ export const CheatSheet: Story = {
             <div>typography.fontWeight.semibold</div>
             <div>typography.lineHeight.normal</div>
           </div>
-        </div>
+        </TokenCard>
 
-        {/* Radius & Shadows */}
-        <div
+        {/* Radius */}
+        <TokenCard title="📐 Radius" variant="warning">
+          <div
+            style={{
+              display: "grid",
+              gap: spacing[2],
+              fontSize: typography.fontSize.sm,
+              fontFamily: "monospace",
+            }}
+          >
+            <div>radius.sm → 2px</div>
+            <div>radius.md → 6px</div>
+            <div>radius.lg → 8px</div>
+            <div>radius.xl → 12px</div>
+          </div>
+        </TokenCard>
+      </TokenGrid>
+
+      {/* Usage Examples */}
+      <div style={{ marginTop: spacing[12] }}>
+        <h2
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            gap: "1rem",
+            fontSize: typography.fontSize["2xl"],
+            fontWeight: typography.fontWeight.semibold,
+            color: colors.foreground,
+            marginBottom: spacing[6],
           }}
         >
-          <div
-            style={{
-              padding: "1.5rem",
-              backgroundColor: colors.background,
-              border: `1px solid ${colors.default[200]}`,
-              borderRadius: radius.lg,
-            }}
-          >
-            <h2
-              style={{
-                fontSize: "1.25rem",
-                fontWeight: "600",
-                color: colors.foreground,
-                marginBottom: "1rem",
-              }}
-            >
-              📐 Radius
-            </h2>
-            <div
-              style={{
-                display: "grid",
-                gap: "0.5rem",
-                fontSize: "0.875rem",
-                fontFamily: "monospace",
-              }}
-            >
-              <div>radius.sm</div>
-              <div>radius.md</div>
-              <div>radius.lg</div>
-              <div>radius.full</div>
-            </div>
-          </div>
+          🔧 Common Usage Examples
+        </h2>
 
-          <div
-            style={{
-              padding: "1.5rem",
-              backgroundColor: colors.background,
-              border: `1px solid ${colors.default[200]}`,
-              borderRadius: radius.lg,
-            }}
-          >
-            <h2
-              style={{
-                fontSize: "1.25rem",
-                fontWeight: "600",
-                color: colors.foreground,
-                marginBottom: "1rem",
-              }}
-            >
-              🌤️ Shadows
-            </h2>
-            <div
-              style={{
-                display: "grid",
-                gap: "0.5rem",
-                fontSize: "0.875rem",
-                fontFamily: "monospace",
-              }}
-            >
-              <div>shadows.sm</div>
-              <div>shadows.DEFAULT</div>
-              <div>shadows.lg</div>
-              <div>shadows.button</div>
-            </div>
-          </div>
-        </div>
+        <TokenGrid gap={4} minWidth="300px">
+          <TokenCard title="Button Component" variant="primary">
+            <CodeBlock
+              code={`// Primary button
+backgroundColor: colors.primary.DEFAULT
+color: colors.primary.foreground
+padding: \`\${spacing[2]} \${spacing[4]}\`
+borderRadius: radius.md`}
+              showCopy={false}
+            />
+          </TokenCard>
+
+          <TokenCard title="Card Layout" variant="secondary">
+            <CodeBlock
+              code={`// Card container
+padding: spacing[6]
+backgroundColor: colors.background
+border: \`1px solid \${colors.default[200]}\`
+borderRadius: radius.lg
+gap: spacing[4]`}
+              showCopy={false}
+            />
+          </TokenCard>
+
+          <TokenCard title="Typography Hierarchy" variant="success">
+            <CodeBlock
+              code={`// Heading
+fontSize: typography.fontSize["2xl"]
+fontWeight: typography.fontWeight.semibold
+marginBottom: spacing[4]
+
+// Body text
+fontSize: typography.fontSize.base
+lineHeight: typography.lineHeight.relaxed`}
+              showCopy={false}
+            />
+          </TokenCard>
+        </TokenGrid>
       </div>
-    </div>
+    </StoryContainer>
   ),
 };
