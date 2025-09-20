@@ -14,6 +14,26 @@ const preview: Preview = {
     a11y: {
       test: "todo",
     },
+    docs: {
+      toc: true,
+    },
+    options: {
+      storySort: {
+        order: [
+          "Design System",
+          [
+            "Getting Started",
+            "Overview",
+            "Colors",
+            "Typography",
+            "Spacing",
+            "Radius & Shadows",
+          ],
+          "Components",
+          ["Button"],
+        ],
+      },
+    },
   },
   globalTypes: {
     theme: {
