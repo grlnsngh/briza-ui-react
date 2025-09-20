@@ -1,5 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { linkTo } from "@storybook/addon-links";
 import { colors, typography, spacing, radius, shadows } from "../../theme";
 
 const meta: Meta = {
@@ -468,30 +469,44 @@ yarn add briza-ui-react`}
               title: "Explore Colors",
               description:
                 "Browse the complete color palette and usage examples",
-              link: "?path=/story/design-system-colors--semantic-colors",
+              storyId: "design-system-colors--semantic-colors",
               color: colors.primary,
+              storyTitle: "Design System/Colors",
+              storyName: "SemanticColors",
             },
             {
               title: "Typography Guide",
               description: "Learn about font sizes, weights, and hierarchy",
-              link: "?path=/story/design-system-typography--font-sizes",
+              storyId: "design-system-typography--font-sizes",
               color: colors.secondary,
+              storyTitle: "Design System/Typography",
+              storyName: "FontSizes",
             },
             {
               title: "Spacing System",
               description: "Master consistent spacing and layout",
-              link: "?path=/story/design-system-spacing--spacing-scale",
+              storyId: "design-system-spacing--spacing-scale",
               color: colors.success,
+              storyTitle: "Design System/Spacing",
+              storyName: "SpacingScale",
             },
             {
               title: "Effects & Shadows",
               description: "Add depth with radius and shadow tokens",
-              link: "?path=/story/design-system-radius-shadows--border-radius",
+              storyId: "design-system-radius-shadows--border-radius",
               color: colors.warning,
+              storyTitle: "Design System/Radius & Shadows",
+              storyName: "BorderRadius",
             },
           ].map((item, index) => (
-            <div
+            <a
               key={index}
+              href={`?path=/story/${item.storyId}`}
+              onClick={(e) => {
+                e.preventDefault();
+                // Use Storybook's linkTo with story ID
+                linkTo(item.storyId)();
+              }}
               style={{
                 padding: "1.5rem",
                 backgroundColor: item.color[50],
@@ -499,6 +514,8 @@ yarn add briza-ui-react`}
                 borderRadius: radius.lg,
                 transition: "transform 0.2s ease",
                 cursor: "pointer",
+                textDecoration: "none",
+                display: "block",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-2px)";
@@ -536,7 +553,7 @@ yarn add briza-ui-react`}
               >
                 Explore →
               </span>
-            </div>
+            </a>
           ))}
         </div>
       </div>
