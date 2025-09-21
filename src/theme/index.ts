@@ -14,6 +14,17 @@ export * from "./types";
 // Utility functions for working with design tokens
 export * from "./utils";
 
+// Theme Provider and Context
+export { ThemeProvider } from "./ThemeProvider";
+export type {
+  ThemeProviderProps,
+  ThemeMode,
+  ThemeContextValue,
+} from "./ThemeProvider";
+
+// Theme Hook
+export { useTheme } from "./useTheme";
+
 // Create a default theme object
 import {
   colors,
@@ -45,14 +56,6 @@ export const defaultTheme: Theme = {
   transitions,
   zIndex,
 } as const;
-
-/**
- * Theme provider props
- */
-export interface ThemeProviderProps {
-  theme?: Partial<Theme>;
-  children: React.ReactNode;
-}
 
 // Re-export common types for convenience
 export type {

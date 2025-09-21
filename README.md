@@ -3,7 +3,7 @@
 [![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@main/badge/badge-storybook.svg)](https://grlnsngh.github.io/briza-ui-react/)
 [![npm](https://img.shields.io/npm/v/briza-ui-react.svg)](https://www.npmjs.com/package/briza-ui-react)
 
-A modern, lightweight React UI component library built with TypeScript and Vite. Currently featuring a comprehensive Button component with extensive customization options.
+A modern, lightweight React UI component library built with TypeScript and Vite. Features a comprehensive design system with theme support, accessible components, and extensive customization options.
 
 ## Installation
 
@@ -11,24 +11,81 @@ A modern, lightweight React UI component library built with TypeScript and Vite.
 npm install briza-ui-react
 ```
 
-## Usage
+## Quick Start
 
 ```tsx
-import { Button } from "briza-ui-react";
+import { ThemeProvider, Button } from "briza-ui-react";
 
 function App() {
   return (
-    <div>
+    <ThemeProvider>
       <Button color="primary">Primary Button</Button>
       <Button color="secondary" variant="faded">
         Faded Button
       </Button>
-      <Button color="success" size="lg">
-        Large Success Button
-      </Button>
+    </ThemeProvider>
+  );
+}
+```
+
+## Theme System
+
+Briza UI includes a comprehensive theme system with support for light/dark modes, system preference detection, and custom themes.
+
+### ThemeProvider
+
+Wrap your application with `ThemeProvider` to enable theme support:
+
+```tsx
+import { ThemeProvider, useTheme } from "briza-ui-react";
+
+function App() {
+  return (
+    <ThemeProvider
+      defaultMode="system" // "light" | "dark" | "system"
+      enablePersistence={true} // Save theme preference
+      enableCSSVariables={true} // Inject CSS variables
+    >
+      <YourApp />
+    </ThemeProvider>
+  );
+}
+```
+
+### useTheme Hook
+
+Use the `useTheme` hook to access and control the theme:
+
+```tsx
+function ThemeToggle() {
+  const { mode, setMode, toggleMode, isDark } = useTheme();
+
+  return (
+    <div>
+      <p>Current mode: {mode}</p>
+      <button onClick={toggleMode}>
+        Switch to {isDark ? "Light" : "Dark"} Mode
+      </button>
+      <button onClick={() => setMode("system")}>Use System Preference</button>
     </div>
   );
 }
+```
+
+### Design Tokens
+
+Access design tokens directly for custom styling:
+
+```tsx
+import { colors, spacing, typography, radius } from "briza-ui-react";
+
+const customStyles = {
+  backgroundColor: colors.primary.DEFAULT,
+  color: colors.primary.foreground,
+  padding: `${spacing[2]} ${spacing[4]}`,
+  borderRadius: radius.md,
+  fontSize: typography.fontSize.base,
+};
 ```
 
 ## Components
@@ -152,12 +209,14 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 ## Features
 
 - 🚀 Built with modern React 18+ and TypeScript
-- 🎨 Highly customizable with 6 colors, 7 variants, 5 sizes, and 5 radius options
+- 🎨 **Theme System**: Complete light/dark mode support with system preference detection
+- 🌓 **ThemeProvider**: Context-based theme management with localStorage persistence
+- 🎯 **Design Tokens**: Comprehensive design system with colors, typography, spacing, and more
 - 📦 Tree-shakable for optimal bundle size
 - 🧪 Tested with Vitest and Playwright
 - 📖 Full TypeScript support with comprehensive type definitions
-- 🎯 Accessible components following WCAG guidelines
-- 🎨 CSS Variables for easy theming
+- ♿ Accessible components following WCAG guidelines
+- 🎨 CSS Variables for dynamic theming
 - ⚡ Zero dependencies (only React and React DOM as peers)
 - 📱 Responsive and mobile-friendly
 - 🎭 Storybook documentation with interactive examples
@@ -223,11 +282,14 @@ Contributions are welcome! Please feel free to submit a Pull Request. The projec
 
 ## Roadmap
 
+- [x] **Theme System** - Complete dark/light mode support ✅
+- [x] **ThemeProvider** - Context-based theme management ✅
+- [x] **Design Tokens** - Comprehensive design system ✅
 - [ ] Additional components (Input, Modal, Dropdown, etc.)
-- [ ] Dark mode support
-- [ ] Animation system
-- [ ] More comprehensive testing
-- [ ] Design tokens documentation
+- [ ] Animation system with theme-aware transitions
+- [ ] More comprehensive testing coverage
+- [ ] Component composition patterns
+- [ ] Advanced theme customization
 
 ## License
 

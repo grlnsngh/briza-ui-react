@@ -24,6 +24,7 @@ const preview: Preview = {
           [
             "Getting Started",
             "Overview",
+            "Theme Provider",
             "Colors",
             "Typography",
             "Spacing",
