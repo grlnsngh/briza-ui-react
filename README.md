@@ -112,7 +112,6 @@ A highly customizable button component with multiple variants, sizes, colors, an
 <Button variant="faded">Faded</Button>
 <Button variant="bordered">Bordered</Button>
 <Button variant="light">Light</Button>
-<Button variant="flat">Flat</Button>
 <Button variant="shadow">Shadow</Button>
 <Button variant="glowing">Glowing</Button>
 ```
@@ -188,14 +187,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     | "success"
     | "warning"
     | "danger";
-  variant?:
-    | "solid"
-    | "faded"
-    | "bordered"
-    | "light"
-    | "flat"
-    | "shadow"
-    | "glowing";
+  variant?: "solid" | "faded" | "bordered" | "light" | "shadow" | "glowing";
   size?: "xs" | "sm" | "md" | "lg" | "xl";
   radius?: "none" | "sm" | "md" | "lg" | "full";
   isLoading?: boolean;

@@ -178,19 +178,7 @@
   --shadow-button-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.35),
     0 8px 20px -4px rgba(0, 0, 0, 0.15);
 
-  /* Glow Shadows */
-  --shadow-glow-default: 0 0 20px rgba(212, 212, 216, 0.6);
-  --shadow-glow-default-hover: 0 0 30px rgba(212, 212, 216, 0.8);
-  --shadow-glow-primary: 0 0 20px rgba(59, 130, 246, 0.6);
-  --shadow-glow-primary-hover: 0 0 30px rgba(59, 130, 246, 0.8);
-  --shadow-glow-secondary: 0 0 20px rgba(139, 92, 246, 0.6);
-  --shadow-glow-secondary-hover: 0 0 30px rgba(139, 92, 246, 0.8);
-  --shadow-glow-success: 0 0 20px rgba(34, 197, 94, 0.6);
-  --shadow-glow-success-hover: 0 0 30px rgba(34, 197, 94, 0.8);
-  --shadow-glow-warning: 0 0 20px rgba(234, 179, 8, 0.6);
-  --shadow-glow-warning-hover: 0 0 30px rgba(234, 179, 8, 0.8);
-  --shadow-glow-danger: 0 0 20px rgba(239, 68, 68, 0.6);
-  --shadow-glow-danger-hover: 0 0 30px rgba(239, 68, 68, 0.8);
+  /* Glow Shadows - Using direct values in components now */
 
   /* =============================================================================
    * OPACITY
@@ -208,6 +196,7 @@
   --opacity-70: 0.7;
   --opacity-75: 0.75;
   --opacity-80: 0.8;
+  --opacity-85: 0.85;
   --opacity-90: 0.9;
   --opacity-95: 0.95;
   --opacity-100: 1;
@@ -331,36 +320,9 @@
   --color-danger-700: #fecaca;
   --color-danger-800: #fee2e2;
   --color-danger-900: #fef2f2;
-
-  /* Dark theme specific adjustments for flat/light variants */
-  --button-flat-bg-light: rgba(255, 255, 255, 0.05);
-  --button-flat-bg-hover-light: rgba(255, 255, 255, 0.1);
 }
 
 /* =============================================================================
- * SYSTEM THEME PREFERENCE
+ * SYSTEM THEME PREFERENCE  
  * ============================================================================= */
-
-@media (prefers-color-scheme: dark) {
-  [data-theme="system"] {
-    /* Apply dark theme variables when system preference is dark */
-    --color-default: #4b5563;
-    --color-default-foreground: #f9fafb;
-    --color-primary: #60a5fa;
-    --color-primary-foreground: #1e3a8a;
-    --color-secondary: #c084fc;
-    --color-secondary-foreground: #581c87;
-    --color-success: #4ade80;
-    --color-success-foreground: #14532d;
-    --color-warning: #fbbf24;
-    --color-warning-foreground: #92400e;
-    --color-danger: #f87171;
-    --color-danger-foreground: #7f1d1d;
-    --color-background: #111827;
-    --color-foreground: #f9fafb;
-
-    /* Dark theme specific adjustments */
-    --button-flat-bg-light: rgba(255, 255, 255, 0.05);
-    --button-flat-bg-hover-light: rgba(255, 255, 255, 0.1);
-  }
-}
+/* System theme now handled by ThemeProvider context */

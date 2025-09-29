@@ -28,19 +28,6 @@ export type SizeName = "xs" | "sm" | "md" | "lg" | "xl";
 export type RadiusName = "none" | "sm" | "md" | "lg" | "full";
 
 /**
- * Component variant types
- * Based on the Button component's variant prop
- */
-export type VariantName =
-  | "solid"
-  | "faded"
-  | "bordered"
-  | "light"
-  | "flat"
-  | "shadow"
-  | "glowing";
-
-/**
  * Theme configuration structure
  * This will be useful when implementing a theme provider
  */
