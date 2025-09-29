@@ -50,7 +50,6 @@ describe("Button Accessibility Tests", () => {
       "faded",
       "bordered",
       "light",
-      "flat",
       "shadow",
       "glowing",
     ] as const;
@@ -230,6 +229,185 @@ describe("Button Accessibility Tests", () => {
       const button = screen.getByRole("button");
       button.focus();
       expect(button).not.toHaveFocus();
+    });
+  });
+});
+
+describe("Button Theme Integration Tests", () => {
+  describe("Theme Context Integration", () => {
+    it("should work correctly within ThemeProvider", () => {
+      render(
+        <div data-theme="light">
+          <Button color="primary">Themed Button</Button>
+        </div>
+      );
+
+      const button = screen.getByRole("button", { name: "Themed Button" });
+      expect(button).toBeInTheDocument();
+      expect(button).toHaveClass("button--primary");
+    });
+
+    it("should not have accessibility violations in dark theme", async () => {
+      const { container } = render(
+        <div data-theme="dark">
+          <Button color="primary">Dark Theme Button</Button>
+        </div>
+      );
+
+      await expectNoA11yViolations(container);
+    });
+
+    it("should work with all color variants in light theme", async () => {
+      const colors = [
+        "default",
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "danger",
+      ] as const;
+
+      const { container } = render(
+        <div data-theme="light">
+          {colors.map((color) => (
+            <Button key={color} color={color}>
+              {color} button
+            </Button>
+          ))}
+        </div>
+      );
+
+      await expectNoA11yViolations(container);
+
+      colors.forEach((color) => {
+        expect(
+          screen.getByRole("button", { name: `${color} button` })
+        ).toBeInTheDocument();
+      });
+    });
+
+    it("should work with all color variants in dark theme", async () => {
+      const colors = [
+        "default",
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "danger",
+      ] as const;
+
+      const { container } = render(
+        <div data-theme="dark">
+          {colors.map((color) => (
+            <Button key={color} color={color}>
+              {color} button
+            </Button>
+          ))}
+        </div>
+      );
+
+      await expectNoA11yViolations(container);
+
+      colors.forEach((color) => {
+        expect(
+          screen.getByRole("button", { name: `${color} button` })
+        ).toBeInTheDocument();
+      });
+    });
+  });
+
+  describe("Design Token Integration", () => {
+    it("should apply design token classes for size variants", () => {
+      const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
+
+      sizes.forEach((size) => {
+        const { rerender } = render(<Button size={size}>Size {size}</Button>);
+        const button = screen.getByRole("button");
+        expect(button).toHaveClass(`button--${size}`);
+        rerender(<></>);
+      });
+    });
+
+    it("should apply design token classes for radius variants", () => {
+      const radiusOptions = ["none", "sm", "md", "lg", "full"] as const;
+
+      radiusOptions.forEach((radius) => {
+        const { rerender } = render(
+          <Button radius={radius}>Radius {radius}</Button>
+        );
+        const button = screen.getByRole("button");
+        expect(button).toHaveClass(`button--radius-${radius}`);
+        rerender(<></>);
+      });
+    });
+
+    it("should work with faded and light variants in dark theme", async () => {
+      const { container } = render(
+        <div data-theme="dark">
+          <Button variant="faded" color="primary">
+            Faded Button
+          </Button>
+          <Button variant="light" color="secondary">
+            Light Button
+          </Button>
+        </div>
+      );
+
+      await expectNoA11yViolations(container);
+
+      expect(screen.getByRole("button", { name: "Faded Button" })).toHaveClass(
+        "button--faded"
+      );
+      expect(screen.getByRole("button", { name: "Light Button" })).toHaveClass(
+        "button--light"
+      );
+    });
+  });
+
+  describe("Cross-Theme Consistency", () => {
+    it("should maintain semantic meaning across themes", async () => {
+      // Test that danger buttons are always accessible regardless of theme
+      const lightContainer = render(
+        <div data-theme="light">
+          <Button color="danger">Delete (Light)</Button>
+        </div>
+      ).container;
+
+      const darkContainer = render(
+        <div data-theme="dark">
+          <Button color="danger">Delete (Dark)</Button>
+        </div>
+      ).container;
+
+      await expectNoA11yViolations(lightContainer);
+      await expectNoA11yViolations(darkContainer);
+    });
+
+    it("should have consistent interaction states across themes", () => {
+      // Test disabled state
+      render(
+        <div data-theme="light">
+          <Button disabled color="primary">
+            Light Disabled
+          </Button>
+        </div>
+      );
+
+      render(
+        <div data-theme="dark">
+          <Button disabled color="primary">
+            Dark Disabled
+          </Button>
+        </div>
+      );
+
+      const lightButton = screen.getByRole("button", {
+        name: "Light Disabled",
+      });
+      const darkButton = screen.getByRole("button", { name: "Dark Disabled" });
+
+      expect(lightButton).toBeDisabled();
+      expect(darkButton).toBeDisabled();
     });
   });
 });

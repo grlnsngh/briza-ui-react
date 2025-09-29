@@ -14,7 +14,6 @@ export type ButtonVariant =
   | "faded"
   | "bordered"
   | "light"
-  | "flat"
   | "shadow"
   | "glowing";
 
@@ -26,14 +25,48 @@ export type ButtonRadius = "none" | "sm" | "md" | "lg" | "full";
  * Base props for the Button component
  */
 interface ButtonOwnProps {
+  /**
+   * The color variant of the button
+   * @default "default"
+   */
   color?: ButtonColor;
+  /**
+   * The visual variant of the button
+   * @default "solid"
+   */
   variant?: ButtonVariant;
+  /**
+   * The size of the button
+   * @default "md"
+   */
   size?: ButtonSize;
+  /**
+   * The border radius of the button
+   * @default "md"
+   */
   radius?: ButtonRadius;
+  /**
+   * Whether the button is in a loading state
+   * @default false
+   */
   isLoading?: boolean;
+  /**
+   * Content to display at the start of the button
+   */
   startContent?: React.ReactNode;
+  /**
+   * Content to display at the end of the button
+   */
   endContent?: React.ReactNode;
+  /**
+   * Whether the button only contains an icon
+   * @default false
+   */
   isIconOnly?: boolean;
+  /**
+   * Whether the button is disabled
+   */
+  disabled?: boolean;
 }
 
 /**
@@ -46,10 +79,6 @@ export interface ButtonProps extends ButtonOwnProps {
    */
   as?: React.ElementType;
   /**
-   * Whether the button is disabled
-   */
-  disabled?: boolean;
-  /**
    * Button content
    */
   children: React.ReactNode;
@@ -57,10 +86,6 @@ export interface ButtonProps extends ButtonOwnProps {
    * CSS class name
    */
   className?: string;
-  /**
-   * Click handler
-   */
-  onClick?: (event: React.MouseEvent<HTMLElement>) => void;
   /**
    * Additional HTML attributes
    */

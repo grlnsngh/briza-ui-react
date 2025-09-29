@@ -1,12 +1,30 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "./Button";
+import { ThemeProvider } from "../../theme/ThemeProvider";
 
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
   component: Button,
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        component: `
+A versatile button component with comprehensive design token integration and theme support.
+
+## Features
+- 🎨 **Full theme integration** - Supports light/dark modes and system preference
+- ♿ **Accessibility first** - WCAG compliant with proper ARIA attributes
+- 🔄 **Polymorphic** - Can render as any HTML element (button, a, div, etc.)
+- 🎯 **Design tokens** - Uses systematic spacing, colors, and typography
+- 🚀 **Performance optimized** - Efficient CSS-in-JS with design tokens
+
+## Theme Integration
+The button automatically adapts to the current theme mode (light/dark/system) and uses design tokens for consistent styling across your application.
+        `,
+      },
+    },
   },
   tags: ["autodocs"],
   argTypes: {
@@ -20,32 +38,46 @@ const meta: Meta<typeof Button> = {
         "warning",
         "danger",
       ],
+      description: "The color variant of the button",
+      table: {
+        defaultValue: { summary: "default" },
+      },
     },
     variant: {
       control: { type: "select" },
-      options: [
-        "solid",
-        "faded",
-        "bordered",
-        "light",
-        "flat",
-        "shadow",
-        "glowing",
-      ],
+      options: ["solid", "faded", "bordered", "light", "shadow", "glowing"],
+      description: "The visual variant of the button",
+      table: {
+        defaultValue: { summary: "solid" },
+      },
     },
     size: {
       control: { type: "select" },
       options: ["xs", "sm", "md", "lg", "xl"],
+      description: "The size of the button",
+      table: {
+        defaultValue: { summary: "md" },
+      },
     },
     radius: {
       control: { type: "select" },
       options: ["none", "sm", "md", "lg", "full"],
+      description: "The border radius of the button",
+      table: {
+        defaultValue: { summary: "md" },
+      },
     },
     disabled: {
       control: { type: "boolean" },
+      description: "Whether the button is disabled",
     },
     isLoading: {
       control: { type: "boolean" },
+      description: "Whether the button is in a loading state",
+    },
+    isIconOnly: {
+      control: { type: "boolean" },
+      description: "Whether the button only contains an icon",
     },
   },
 };
@@ -104,8 +136,8 @@ export const Variants: Story = {
       <Button variant="light" color="primary">
         Light
       </Button>
-      <Button variant="flat" color="primary">
-        Flat
+      <Button variant="faded" color="primary">
+        Faded
       </Button>
       <Button variant="shadow" color="primary">
         Shadow
@@ -387,7 +419,7 @@ export const PolymorphicExamples: StoryObj<typeof Button> = {
 
         <div>
           <h3>Span Button (renders as &lt;span&gt;)</h3>
-          <Button as="span" color="warning" size="sm">
+          <Button as="span" color="warning" size="md">
             Inline Span Element
           </Button>
         </div>
@@ -407,5 +439,116 @@ export const PolymorphicExamples: StoryObj<typeof Button> = {
         </div>
       </div>
     );
+  },
+};
+
+// Theme showcase stories
+export const LightTheme: Story = {
+  render: () => (
+    <ThemeProvider defaultMode="light">
+      <div
+        style={{
+          padding: "20px",
+          minHeight: "300px",
+          backgroundColor: "#ffffff",
+          color: "#111827",
+        }}
+      >
+        <h3 style={{ marginBottom: "16px", color: "#111827" }}>Light Theme</h3>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "16px",
+          }}
+        >
+          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+            <Button color="default">Default</Button>
+            <Button color="primary">Primary</Button>
+            <Button color="secondary">Secondary</Button>
+            <Button color="success">Success</Button>
+            <Button color="warning">Warning</Button>
+            <Button color="danger">Danger</Button>
+          </div>
+
+          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+            <Button color="primary" variant="bordered">
+              Bordered
+            </Button>
+            <Button color="danger" variant="glowing">
+              Glowing
+            </Button>
+          </div>
+        </div>
+      </div>
+    </ThemeProvider>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Button component in light theme mode. All colors and variants use design tokens that automatically adapt to the theme.",
+      },
+    },
+  },
+};
+
+export const DarkTheme: Story = {
+  render: () => (
+    <ThemeProvider defaultMode="dark">
+      <div
+        data-theme="dark"
+        style={{
+          padding: "20px",
+          minHeight: "300px",
+          backgroundColor: "#111827",
+          color: "#f9fafb",
+        }}
+      >
+        <h3 style={{ marginBottom: "16px", color: "#f9fafb" }}>Dark Theme</h3>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "16px",
+          }}
+        >
+          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+            <Button color="default">Default</Button>
+            <Button color="primary">Primary</Button>
+            <Button color="secondary">Secondary</Button>
+            <Button color="success">Success</Button>
+            <Button color="warning">Warning</Button>
+            <Button color="danger">Danger</Button>
+          </div>
+
+          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+            <Button color="primary" variant="bordered">
+              Bordered
+            </Button>
+            <Button color="secondary" variant="faded">
+              Faded
+            </Button>
+            <Button color="success" variant="light">
+              Light
+            </Button>
+            <Button color="warning" variant="shadow">
+              Shadow
+            </Button>
+            <Button color="danger" variant="glowing">
+              Glowing
+            </Button>
+          </div>
+        </div>
+      </div>
+    </ThemeProvider>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Button component in dark theme mode. Notice how the colors automatically adjust for better contrast and visual hierarchy in dark mode.",
+      },
+    },
   },
 };

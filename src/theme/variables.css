@@ -13,7 +13,7 @@
    * ============================================================================= */
 
   /* Semantic Colors - Main values */
-  --color-default: #9ca3af;
+  --color-default: #d4d4d8;
   --color-default-foreground: #111827;
   --color-primary: #3b82f6;
   --color-primary-foreground: #ffffff;
@@ -242,4 +242,125 @@
   --z-index-40: 40;
   --z-index-50: 50;
   --z-index-auto: auto;
+}
+
+/* =============================================================================
+ * DARK THEME
+ * ============================================================================= */
+
+[data-theme="dark"] {
+  /* Semantic Colors - Main values (Dark Theme) */
+  --color-default: #4b5563;
+  --color-default-foreground: #f9fafb;
+  --color-primary: #60a5fa;
+  --color-primary-foreground: #1e3a8a;
+  --color-secondary: #c084fc;
+  --color-secondary-foreground: #581c87;
+  --color-success: #4ade80;
+  --color-success-foreground: #14532d;
+  --color-warning: #fbbf24;
+  --color-warning-foreground: #92400e;
+  --color-danger: #f87171;
+  --color-danger-foreground: #7f1d1d;
+  --color-background: #111827;
+  --color-foreground: #f9fafb;
+
+  /* Color Scales (Dark Theme) */
+  --color-default-50: #111827;
+  --color-default-100: #1f2937;
+  --color-default-200: #374151;
+  --color-default-300: #4b5563;
+  --color-default-400: #6b7280;
+  --color-default-500: #9ca3af;
+  --color-default-600: #d1d5db;
+  --color-default-700: #e5e7eb;
+  --color-default-800: #f3f4f6;
+  --color-default-900: #f9fafb;
+
+  --color-primary-50: #1e3a8a;
+  --color-primary-100: #1e40af;
+  --color-primary-200: #1d4ed8;
+  --color-primary-300: #2563eb;
+  --color-primary-400: #3b82f6;
+  --color-primary-500: #60a5fa;
+  --color-primary-600: #93c5fd;
+  --color-primary-700: #bfdbfe;
+  --color-primary-800: #dbeafe;
+  --color-primary-900: #eff6ff;
+
+  --color-secondary-50: #581c87;
+  --color-secondary-100: #6b21a8;
+  --color-secondary-200: #7c2d12;
+  --color-secondary-300: #9333ea;
+  --color-secondary-400: #a855f7;
+  --color-secondary-500: #c084fc;
+  --color-secondary-600: #d8b4fe;
+  --color-secondary-700: #e9d5ff;
+  --color-secondary-800: #f3e8ff;
+  --color-secondary-900: #faf5ff;
+
+  --color-success-50: #14532d;
+  --color-success-100: #166534;
+  --color-success-200: #15803d;
+  --color-success-300: #16a34a;
+  --color-success-400: #22c55e;
+  --color-success-500: #4ade80;
+  --color-success-600: #86efac;
+  --color-success-700: #bbf7d0;
+  --color-success-800: #dcfce7;
+  --color-success-900: #f0fdf4;
+
+  --color-warning-50: #92400e;
+  --color-warning-100: #a16207;
+  --color-warning-200: #ca8a04;
+  --color-warning-300: #eab308;
+  --color-warning-400: #facc15;
+  --color-warning-500: #fbbf24;
+  --color-warning-600: #fcd34d;
+  --color-warning-700: #fde047;
+  --color-warning-800: #fef08a;
+  --color-warning-900: #fefce8;
+
+  --color-danger-50: #7f1d1d;
+  --color-danger-100: #991b1b;
+  --color-danger-200: #b91c1c;
+  --color-danger-300: #dc2626;
+  --color-danger-400: #ef4444;
+  --color-danger-500: #f87171;
+  --color-danger-600: #fca5a5;
+  --color-danger-700: #fecaca;
+  --color-danger-800: #fee2e2;
+  --color-danger-900: #fef2f2;
+
+  /* Dark theme specific adjustments for flat/light variants */
+  --button-flat-bg-light: rgba(255, 255, 255, 0.05);
+  --button-flat-bg-hover-light: rgba(255, 255, 255, 0.1);
+}
+
+/* =============================================================================
+ * SYSTEM THEME PREFERENCE
+ * ============================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  [data-theme="system"] {
+    /* Apply dark theme variables when system preference is dark */
+    --color-default: #4b5563;
+    --color-default-foreground: #f9fafb;
+    --color-primary: #60a5fa;
+    --color-primary-foreground: #1e3a8a;
+    --color-secondary: #c084fc;
+    --color-secondary-foreground: #581c87;
+    --color-success: #4ade80;
+    --color-success-foreground: #14532d;
+    --color-warning: #fbbf24;
+    --color-warning-foreground: #92400e;
+    --color-danger: #f87171;
+    --color-danger-foreground: #7f1d1d;
+    --color-background: #111827;
+    --color-foreground: #f9fafb;
+
+    /* Dark theme specific adjustments */
+    --button-flat-bg-light: rgba(255, 255, 255, 0.05);
+    --button-flat-bg-hover-light: rgba(255, 255, 255, 0.1);
+  }
 }
