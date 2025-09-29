@@ -244,7 +244,7 @@ describe("Button Theme Integration Tests", () => {
 
       const button = screen.getByRole("button", { name: "Themed Button" });
       expect(button).toBeInTheDocument();
-      expect(button).toHaveClass("button--primary");
+      expect(button.className).toContain("button--primary");
     });
 
     it("should not have accessibility violations in dark theme", async () => {
@@ -323,7 +323,7 @@ describe("Button Theme Integration Tests", () => {
       sizes.forEach((size) => {
         const { rerender } = render(<Button size={size}>Size {size}</Button>);
         const button = screen.getByRole("button");
-        expect(button).toHaveClass(`button--${size}`);
+        expect(button.className).toContain(`button--${size}`);
         rerender(<></>);
       });
     });
@@ -336,7 +336,7 @@ describe("Button Theme Integration Tests", () => {
           <Button radius={radius}>Radius {radius}</Button>
         );
         const button = screen.getByRole("button");
-        expect(button).toHaveClass(`button--radius-${radius}`);
+        expect(button.className).toContain(`button--radius-${radius}`);
         rerender(<></>);
       });
     });
@@ -355,12 +355,12 @@ describe("Button Theme Integration Tests", () => {
 
       await expectNoA11yViolations(container);
 
-      expect(screen.getByRole("button", { name: "Faded Button" })).toHaveClass(
-        "button--faded"
-      );
-      expect(screen.getByRole("button", { name: "Light Button" })).toHaveClass(
-        "button--light"
-      );
+      expect(
+        screen.getByRole("button", { name: "Faded Button" }).className
+      ).toContain("button--faded");
+      expect(
+        screen.getByRole("button", { name: "Light Button" }).className
+      ).toContain("button--light");
     });
   });
 
