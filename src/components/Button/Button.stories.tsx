@@ -1,7 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "./Button";
-import { ThemeProvider } from "../../theme/ThemeProvider";
 
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
@@ -439,116 +438,5 @@ export const PolymorphicExamples: StoryObj<typeof Button> = {
         </div>
       </div>
     );
-  },
-};
-
-// Theme showcase stories
-export const LightTheme: Story = {
-  render: () => (
-    <ThemeProvider defaultMode="light">
-      <div
-        style={{
-          padding: "20px",
-          minHeight: "300px",
-          backgroundColor: "#ffffff",
-          color: "#111827",
-        }}
-      >
-        <h3 style={{ marginBottom: "16px", color: "#111827" }}>Light Theme</h3>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "16px",
-          }}
-        >
-          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-            <Button color="default">Default</Button>
-            <Button color="primary">Primary</Button>
-            <Button color="secondary">Secondary</Button>
-            <Button color="success">Success</Button>
-            <Button color="warning">Warning</Button>
-            <Button color="danger">Danger</Button>
-          </div>
-
-          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-            <Button color="primary" variant="bordered">
-              Bordered
-            </Button>
-            <Button color="danger" variant="glowing">
-              Glowing
-            </Button>
-          </div>
-        </div>
-      </div>
-    </ThemeProvider>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "Button component in light theme mode. All colors and variants use design tokens that automatically adapt to the theme.",
-      },
-    },
-  },
-};
-
-export const DarkTheme: Story = {
-  render: () => (
-    <ThemeProvider defaultMode="dark">
-      <div
-        data-theme="dark"
-        style={{
-          padding: "20px",
-          minHeight: "300px",
-          backgroundColor: "#111827",
-          color: "#f9fafb",
-        }}
-      >
-        <h3 style={{ marginBottom: "16px", color: "#f9fafb" }}>Dark Theme</h3>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "16px",
-          }}
-        >
-          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-            <Button color="default">Default</Button>
-            <Button color="primary">Primary</Button>
-            <Button color="secondary">Secondary</Button>
-            <Button color="success">Success</Button>
-            <Button color="warning">Warning</Button>
-            <Button color="danger">Danger</Button>
-          </div>
-
-          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-            <Button color="primary" variant="bordered">
-              Bordered
-            </Button>
-            <Button color="secondary" variant="faded">
-              Faded
-            </Button>
-            <Button color="success" variant="light">
-              Light
-            </Button>
-            <Button color="warning" variant="shadow">
-              Shadow
-            </Button>
-            <Button color="danger" variant="glowing">
-              Glowing
-            </Button>
-          </div>
-        </div>
-      </div>
-    </ThemeProvider>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "Button component in dark theme mode. Notice how the colors automatically adjust for better contrast and visual hierarchy in dark mode.",
-      },
-    },
   },
 };

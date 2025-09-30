@@ -40,22 +40,39 @@ const preview: Preview = {
   globalTypes: {
     theme: {
       name: "Theme",
-      description: "Global theme for components",
+      description: "Switch between light and dark theme",
       defaultValue: "light",
       toolbar: {
-        icon: "circlehollow",
+        title: "Theme",
+        icon: "sun",
         items: [
-          { value: "light", title: "Light" },
-          { value: "dark", title: "Dark" },
-          { value: "high-contrast", title: "High Contrast" },
+          { value: "light", icon: "sun", title: "Light theme" },
+          { value: "dark", icon: "moon", title: "Dark theme" },
+          { value: "high-contrast", icon: "contrast", title: "High contrast" },
         ],
+        dynamicTitle: true,
       },
     },
   },
   decorators: [
     (Story, context) => {
-      const theme = context.globals.theme;
+      const theme = context.globals.theme || "light";
+
+      // Apply theme attribute to document
       document.documentElement.setAttribute("data-theme", theme);
+
+      // Apply theme-appropriate background to body
+      if (theme === "dark") {
+        document.body.style.backgroundColor = "#111827";
+        document.body.style.color = "#f9fafb";
+      } else if (theme === "high-contrast") {
+        document.body.style.backgroundColor = "#000000";
+        document.body.style.color = "#ffffff";
+      } else {
+        document.body.style.backgroundColor = "#ffffff";
+        document.body.style.color = "#111827";
+      }
+
       return React.createElement(Story);
     },
   ],
