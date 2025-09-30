@@ -1,5 +1,6 @@
 import React from "react";
 import type { Preview } from "@storybook/react-vite";
+import "../src/theme/variables.css"; // Design tokens must load first
 import "../src/index.css";
 
 const preview: Preview = {

@@ -7,6 +7,13 @@ const meta: Meta<typeof Input> = {
   component: Input,
   tags: ["autodocs"],
   parameters: {
+    backgrounds: {
+      default: "light",
+      values: [
+        { name: "light", value: "#ffffff" },
+        { name: "dark", value: "#000000" },
+      ],
+    },
     docs: {
       description: {
         component: `
@@ -34,6 +41,15 @@ Use the interactive **Playground** story below to explore all available props an
       table: {
         defaultValue: { summary: "md" },
         type: { summary: '"sm" | "md" | "lg"' },
+      },
+    },
+    shape: {
+      control: { type: "select" },
+      options: ["rounded", "square"],
+      description: "Controls the border radius style of the input",
+      table: {
+        defaultValue: { summary: "rounded" },
+        type: { summary: '"rounded" | "square"' },
       },
     },
     status: {
@@ -240,6 +256,40 @@ export const Sizes: Story = {
       description: {
         story:
           "Three size variants to match your design hierarchy: `sm`, `md` (default), and `lg`.",
+      },
+    },
+  },
+};
+
+export const Shapes: Story = {
+  render: () => (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "16px",
+        maxWidth: "360px",
+      }}
+    >
+      <Input
+        shape="rounded"
+        label="Rounded (Default)"
+        placeholder="Modern rounded corners"
+        helperText="Smooth, friendly appearance"
+      />
+      <Input
+        shape="square"
+        label="Square"
+        placeholder="Sharp, precise corners"
+        helperText="Clean, technical look"
+      />
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Choose between `rounded` (default, modern look) and `square` (precise, technical aesthetic) shapes.",
       },
     },
   },

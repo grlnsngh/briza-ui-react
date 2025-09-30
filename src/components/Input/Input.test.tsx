@@ -237,4 +237,16 @@ describe("Input component", () => {
     const svg = toggleButton.querySelector("svg");
     expect(svg).toBeInTheDocument();
   });
+
+  it("applies rounded shape by default", () => {
+    const { container } = render(<Input label="Username" />);
+    const control = container.querySelector('[class*="control"]');
+    expect(control?.className).toContain("control--rounded");
+  });
+
+  it("applies square shape when specified", () => {
+    const { container } = render(<Input label="Username" shape="square" />);
+    const control = container.querySelector('[class*="control"]');
+    expect(control?.className).toContain("control--square");
+  });
 });

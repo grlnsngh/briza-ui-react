@@ -4,6 +4,7 @@ import { EyeIcon, EyeOffIcon } from "./icons";
 
 export type InputSize = "sm" | "md" | "lg";
 export type InputStatus = "default" | "error" | "success";
+export type InputShape = "rounded" | "square";
 
 type NativeInputProps<TElement extends HTMLInputElement> = Omit<
   React.InputHTMLAttributes<TElement>,
@@ -25,6 +26,16 @@ export interface InputProps<
    * ```
    */
   size?: InputSize;
+  /**
+   * Shape of the input control
+   * @default "rounded"
+   * @example
+   * ```tsx
+   * <Input shape="rounded" label="Rounded corners" />
+   * <Input shape="square" label="Sharp corners" />
+   * ```
+   */
+  shape?: InputShape;
   /**
    * Visual status to communicate validation state
    * @default "default"
@@ -266,6 +277,7 @@ function InputInner<
     prefix,
     suffix,
     size = "md",
+    shape = "rounded",
     status = "default",
     wrapperClassName,
     inputClassName,
@@ -353,6 +365,7 @@ function InputInner<
   const controlClassName = [
     styles.control,
     styles[`control--${size}`],
+    styles[`control--${shape}`],
     status !== "default" && styles[`control--${status}`],
     disabled && styles["control--disabled"],
     (prefix || suffix || shouldShowPasswordToggle) &&
