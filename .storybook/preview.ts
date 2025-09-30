@@ -39,15 +39,14 @@ const preview: Preview = {
   },
   globalTypes: {
     theme: {
-      name: "Theme",
-      description: "Switch between light and dark theme",
+      description: "Global theme for components",
       defaultValue: "light",
       toolbar: {
         title: "Theme",
-        icon: "sun",
+        icon: "circlehollow",
         items: [
-          { value: "light", icon: "sun", title: "Light theme" },
-          { value: "dark", icon: "moon", title: "Dark theme" },
+          { value: "light", right: "☀️", title: "Light" },
+          { value: "dark", right: "🌙", title: "Dark" },
         ],
         dynamicTitle: true,
       },
