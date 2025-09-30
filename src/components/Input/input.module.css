@@ -100,30 +100,37 @@
 
 .control:focus-within {
   border-color: var(--color-primary);
-  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.15);
-  background-color: rgba(59, 130, 246, 0.05);
+  box-shadow: 0 6px 16px
+    color-mix(in srgb, var(--color-primary) 15%, transparent);
+  background-color: color-mix(in srgb, var(--color-primary) 5%, transparent);
 }
 
 .control[data-status="error"] {
-  border-color: rgba(239, 68, 68, 0.6);
-  background-color: rgba(239, 68, 68, 0.05);
+  border-color: color-mix(in srgb, var(--color-danger) 60%, transparent);
+  background-color: color-mix(in srgb, var(--color-danger) 5%, transparent);
 }
 
 .control[data-status="error"]:focus-within {
-  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.18);
+  box-shadow: 0 6px 16px
+    color-mix(in srgb, var(--color-danger) 18%, transparent);
 }
 
 .control[data-status="success"] {
-  border-color: rgba(34, 197, 94, 0.6);
-  background-color: rgba(34, 197, 94, 0.04);
+  border-color: color-mix(in srgb, var(--color-success) 60%, transparent);
+  background-color: color-mix(in srgb, var(--color-success) 4%, transparent);
 }
 
 .control[data-status="success"]:focus-within {
-  box-shadow: 0 6px 16px rgba(34, 197, 94, 0.18);
+  box-shadow: 0 6px 16px
+    color-mix(in srgb, var(--color-success) 18%, transparent);
 }
 
 .control--disabled {
-  background-color: rgba(17, 24, 39, 0.04);
+  background-color: color-mix(
+    in srgb,
+    var(--color-default-800) 4%,
+    transparent
+  );
   border-color: var(--color-default-200);
   pointer-events: none;
 }
@@ -208,14 +215,25 @@
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
   cursor: pointer;
-  padding: var(--spacing-0_5) var(--spacing-1);
+  padding: var(--spacing-0_5);
   border-radius: var(--radius-sm);
   transition: background-color var(--transition-duration-150)
     var(--transition-timing-ease);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+.password-toggle svg {
+  width: 16px;
+  height: 16px;
+  display: block;
 }
 
 .password-toggle:hover:not(:disabled) {
-  background-color: rgba(59, 130, 246, 0.08);
+  background-color: color-mix(in srgb, var(--color-primary) 8%, transparent);
 }
 
 .password-toggle:focus-visible {
@@ -232,6 +250,24 @@
   font-size: var(--font-size-xs);
   color: var(--color-default-500);
   line-height: var(--line-height-relaxed);
+}
+
+.character-count {
+  font-size: var(--font-size-xs);
+  color: var(--color-default-500);
+  line-height: var(--line-height-relaxed);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.character-count--warning {
+  color: var(--color-warning);
+  font-weight: var(--font-weight-medium);
+}
+
+.character-count--limit {
+  color: var(--color-danger);
+  font-weight: var(--font-weight-semibold);
 }
 
 .message--error {

@@ -159,4 +159,82 @@ describe("Input component", () => {
 
     expect(handleValueChange).toHaveBeenCalledWith(42, expect.any(Object));
   });
+
+  it("displays character count when showCharacterCount is enabled", () => {
+    const { rerender } = render(
+      <Input label="Tweet" maxLength={280} showCharacterCount value="Hello" />
+    );
+
+    expect(screen.getByText("5/280")).toBeInTheDocument();
+
+    // Test controlled update
+    rerender(
+      <Input
+        label="Tweet"
+        maxLength={280}
+        showCharacterCount
+        value="Hello World"
+      />
+    );
+
+    expect(screen.getByText("11/280")).toBeInTheDocument();
+  });
+
+  it("applies warning and limit styles to character counter", () => {
+    const { rerender } = render(
+      <Input label="Short" maxLength={10} showCharacterCount value="12345" />
+    );
+
+    const counter = screen.getByText("5/10");
+    expect(counter).toBeInTheDocument();
+    expect(counter.className).not.toContain("warning");
+
+    // At 80% (8 chars) should show warning
+    rerender(
+      <Input label="Short" maxLength={10} showCharacterCount value="12345678" />
+    );
+
+    const warningCounter = screen.getByText("8/10");
+    expect(warningCounter.className).toContain("warning");
+
+    // At 100% (10 chars) should show limit
+    rerender(
+      <Input
+        label="Short"
+        maxLength={10}
+        showCharacterCount
+        value="1234567890"
+      />
+    );
+
+    const limitCounter = screen.getByText("10/10");
+    expect(limitCounter.className).toContain("limit");
+  });
+
+  it("supports custom character count formatter", () => {
+    render(
+      <Input
+        label="Bio"
+        maxLength={50}
+        showCharacterCount
+        value="Hello"
+        characterCountFormatter={(current, max) =>
+          `${max! - current} remaining`
+        }
+      />
+    );
+
+    expect(screen.getByText("45 remaining")).toBeInTheDocument();
+  });
+
+  it("renders eye icons for password toggle", () => {
+    render(<Input label="Password" type="password" />);
+
+    const toggleButton = screen.getByRole("button", { name: /show password/i });
+    expect(toggleButton).toBeInTheDocument();
+
+    // Check that SVG is rendered (icon)
+    const svg = toggleButton.querySelector("svg");
+    expect(svg).toBeInTheDocument();
+  });
 });
