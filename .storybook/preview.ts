@@ -40,21 +40,6 @@ const preview: Preview = {
   initialGlobals: {
     theme: "light",
   },
-  globalTypes: {
-    theme: {
-      description: "Theme",
-      defaultValue: "light",
-      toolbar: {
-        title: "Theme",
-        icon: "circlehollow",
-        items: [
-          { value: "light", icon: "sun", title: "Light" },
-          { value: "dark", icon: "moon", title: "Dark" },
-        ],
-        dynamicTitle: true,
-      },
-    },
-  },
   decorators: [
     withThemeByDataAttribute({
       themes: {
