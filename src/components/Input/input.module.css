@@ -432,15 +432,15 @@
 
 /* Dark Theme Specific Adjustments */
 [data-theme="dark"] .control {
-  border-color: var(--color-default-700);
-  /* Dark grayish background - distinguishable from black */
-  background-color: var(--color-default-800);
+  border-color: var(--color-default-400);
+  /* Dark background like left side of image */
+  background-color: var(--color-default-200);
 }
 
 [data-theme="dark"] .control:hover:not(.control--disabled) {
-  border-color: var(--color-default-600);
-  /* Lighter gray on hover for better visibility */
-  background-color: var(--color-default-700);
+  border-color: var(--color-default-400);
+  /* Lighter background like right side of image */
+  background-color: var(--color-default-300);
   box-shadow: 0 1px 3px
     color-mix(in srgb, var(--color-foreground) 10%, transparent);
 }
@@ -448,11 +448,7 @@
 [data-theme="dark"] .control:focus-within {
   border-color: var(--color-primary);
   /* Even lighter when focused/active */
-  background-color: color-mix(
-    in srgb,
-    var(--color-default-700) 80%,
-    var(--color-default-600)
-  );
+  background-color: var(--color-default-300);
 }
 
 [data-theme="dark"] .label {
@@ -462,8 +458,8 @@
 [data-theme="dark"] .control[data-status="error"] {
   background-color: color-mix(
     in srgb,
-    var(--color-danger) 8%,
-    var(--color-default-800)
+    var(--color-danger) 12%,
+    var(--color-default-200)
   );
 }
 
@@ -471,16 +467,16 @@
   .control[data-status="error"]:hover:not(.control--disabled) {
   background-color: color-mix(
     in srgb,
-    var(--color-danger) 10%,
-    var(--color-default-700)
+    var(--color-danger) 15%,
+    var(--color-default-300)
   );
 }
 
 [data-theme="dark"] .control[data-status="success"] {
   background-color: color-mix(
     in srgb,
-    var(--color-success) 8%,
-    var(--color-default-800)
+    var(--color-success) 12%,
+    var(--color-default-200)
   );
 }
 
@@ -488,13 +484,13 @@
   .control[data-status="success"]:hover:not(.control--disabled) {
   background-color: color-mix(
     in srgb,
-    var(--color-success) 10%,
-    var(--color-default-700)
+    var(--color-success) 15%,
+    var(--color-default-300)
   );
 }
 
 [data-theme="dark"] .control--disabled {
-  background-color: var(--color-default-900);
+  background-color: var(--color-default-100);
   opacity: 0.6;
 }
 
