@@ -104,19 +104,20 @@
 .control--sm {
   min-height: 1.75rem;
   padding-block: 0.125rem;
-  padding-inline: var(--spacing-1_5);
+  padding-inline: var(--spacing-2);
   gap: var(--spacing-0_5);
 }
 
 .control--md {
   min-height: 2rem;
   padding-block: var(--spacing-0_5);
+  padding-inline: var(--spacing-2);
 }
 
 .control--lg {
   min-height: 2.25rem;
   padding-block: var(--spacing-1);
-  padding-inline: var(--spacing-2_5);
+  padding-inline: var(--spacing-2);
   gap: var(--spacing-1);
 }
 
