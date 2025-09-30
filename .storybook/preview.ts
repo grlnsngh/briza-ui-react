@@ -48,7 +48,6 @@ const preview: Preview = {
         items: [
           { value: "light", icon: "sun", title: "Light theme" },
           { value: "dark", icon: "moon", title: "Dark theme" },
-          { value: "high-contrast", icon: "contrast", title: "High contrast" },
         ],
         dynamicTitle: true,
       },
@@ -65,9 +64,6 @@ const preview: Preview = {
       if (theme === "dark") {
         document.body.style.backgroundColor = "#111827";
         document.body.style.color = "#f9fafb";
-      } else if (theme === "high-contrast") {
-        document.body.style.backgroundColor = "#000000";
-        document.body.style.color = "#ffffff";
       } else {
         document.body.style.backgroundColor = "#ffffff";
         document.body.style.color = "#111827";
