@@ -5,6 +5,7 @@ This folder contains additional documentation for the Briza UI React component l
 ## Components
 
 - Button: A customizable button component with multiple variants, sizes, and states
+- Input: Accessible text field with size variants, validation states, adornments, and password toggle support
 
 ## Usage
 

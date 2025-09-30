@@ -1,9 +1,12 @@
-export { Button } from "./components";
+export { Button, Input } from "./components";
 export type {
   ButtonColor,
   ButtonVariant,
   ButtonSize,
   ButtonRadius,
+  InputProps,
+  InputSize,
+  InputStatus,
 } from "./components";
 
 // Theme System
