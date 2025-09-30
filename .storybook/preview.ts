@@ -1,5 +1,5 @@
-import React from "react";
 import type { Preview } from "@storybook/react-vite";
+import { withThemeByDataAttribute } from "@storybook/addon-themes";
 import "../src/theme/variables.css"; // Design tokens must load first
 import "../src/index.css";
 
@@ -37,39 +37,33 @@ const preview: Preview = {
       },
     },
   },
+  initialGlobals: {
+    theme: "light",
+  },
   globalTypes: {
     theme: {
-      description: "Global theme for components",
+      description: "Theme",
       defaultValue: "light",
       toolbar: {
         title: "Theme",
         icon: "circlehollow",
         items: [
-          { value: "light", right: "☀️", title: "Light" },
-          { value: "dark", right: "🌙", title: "Dark" },
+          { value: "light", icon: "sun", title: "Light" },
+          { value: "dark", icon: "moon", title: "Dark" },
         ],
         dynamicTitle: true,
       },
     },
   },
   decorators: [
-    (Story, context) => {
-      const theme = context.globals.theme || "light";
-
-      // Apply theme attribute to document
-      document.documentElement.setAttribute("data-theme", theme);
-
-      // Apply theme-appropriate background to body
-      if (theme === "dark") {
-        document.body.style.backgroundColor = "#111827";
-        document.body.style.color = "#f9fafb";
-      } else {
-        document.body.style.backgroundColor = "#ffffff";
-        document.body.style.color = "#111827";
-      }
-
-      return React.createElement(Story);
-    },
+    withThemeByDataAttribute({
+      themes: {
+        light: "light",
+        dark: "dark",
+      },
+      defaultTheme: "light",
+      attributeName: "data-theme",
+    }),
   ],
 };
 

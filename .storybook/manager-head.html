@@ -1,0 +1,29 @@
+<style>
+  /* Prevent flickering on theme change */
+  * {
+    transition: background-color 0.2s ease, color 0.2s ease !important;
+  }
+
+  /* Dark theme styles for Storybook UI */
+  [data-theme="dark"] body,
+  [data-theme="dark"] #storybook-root {
+    background-color: #0a0a0a !important;
+    color: #f0f0f0 !important;
+  }
+
+  /* Light theme - explicit white */
+  [data-theme="light"] body,
+  [data-theme="light"] #storybook-root {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  /* Smooth transitions for all Storybook UI elements */
+  .sb-bar,
+  [role="navigation"],
+  .docs-story,
+  #storybook-docs,
+  #storybook-root {
+    transition: background-color 0.2s ease !important;
+  }
+</style>
