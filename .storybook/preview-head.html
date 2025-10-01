@@ -10,7 +10,7 @@
     transition: background-color 0.2s ease, color 0.2s ease !important;
   }
 
-  /* Dark theme - all containers with HeroUI-style gradient */
+  /* Dark theme - all containers with subtle gradient */
   [data-theme="dark"] body,
   [data-theme="dark"] #storybook-root,
   [data-theme="dark"] #storybook-docs,
@@ -20,12 +20,12 @@
   [data-theme="dark"] .sbdocs-content {
     background: radial-gradient(
         ellipse 80% 50% at 50% -20%,
-        rgba(120, 119, 198, 0.3),
+        rgba(120, 119, 198, 0.08),
         transparent
       ),
-      #0a0a0a !important;
-    background-color: #0a0a0a !important;
-    color: #f0f0f0 !important;
+      #000000 !important;
+    background-color: #000000 !important;
+    color: #e5e5e5 !important;
   }
 
   /* Dark theme - story blocks */
@@ -33,11 +33,71 @@
   [data-theme="dark"] .sb-story {
     background: radial-gradient(
         ellipse 80% 50% at 50% -20%,
-        rgba(120, 119, 198, 0.3),
+        rgba(120, 119, 198, 0.08),
         transparent
       ),
-      #0a0a0a !important;
-    background-color: #0a0a0a !important;
+      #000000 !important;
+    background-color: #000000 !important;
+  }
+
+  /* Fix white boxes in dark theme - inputs, code blocks, etc. */
+  [data-theme="dark"] input,
+  [data-theme="dark"] textarea,
+  [data-theme="dark"] select,
+  [data-theme="dark"] pre,
+  [data-theme="dark"] code:not([class*="language-"]),
+  [data-theme="dark"] .docblock-source {
+    background-color: #1a1a1a !important;
+    color: #e5e5e5 !important;
+    border-color: #333333 !important;
+  }
+
+  /* Fix Storybook controls panel tables */
+  [data-theme="dark"] table,
+  [data-theme="dark"] .docblock-argstable,
+  [data-theme="dark"] .docblock-argstable-body {
+    background-color: transparent !important;
+    color: #e5e5e5 !important;
+  }
+
+  /* Fix table cells */
+  [data-theme="dark"] td,
+  [data-theme="dark"] th {
+    background-color: transparent !important;
+    color: #e5e5e5 !important;
+    border-color: #2a2a2a !important;
+  }
+
+  /* Headings - brighter for better readability */
+  [data-theme="dark"] h1,
+  [data-theme="dark"] h2,
+  [data-theme="dark"] h3,
+  [data-theme="dark"] h4,
+  [data-theme="dark"] h5,
+  [data-theme="dark"] h6 {
+    color: #ffffff !important;
+  }
+
+  /* Body text - good contrast */
+  [data-theme="dark"] p,
+  [data-theme="dark"] li,
+  [data-theme="dark"] div {
+    color: #d0d0d0 !important;
+  }
+
+  /* Links */
+  [data-theme="dark"] a {
+    color: #a5b4fc !important;
+  }
+
+  /* Code blocks */
+  [data-theme="dark"] pre[class*="language-"] {
+    background-color: #1a1a1a !important;
+  }
+
+  /* Fix white canvas backgrounds */
+  [data-theme="dark"] .sb-show-main {
+    background-color: #000000 !important;
   }
 
   /* Light theme - all containers */
