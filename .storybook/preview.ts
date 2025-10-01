@@ -60,21 +60,28 @@ const preview: Preview = {
         document.documentElement.setAttribute("data-theme", theme);
         document.documentElement.style.colorScheme = theme;
 
-        // Apply dark theme to entire Storybook interface
+        // Apply dark theme to entire Storybook interface (HeroUI gradient style)
         if (isDark) {
+          // Modern gradient background like HeroUI
+          const gradientBg =
+            "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 198, 0.3), transparent), #0a0a0a";
+
           // Main body
+          document.body.style.background = gradientBg;
           document.body.style.backgroundColor = "#0a0a0a";
           document.body.style.color = "#f0f0f0";
 
           // Story canvas background
           const canvas = document.querySelector("#storybook-root");
           if (canvas?.parentElement) {
+            canvas.parentElement.style.background = gradientBg;
             canvas.parentElement.style.backgroundColor = "#0a0a0a";
           }
 
           // Docs page - multiple selectors to ensure coverage
           const docsRoot = document.querySelector("#storybook-docs");
           if (docsRoot) {
+            (docsRoot as HTMLElement).style.background = gradientBg;
             (docsRoot as HTMLElement).style.backgroundColor = "#0a0a0a";
             (docsRoot as HTMLElement).style.color = "#f0f0f0";
           }
@@ -82,12 +89,14 @@ const preview: Preview = {
           // Docs story wrapper
           const docsStory = document.querySelector(".docs-story");
           if (docsStory) {
+            (docsStory as HTMLElement).style.background = gradientBg;
             (docsStory as HTMLElement).style.backgroundColor = "#0a0a0a";
           }
 
           // Main docs container
           const sbMainPaddedWrapper = document.querySelector(".sb-main-padded");
           if (sbMainPaddedWrapper) {
+            (sbMainPaddedWrapper as HTMLElement).style.background = gradientBg;
             (sbMainPaddedWrapper as HTMLElement).style.backgroundColor =
               "#0a0a0a";
             (sbMainPaddedWrapper as HTMLElement).style.color = "#f0f0f0";
@@ -96,12 +105,14 @@ const preview: Preview = {
           // Docs content wrapper
           const sbDocsWrapper = document.querySelector(".sbdocs");
           if (sbDocsWrapper) {
+            (sbDocsWrapper as HTMLElement).style.background = gradientBg;
             (sbDocsWrapper as HTMLElement).style.backgroundColor = "#0a0a0a";
             (sbDocsWrapper as HTMLElement).style.color = "#f0f0f0";
           }
 
           // Individual story blocks in docs
           document.querySelectorAll(".sb-story").forEach((story) => {
+            (story as HTMLElement).style.background = gradientBg;
             (story as HTMLElement).style.backgroundColor = "#0a0a0a";
           });
         } else {

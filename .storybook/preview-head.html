@@ -10,7 +10,7 @@
     transition: background-color 0.2s ease, color 0.2s ease !important;
   }
 
-  /* Dark theme - all containers */
+  /* Dark theme - all containers with HeroUI-style gradient */
   [data-theme="dark"] body,
   [data-theme="dark"] #storybook-root,
   [data-theme="dark"] #storybook-docs,
@@ -18,6 +18,12 @@
   [data-theme="dark"] .sbdocs,
   [data-theme="dark"] .sbdocs-wrapper,
   [data-theme="dark"] .sbdocs-content {
+    background: radial-gradient(
+        ellipse 80% 50% at 50% -20%,
+        rgba(120, 119, 198, 0.3),
+        transparent
+      ),
+      #0a0a0a !important;
     background-color: #0a0a0a !important;
     color: #f0f0f0 !important;
   }
@@ -25,6 +31,12 @@
   /* Dark theme - story blocks */
   [data-theme="dark"] .docs-story,
   [data-theme="dark"] .sb-story {
+    background: radial-gradient(
+        ellipse 80% 50% at 50% -20%,
+        rgba(120, 119, 198, 0.3),
+        transparent
+      ),
+      #0a0a0a !important;
     background-color: #0a0a0a !important;
   }
 
