@@ -3,7 +3,7 @@
  */
 
 import React, { useState, useMemo } from "react";
-import { colors, radius, spacing } from "../../../theme";
+import { radius, spacing } from "../../../theme";
 import {
   StoryContainerProps,
   TokenCardProps,
@@ -30,12 +30,19 @@ export const StoryContainer: React.FC<StoryContainerProps> = ({
     style={{
       fontFamily:
         '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-      padding,
-      maxWidth,
-      margin: maxWidth !== "none" ? "0 auto" : "0",
+      backgroundColor: "#ffffff",
+      minHeight: "100vh",
+      // Override Storybook's canvas padding completely
+      margin: "-1rem -1rem 0 -1rem",
+      padding: `calc(${padding} + 1rem)`,
+      // Ensure content is centered if maxWidth is set
+      display: maxWidth !== "none" ? "flex" : "block",
+      flexDirection: maxWidth !== "none" ? "column" : undefined,
+      alignItems: maxWidth !== "none" ? "center" : undefined,
+      boxSizing: "border-box",
     }}
   >
-    {children}
+    <div style={{ maxWidth, width: "100%" }}>{children}</div>
   </div>
 );
 
@@ -48,13 +55,14 @@ export const TokenCard: React.FC<TokenCardProps> = ({
   children,
   variant = "default",
 }) => {
+  // Use fixed light colors for Design System stories (don't adapt to dark mode)
   const cardColors = {
-    default: { bg: colors.background, border: colors.default[200] },
-    primary: { bg: colors.primary[50], border: colors.primary[200] },
-    secondary: { bg: colors.secondary[50], border: colors.secondary[200] },
-    success: { bg: colors.success[50], border: colors.success[200] },
-    warning: { bg: colors.warning[50], border: colors.warning[200] },
-    danger: { bg: colors.danger[50], border: colors.danger[200] },
+    default: { bg: "#ffffff", border: "#e5e7eb" },
+    primary: { bg: "#eff6ff", border: "#bfdbfe" },
+    secondary: { bg: "#faf5ff", border: "#e9d5ff" },
+    success: { bg: "#f0fdf4", border: "#bbf7d0" },
+    warning: { bg: "#fefce8", border: "#fef08a" },
+    danger: { bg: "#fef2f2", border: "#fecaca" },
   };
 
   const { bg, border } = cardColors[variant];
@@ -80,7 +88,7 @@ export const TokenCard: React.FC<TokenCardProps> = ({
           style={{
             fontSize: "1.125rem",
             fontWeight: "600",
-            color: colors.foreground,
+            color: "#111827",
             margin: 0,
             marginBottom: description ? spacing[2] : 0,
           }}
@@ -91,7 +99,7 @@ export const TokenCard: React.FC<TokenCardProps> = ({
           <p
             style={{
               fontSize: "0.875rem",
-              color: colors.default[600],
+              color: "#4b5563",
               margin: 0,
               lineHeight: "1.5",
             }}
@@ -128,8 +136,8 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
     <div
       style={{
         position: "relative",
-        backgroundColor: colors.default[50],
-        border: `1px solid ${colors.default[200]}`,
+        backgroundColor: "#f9fafb",
+        border: "1px solid #e5e7eb",
         borderRadius: radius.lg,
         overflow: "hidden",
       }}
@@ -145,10 +153,8 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
             top: spacing[2],
             right: spacing[2],
             padding: `${spacing[1]} ${spacing[2]}`,
-            backgroundColor: copied
-              ? colors.success.DEFAULT
-              : colors.default[200],
-            color: copied ? colors.success.foreground : colors.default[700],
+            backgroundColor: copied ? "#22c55e" : "#e5e7eb",
+            color: copied ? "#ffffff" : "#374151",
             border: "none",
             borderRadius: radius.sm,
             fontSize: "0.75rem",
@@ -169,7 +175,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
           paddingRight: showCopy ? spacing[16] : spacing[4],
           fontFamily: 'Monaco, Menlo, "Ubuntu Mono", monospace',
           fontSize: "0.875rem",
-          color: colors.default[800],
+          color: "#1f2937",
           lineHeight: "1.5",
           overflow: "auto",
         }}
@@ -215,11 +221,9 @@ export const CopyableText: React.FC<CopyableTextProps> = ({
         alignItems: "center",
         gap: spacing[1],
         padding: `${spacing[1]} ${spacing[2]}`,
-        backgroundColor: copied ? colors.success[100] : colors.default[100],
-        color: copied ? colors.success[700] : colors.default[700],
-        border: `1px solid ${
-          copied ? colors.success[300] : colors.default[300]
-        }`,
+        backgroundColor: copied ? "#dcfce7" : "#f3f4f6",
+        color: copied ? "#15803d" : "#374151",
+        border: `1px solid ${copied ? "#86efac" : "#d1d5db"}`,
         borderRadius: radius.sm,
         fontSize: "0.75rem",
         fontFamily: "monospace",
@@ -267,9 +271,7 @@ export const ColorSwatch: React.FC<ColorSwatchProps> = ({
     borderRadius: radius.md,
     cursor: showCopy ? "pointer" : "default",
     transition: "transform 0.2s ease, box-shadow 0.2s ease",
-    border: `1px solid ${
-      color === "#ffffff" ? colors.default[200] : "transparent"
-    }`,
+    border: `1px solid ${color === "#ffffff" ? "#e5e7eb" : "transparent"}`,
     position: "relative" as const,
     userSelect: "none" as const,
     width: "100%",
@@ -357,7 +359,7 @@ export const SectionHeader: React.FC<{
       style={{
         fontSize: "2rem",
         fontWeight: "700",
-        color: colors.foreground,
+        color: "#111827",
         marginBottom: spacing[3],
         display: "flex",
         alignItems: "center",
@@ -371,7 +373,7 @@ export const SectionHeader: React.FC<{
       <p
         style={{
           fontSize: "1rem",
-          color: colors.default[600],
+          color: "#4b5563",
           lineHeight: "1.6",
           margin: 0,
           maxWidth: "800px",

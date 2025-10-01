@@ -78,8 +78,8 @@ export const QuickStart: Story = {
               width: "2rem",
               height: "2rem",
               borderRadius: "50%",
-              backgroundColor: colors.primary.DEFAULT,
-              color: colors.primary.foreground,
+              backgroundColor: "#3b82f6",
+              color: "#ffffff",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -94,7 +94,7 @@ export const QuickStart: Story = {
             <p
               style={{
                 fontSize: typography.fontSize.sm,
-                color: colors.default[600],
+                color: "#4b5563",
                 margin: 0,
                 marginBottom: spacing[3],
                 lineHeight: "1.5",
@@ -121,8 +121,8 @@ yarn add briza-ui-react`}
               width: "2rem",
               height: "2rem",
               borderRadius: "50%",
-              backgroundColor: colors.secondary.DEFAULT,
-              color: colors.secondary.foreground,
+              backgroundColor: "#9333ea",
+              color: "#ffffff",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -160,8 +160,8 @@ yarn add briza-ui-react`}
               width: "2rem",
               height: "2rem",
               borderRadius: "50%",
-              backgroundColor: colors.success.DEFAULT,
-              color: colors.success.foreground,
+              backgroundColor: "#22c55e",
+              color: "#ffffff",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -212,7 +212,7 @@ yarn add briza-ui-react`}
             {/* Live Example Section with better visual separation */}
             <div
               style={{
-                borderTop: `2px solid ${colors.success[200]}`,
+                borderTop: "2px solid #bbf7d0",
                 paddingTop: spacing[5],
                 marginTop: spacing[2],
               }}
@@ -229,7 +229,7 @@ yarn add briza-ui-react`}
                   style={{
                     fontSize: typography.fontSize.base,
                     fontWeight: typography.fontWeight.semibold,
-                    color: colors.foreground,
+                    color: "#111827",
                     margin: 0,
                     display: "flex",
                     alignItems: "center",
@@ -242,8 +242,8 @@ yarn add briza-ui-react`}
                 <span
                   style={{
                     fontSize: typography.fontSize.xs,
-                    color: colors.success[600],
-                    backgroundColor: colors.success[100],
+                    color: "#16a34a",
+                    backgroundColor: "#dcfce7",
                     padding: `${spacing[1]} ${spacing[2]}`,
                     borderRadius: radius.sm,
                     fontWeight: typography.fontWeight.medium,
@@ -256,8 +256,8 @@ yarn add briza-ui-react`}
               <div
                 style={{
                   padding: spacing[5],
-                  backgroundColor: colors.background,
-                  border: `1px solid ${colors.default[200]}`,
+                  backgroundColor: "#ffffff",
+                  border: "1px solid #e5e7eb",
                   borderRadius: radius.lg,
                   boxShadow: shadows.sm,
                 }}
@@ -327,13 +327,13 @@ yarn add briza-ui-react`}
             gap: spacing[3],
             marginBottom: spacing[8],
             paddingBottom: spacing[4],
-            borderBottom: `2px solid ${colors.default[200]}`,
+            borderBottom: "2px solid #e5e7eb",
           }}
         >
           <div
             style={{
               fontSize: "2rem",
-              background: `linear-gradient(135deg, ${colors.warning[400]}, ${colors.warning[600]})`,
+              background: "linear-gradient(135deg, #facc15, #ca8a04)",
               padding: spacing[3],
               borderRadius: radius.lg,
               boxShadow: shadows.md,
@@ -346,7 +346,7 @@ yarn add briza-ui-react`}
               style={{
                 fontSize: typography.fontSize["2xl"],
                 fontWeight: typography.fontWeight.bold,
-                color: colors.foreground,
+                color: "#111827",
                 margin: 0,
                 marginBottom: spacing[1],
               }}
@@ -356,7 +356,7 @@ yarn add briza-ui-react`}
             <p
               style={{
                 fontSize: typography.fontSize.sm,
-                color: colors.default[600],
+                color: "#4b5563",
                 margin: 0,
                 lineHeight: "1.5",
               }}
@@ -418,13 +418,13 @@ yarn add briza-ui-react`}
             gap: spacing[3],
             marginBottom: spacing[8],
             paddingBottom: spacing[4],
-            borderBottom: `2px solid ${colors.default[200]}`,
+            borderBottom: "2px solid #e5e7eb",
           }}
         >
           <div
             style={{
               fontSize: "2rem",
-              background: `linear-gradient(135deg, ${colors.primary[400]}, ${colors.primary[600]})`,
+              background: "linear-gradient(135deg, #60a5fa, #2563eb)",
               padding: spacing[3],
               borderRadius: radius.lg,
               boxShadow: shadows.md,
@@ -437,7 +437,7 @@ yarn add briza-ui-react`}
               style={{
                 fontSize: typography.fontSize["2xl"],
                 fontWeight: typography.fontWeight.bold,
-                color: colors.foreground,
+                color: "#111827",
                 margin: 0,
                 marginBottom: spacing[1],
               }}
@@ -447,7 +447,7 @@ yarn add briza-ui-react`}
             <p
               style={{
                 fontSize: typography.fontSize.sm,
-                color: colors.default[600],
+                color: "#4b5563",
                 margin: 0,
                 lineHeight: "1.5",
               }}
@@ -463,7 +463,12 @@ yarn add briza-ui-react`}
               description:
                 "Browse the complete color palette and usage examples",
               storyId: "design-system-colors--semantic-colors",
-              color: colors.primary,
+              color: {
+                DEFAULT: "#3b82f6",
+                100: "#dbeafe",
+                300: "#93c5fd",
+                600: "#2563eb",
+              },
               storyTitle: "Design System/Colors",
               storyName: "SemanticColors",
             },
@@ -471,7 +476,12 @@ yarn add briza-ui-react`}
               title: "Typography Guide",
               description: "Learn about font sizes, weights, and hierarchy",
               storyId: "design-system-typography--font-sizes",
-              color: colors.secondary,
+              color: {
+                DEFAULT: "#9333ea",
+                100: "#f3e8ff",
+                300: "#d8b4fe",
+                600: "#9333ea",
+              },
               storyTitle: "Design System/Typography",
               storyName: "FontSizes",
             },
@@ -479,7 +489,12 @@ yarn add briza-ui-react`}
               title: "Spacing System",
               description: "Master consistent spacing and layout",
               storyId: "design-system-spacing--spacing-scale",
-              color: colors.success,
+              color: {
+                DEFAULT: "#22c55e",
+                100: "#dcfce7",
+                300: "#86efac",
+                600: "#16a34a",
+              },
               storyTitle: "Design System/Spacing",
               storyName: "SpacingScale",
             },
@@ -487,7 +502,12 @@ yarn add briza-ui-react`}
               title: "Effects & Shadows",
               description: "Add depth with radius and shadow tokens",
               storyId: "design-system-radius-shadows--border-radius",
-              color: colors.warning,
+              color: {
+                DEFAULT: "#eab308",
+                100: "#fef9c3",
+                300: "#fde047",
+                600: "#ca8a04",
+              },
               storyTitle: "Design System/Radius & Shadows",
               storyName: "BorderRadius",
             },
@@ -593,6 +613,7 @@ export const CheatSheet: Story = {
               gap: spacing[2],
               fontSize: typography.fontSize.sm,
               fontFamily: "monospace",
+              color: "#374151",
             }}
           >
             <div>colors.primary.DEFAULT</div>
@@ -613,6 +634,7 @@ export const CheatSheet: Story = {
               gap: spacing[2],
               fontSize: typography.fontSize.sm,
               fontFamily: "monospace",
+              color: "#374151",
             }}
           >
             <div>spacing[1] → 4px</div>
@@ -633,6 +655,7 @@ export const CheatSheet: Story = {
               gap: spacing[2],
               fontSize: typography.fontSize.sm,
               fontFamily: "monospace",
+              color: "#374151",
             }}
           >
             <div>typography.fontSize.sm</div>
@@ -652,6 +675,7 @@ export const CheatSheet: Story = {
               gap: spacing[2],
               fontSize: typography.fontSize.sm,
               fontFamily: "monospace",
+              color: "#374151",
             }}
           >
             <div>radius.sm → 2px</div>
@@ -668,7 +692,7 @@ export const CheatSheet: Story = {
           style={{
             fontSize: typography.fontSize["2xl"],
             fontWeight: typography.fontWeight.semibold,
-            color: colors.foreground,
+            color: "#111827",
             marginBottom: spacing[6],
           }}
         >
