@@ -1,18 +1,48 @@
 <style>
   /* Smooth theme transitions in preview */
-  body {
+  body,
+  #storybook-root,
+  #storybook-docs,
+  .docs-story,
+  .sb-main-padded,
+  .sbdocs,
+  .sb-story {
     transition: background-color 0.2s ease, color 0.2s ease !important;
   }
 
-  /* Dark theme canvas background */
-  [data-theme="dark"] body {
-    background-color: #111827 !important;
+  /* Dark theme - all containers */
+  [data-theme="dark"] body,
+  [data-theme="dark"] #storybook-root,
+  [data-theme="dark"] #storybook-docs,
+  [data-theme="dark"] .sb-main-padded,
+  [data-theme="dark"] .sbdocs,
+  [data-theme="dark"] .sbdocs-wrapper,
+  [data-theme="dark"] .sbdocs-content {
+    background-color: #0a0a0a !important;
     color: #f0f0f0 !important;
   }
 
-  /* Light theme canvas background */
-  [data-theme="light"] body {
+  /* Dark theme - story blocks */
+  [data-theme="dark"] .docs-story,
+  [data-theme="dark"] .sb-story {
+    background-color: #0a0a0a !important;
+  }
+
+  /* Light theme - all containers */
+  [data-theme="light"] body,
+  [data-theme="light"] #storybook-root,
+  [data-theme="light"] #storybook-docs,
+  [data-theme="light"] .sb-main-padded,
+  [data-theme="light"] .sbdocs,
+  [data-theme="light"] .sbdocs-wrapper,
+  [data-theme="light"] .sbdocs-content {
     background-color: #ffffff !important;
     color: #111827 !important;
+  }
+
+  /* Light theme - story blocks */
+  [data-theme="light"] .docs-story,
+  [data-theme="light"] .sb-story {
+    background-color: #ffffff !important;
   }
 </style>
