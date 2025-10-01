@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { typography, colors, radius, spacing } from "../../theme";
+import { typography, radius, spacing } from "../../theme";
 import {
   StoryContainer,
   SectionHeader,
@@ -78,7 +78,7 @@ export const FontSizes: Story = {
               style={{
                 fontSize: value as string,
                 lineHeight: typography.lineHeight.normal,
-                color: colors.foreground,
+                color: "#111827",
                 marginBottom: spacing[2],
               }}
             >
@@ -113,7 +113,7 @@ export const FontWeights: Story = {
                 fontSize: typography.fontSize.lg,
                 fontWeight: value as string,
                 lineHeight: typography.lineHeight.normal,
-                color: colors.foreground,
+                color: "#111827",
                 marginBottom: spacing[2],
               }}
             >
@@ -150,7 +150,7 @@ export const LineHeights: Story = {
               style={{
                 fontSize: typography.fontSize.base,
                 lineHeight: value as string,
-                color: colors.foreground,
+                color: "#111827",
                 marginBottom: spacing[2],
               }}
             >
@@ -184,7 +184,7 @@ export const TypographyShowcase: Story = {
             fontSize: typography.fontSize["3xl"],
             fontWeight: typography.fontWeight.bold,
             lineHeight: typography.lineHeight.tight,
-            color: colors.foreground,
+            color: "#111827",
             marginBottom: spacing[4],
           }}
         >
@@ -196,7 +196,7 @@ export const TypographyShowcase: Story = {
             fontSize: typography.fontSize["2xl"],
             fontWeight: typography.fontWeight.semibold,
             lineHeight: typography.lineHeight.tight,
-            color: colors.foreground,
+            color: "#111827",
             marginBottom: "1rem",
             marginTop: "2rem",
           }}
@@ -209,7 +209,7 @@ export const TypographyShowcase: Story = {
             fontSize: typography.fontSize.base,
             fontWeight: typography.fontWeight.normal,
             lineHeight: typography.lineHeight.relaxed,
-            color: colors.default[700],
+            color: "#374151",
             marginBottom: "1.5rem",
           }}
         >
@@ -224,7 +224,7 @@ export const TypographyShowcase: Story = {
             fontSize: typography.fontSize.xl,
             fontWeight: typography.fontWeight.semibold,
             lineHeight: typography.lineHeight.normal,
-            color: colors.foreground,
+            color: "#111827",
             marginBottom: "0.75rem",
             marginTop: "2rem",
           }}
@@ -236,7 +236,7 @@ export const TypographyShowcase: Story = {
           style={{
             fontSize: typography.fontSize.base,
             lineHeight: typography.lineHeight.relaxed,
-            color: colors.default[700],
+            color: "#374151",
             paddingLeft: "1.5rem",
             marginBottom: "1.5rem",
           }}
@@ -264,7 +264,7 @@ export const TypographyShowcase: Story = {
         {/* Code Example */}
         <div
           style={{
-            backgroundColor: colors.default[50],
+            backgroundColor: "#f9fafb",
             padding: "1.5rem",
             borderRadius: radius.md,
             marginTop: "2rem",
@@ -274,7 +274,7 @@ export const TypographyShowcase: Story = {
             style={{
               fontSize: typography.fontSize.lg,
               fontWeight: typography.fontWeight.medium,
-              color: colors.foreground,
+              color: "#111827",
               marginBottom: "1rem",
             }}
           >
@@ -291,7 +291,7 @@ lineHeight: typography.lineHeight.normal,`}
         <p
           style={{
             fontSize: typography.fontSize.sm,
-            color: colors.default[500],
+            color: "#6b7280",
             marginTop: "1rem",
             textAlign: "center",
             fontStyle: "italic",
@@ -307,7 +307,7 @@ lineHeight: typography.lineHeight.normal,`}
           style={{
             fontSize: typography.fontSize.xl,
             fontWeight: typography.fontWeight.semibold,
-            color: colors.foreground,
+            color: "#111827",
             marginBottom: "1rem",
           }}
         >

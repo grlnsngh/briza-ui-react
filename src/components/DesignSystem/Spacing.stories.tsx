@@ -80,9 +80,9 @@ const SpacingVisualizer: React.FC<{
           style={{
             fontSize: "0.75rem",
             padding: `${spacing[1]} ${spacing[2]}`,
-            backgroundColor: colors.primary[100],
-            color: colors.primary[700],
-            border: `1px solid ${colors.primary[300]}`,
+            backgroundColor: "#dbeafe",
+            color: "#1d4ed8",
+            border: "1px solid #93c5fd",
             borderRadius: radius.sm,
             cursor: "pointer",
           }}
@@ -111,7 +111,7 @@ const SpacingVisualizer: React.FC<{
               alignItems: "center",
               gap: value,
               padding: "0.5rem",
-              backgroundColor: colors.default[50],
+              backgroundColor: "#f9fafb",
               borderRadius: radius.sm,
               position: "relative",
             }}
@@ -120,7 +120,7 @@ const SpacingVisualizer: React.FC<{
               style={{
                 width: "40px",
                 height: "40px",
-                backgroundColor: colors.primary.DEFAULT,
+                backgroundColor: "#3b82f6",
                 borderRadius: radius.sm,
               }}
               aria-label="First element"
@@ -129,7 +129,7 @@ const SpacingVisualizer: React.FC<{
               style={{
                 width: "40px",
                 height: "40px",
-                backgroundColor: colors.secondary.DEFAULT,
+                backgroundColor: "#9333ea",
                 borderRadius: radius.sm,
               }}
               aria-label="Second element"
@@ -163,7 +163,7 @@ const SpacingVisualizer: React.FC<{
               flexDirection: "column",
               gap: value,
               padding: "0.5rem",
-              backgroundColor: colors.default[50],
+              backgroundColor: "#f9fafb",
               borderRadius: radius.sm,
               position: "relative",
             }}
@@ -172,7 +172,7 @@ const SpacingVisualizer: React.FC<{
               style={{
                 width: "80px",
                 height: "20px",
-                backgroundColor: colors.success.DEFAULT,
+                backgroundColor: "#22c55e",
                 borderRadius: radius.sm,
               }}
               aria-label="First element"
@@ -181,7 +181,7 @@ const SpacingVisualizer: React.FC<{
               style={{
                 width: "80px",
                 height: "20px",
-                backgroundColor: colors.warning.DEFAULT,
+                backgroundColor: "#eab308",
                 borderRadius: radius.sm,
               }}
               aria-label="Second element"
@@ -194,11 +194,11 @@ const SpacingVisualizer: React.FC<{
                   top: "50%",
                   transform: "translateY(-50%)",
                   fontSize: "0.75rem",
-                  color: colors.default[600],
-                  backgroundColor: colors.background,
+                  color: "#4b5563",
+                  backgroundColor: "#ffffff",
                   padding: "0.25rem 0.5rem",
                   borderRadius: radius.sm,
-                  border: `1px solid ${colors.default[300]}`,
+                  border: "1px solid #d1d5db",
                   whiteSpace: "nowrap",
                 }}
               >
@@ -257,8 +257,8 @@ export const SpacingPatterns: Story = {
                 key={index}
                 style={{
                   padding: spacing[4],
-                  backgroundColor: colors.background,
-                  border: `1px solid ${colors.default[200]}`,
+                  backgroundColor: "#ffffff",
+                  border: "1px solid #e5e7eb",
                   borderRadius: radius.lg,
                 }}
               >
@@ -266,7 +266,7 @@ export const SpacingPatterns: Story = {
                   style={{
                     fontSize: "1.125rem",
                     fontWeight: "600",
-                    color: colors.foreground,
+                    color: "#111827",
                     marginBottom: spacing[2],
                   }}
                 >
@@ -275,7 +275,7 @@ export const SpacingPatterns: Story = {
                 <p
                   style={{
                     fontSize: "0.875rem",
-                    color: colors.default[600],
+                    color: "#4b5563",
                     lineHeight: "1.5",
                     marginBottom: spacing[3],
                   }}
@@ -285,8 +285,8 @@ export const SpacingPatterns: Story = {
                 <button
                   style={{
                     padding: `${spacing[2]} ${spacing[4]}`,
-                    backgroundColor: colors.primary.DEFAULT,
-                    color: colors.primary.foreground,
+                    backgroundColor: "#3b82f6",
+                    color: "#ffffff",
                     border: "none",
                     borderRadius: radius.md,
                     fontSize: "0.875rem",

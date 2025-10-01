@@ -1,6 +1,7 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { colors, typography, spacing, radius } from "../../theme";
+import { StoryContainer } from "./shared";
 
 const meta: Meta = {
   title: "Design System/Overview",
@@ -48,21 +49,13 @@ type Story = StoryObj;
 
 export const DesignSystemOverview: Story = {
   render: () => (
-    <div
-      style={{
-        fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-        padding: "2rem",
-        maxWidth: "1200px",
-        margin: "0 auto",
-      }}
-    >
+    <StoryContainer maxWidth="1200px">
       <div style={{ marginBottom: "3rem" }}>
         <h1
           style={{
             fontSize: "2.25rem",
             fontWeight: "700",
-            color: colors.foreground,
+            color: "#111827",
             marginBottom: "1rem",
           }}
         >
@@ -71,7 +64,7 @@ export const DesignSystemOverview: Story = {
         <p
           style={{
             fontSize: "1.125rem",
-            color: colors.default[600],
+            color: "#4b5563",
             lineHeight: "1.6",
             marginBottom: "2rem",
           }}
@@ -93,9 +86,9 @@ export const DesignSystemOverview: Story = {
         <div
           style={{
             padding: "1.5rem",
-            backgroundColor: colors.primary[50],
+            backgroundColor: "#eff6ff",
             borderRadius: radius.lg,
-            border: `1px solid ${colors.primary[200]}`,
+            border: "1px solid #bfdbfe",
             textAlign: "center",
           }}
         >
@@ -103,7 +96,7 @@ export const DesignSystemOverview: Story = {
             style={{
               fontSize: "2rem",
               fontWeight: "700",
-              color: colors.primary.DEFAULT,
+              color: "#3b82f6",
             }}
           >
             6
@@ -111,7 +104,7 @@ export const DesignSystemOverview: Story = {
           <div
             style={{
               fontSize: "0.875rem",
-              color: colors.primary[700],
+              color: "#1d4ed8",
               fontWeight: "500",
             }}
           >
@@ -122,9 +115,9 @@ export const DesignSystemOverview: Story = {
         <div
           style={{
             padding: "1.5rem",
-            backgroundColor: colors.secondary[50],
+            backgroundColor: "#faf5ff",
             borderRadius: radius.lg,
-            border: `1px solid ${colors.secondary[200]}`,
+            border: "1px solid #e9d5ff",
             textAlign: "center",
           }}
         >
@@ -132,7 +125,7 @@ export const DesignSystemOverview: Story = {
             style={{
               fontSize: "2rem",
               fontWeight: "700",
-              color: colors.secondary.DEFAULT,
+              color: "#9333ea",
             }}
           >
             15
@@ -140,7 +133,7 @@ export const DesignSystemOverview: Story = {
           <div
             style={{
               fontSize: "0.875rem",
-              color: colors.secondary[700],
+              color: "#7c3aed",
               fontWeight: "500",
             }}
           >
@@ -151,9 +144,9 @@ export const DesignSystemOverview: Story = {
         <div
           style={{
             padding: "1.5rem",
-            backgroundColor: colors.success[50],
+            backgroundColor: "#f0fdf4",
             borderRadius: radius.lg,
-            border: `1px solid ${colors.success[200]}`,
+            border: "1px solid #bbf7d0",
             textAlign: "center",
           }}
         >
@@ -161,7 +154,7 @@ export const DesignSystemOverview: Story = {
             style={{
               fontSize: "2rem",
               fontWeight: "700",
-              color: colors.success.DEFAULT,
+              color: "#22c55e",
             }}
           >
             7
@@ -169,7 +162,7 @@ export const DesignSystemOverview: Story = {
           <div
             style={{
               fontSize: "0.875rem",
-              color: colors.success[700],
+              color: "#15803d",
               fontWeight: "500",
             }}
           >
@@ -180,9 +173,9 @@ export const DesignSystemOverview: Story = {
         <div
           style={{
             padding: "1.5rem",
-            backgroundColor: colors.warning[50],
+            backgroundColor: "#fefce8",
             borderRadius: radius.lg,
-            border: `1px solid ${colors.warning[200]}`,
+            border: "1px solid #fef08a",
             textAlign: "center",
           }}
         >
@@ -190,7 +183,7 @@ export const DesignSystemOverview: Story = {
             style={{
               fontSize: "2rem",
               fontWeight: "700",
-              color: colors.warning.DEFAULT,
+              color: "#eab308",
             }}
           >
             8
@@ -198,7 +191,7 @@ export const DesignSystemOverview: Story = {
           <div
             style={{
               fontSize: "0.875rem",
-              color: colors.warning[700],
+              color: "#a16207",
               fontWeight: "500",
             }}
           >
@@ -213,7 +206,7 @@ export const DesignSystemOverview: Story = {
           style={{
             fontSize: "1.5rem",
             fontWeight: "600",
-            color: colors.foreground,
+            color: "#111827",
             marginBottom: "1rem",
           }}
         >
@@ -262,7 +255,7 @@ export const DesignSystemOverview: Story = {
           style={{
             fontSize: "1.5rem",
             fontWeight: "600",
-            color: colors.foreground,
+            color: "#111827",
             marginBottom: "1rem",
           }}
         >
@@ -270,10 +263,10 @@ export const DesignSystemOverview: Story = {
         </h2>
         <div
           style={{
-            backgroundColor: colors.background,
+            backgroundColor: "#ffffff",
             padding: "1.5rem",
             borderRadius: radius.lg,
-            border: `1px solid ${colors.default[200]}`,
+            border: "1px solid #e5e7eb",
           }}
         >
           {Object.entries(typography.fontSize).map(([size, value]) => (
@@ -283,7 +276,7 @@ export const DesignSystemOverview: Story = {
                 fontSize: value as string,
                 lineHeight: "1.5",
                 marginBottom: "0.5rem",
-                color: colors.foreground,
+                color: "#111827",
               }}
             >
               {size} - The quick brown fox jumps over the lazy dog
@@ -298,7 +291,7 @@ export const DesignSystemOverview: Story = {
           style={{
             fontSize: "1.5rem",
             fontWeight: "600",
-            color: colors.foreground,
+            color: "#111827",
             marginBottom: "1rem",
           }}
         >
@@ -306,23 +299,23 @@ export const DesignSystemOverview: Story = {
         </h2>
         <div
           style={{
-            backgroundColor: colors.default[50],
+            backgroundColor: "#f9fafb",
             padding: "1.5rem",
             borderRadius: radius.lg,
             fontFamily: "monospace",
             fontSize: "0.875rem",
           }}
         >
-          <div style={{ marginBottom: "1rem", color: colors.foreground }}>
+          <div style={{ marginBottom: "1rem", color: "#111827" }}>
             <strong>Import tokens:</strong>
           </div>
-          <div style={{ color: colors.default[700], marginBottom: "1rem" }}>
+          <div style={{ color: "#374151", marginBottom: "1rem" }}>
             {`import { colors, spacing, typography } from '@/theme';`}
           </div>
-          <div style={{ marginBottom: "1rem", color: colors.foreground }}>
+          <div style={{ marginBottom: "1rem", color: "#111827" }}>
             <strong>Use in components:</strong>
           </div>
-          <div style={{ color: colors.default[700] }}>
+          <div style={{ color: "#374151" }}>
             {`const primaryColor = colors.primary.DEFAULT;`}
             <br />
             {`const padding = spacing[4];`}
@@ -331,24 +324,18 @@ export const DesignSystemOverview: Story = {
           </div>
         </div>
       </div>
-    </div>
+    </StoryContainer>
   ),
 };
 
 export const TokensReference: Story = {
   render: () => (
-    <div
-      style={{
-        fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-        padding: "2rem",
-      }}
-    >
+    <StoryContainer>
       <h1
         style={{
           fontSize: "2rem",
           fontWeight: "700",
-          color: colors.foreground,
+          color: "#111827",
           marginBottom: "2rem",
         }}
       >
@@ -379,7 +366,7 @@ export const TokensReference: Story = {
                   key={name}
                   style={{
                     padding: "1rem",
-                    border: `1px solid ${colors.default[200]}`,
+                    border: "1px solid #e5e7eb",
                     borderRadius: radius.md,
                   }}
                 >
@@ -391,9 +378,7 @@ export const TokensReference: Story = {
                   >
                     {name}
                   </h3>
-                  <code
-                    style={{ fontSize: "0.875rem", color: colors.default[600] }}
-                  >
+                  <code style={{ fontSize: "0.875rem", color: "#4b5563" }}>
                     colors.{name}.DEFAULT = "{color.DEFAULT}"
                   </code>
                 </div>
@@ -427,7 +412,7 @@ export const TokensReference: Story = {
               key={key}
               style={{
                 padding: "1rem",
-                border: `1px solid ${colors.default[200]}`,
+                border: "1px solid #e5e7eb",
                 borderRadius: radius.md,
                 display: "flex",
                 justifyContent: "space-between",
@@ -435,15 +420,13 @@ export const TokensReference: Story = {
               }}
             >
               <code style={{ fontSize: "0.875rem" }}>spacing[{key}]</code>
-              <span
-                style={{ fontSize: "0.875rem", color: colors.default[600] }}
-              >
+              <span style={{ fontSize: "0.875rem", color: "#4b5563" }}>
                 {String(value)}
               </span>
             </div>
           ))}
         </div>
       </section>
-    </div>
+    </StoryContainer>
   ),
 };
