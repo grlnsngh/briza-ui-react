@@ -2,7 +2,7 @@
  * Shared styled components for Design System stories
  */
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect, useLayoutEffect } from "react";
 import { radius, spacing } from "../../../theme";
 import {
   StoryContainerProps,
@@ -21,30 +21,132 @@ import {
 /**
  * Container component for consistent story layout
  */
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
 export const StoryContainer: React.FC<StoryContainerProps> = ({
   children,
   maxWidth = "none",
   padding = "2rem",
-}) => (
-  <div
-    style={{
-      fontFamily:
-        '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-      backgroundColor: "#ffffff",
-      minHeight: "100vh",
-      // Override Storybook's canvas padding completely
-      margin: "-1rem -1rem 0 -1rem",
-      padding: `calc(${padding} + 1rem)`,
-      // Ensure content is centered if maxWidth is set
-      display: maxWidth !== "none" ? "flex" : "block",
-      flexDirection: maxWidth !== "none" ? "column" : undefined,
-      alignItems: maxWidth !== "none" ? "center" : undefined,
-      boxSizing: "border-box",
-    }}
-  >
-    <div style={{ maxWidth, width: "100%" }}>{children}</div>
-  </div>
-);
+  forceTheme = "light",
+}) => {
+  const containerBackground = forceTheme === "dark" ? "#0f172a" : "#ffffff";
+  const containerColor = forceTheme === "dark" ? "#f9fafb" : "#111827";
+
+  useIsomorphicLayoutEffect(() => {
+    if (!forceTheme || typeof document === "undefined") {
+      return;
+    }
+
+    const root = document.documentElement;
+    const body = document.body;
+
+    const previousTheme = root.getAttribute("data-theme");
+    const previousRootBackground = root.style.backgroundColor;
+    const previousBodyBackground = body.style.backgroundColor;
+    const previousBodyColor = body.style.color;
+
+    const forcedBackground = forceTheme === "dark" ? "#0f172a" : "#ffffff";
+    const forcedForeground = forceTheme === "dark" ? "#f9fafb" : "#111827";
+
+    const selectors = [
+      "#storybook-root",
+      ".sb-show-main",
+      ".docs-story",
+      ".sbdocs",
+      ".sbdocs-wrapper",
+      ".sbdocs-content",
+      ".sbdocs-preview",
+    ];
+
+    const forcedElements = new Map<HTMLElement, string>();
+
+    const applyForcedTheme = () => {
+      if (root.getAttribute("data-theme") !== forceTheme) {
+        root.setAttribute("data-theme", forceTheme);
+      }
+
+      root.style.backgroundColor = forcedBackground;
+      body.style.backgroundColor = forcedBackground;
+      body.style.color = forcedForeground;
+
+      selectors.forEach((selector) => {
+        document.querySelectorAll<HTMLElement>(selector).forEach((element) => {
+          if (!forcedElements.has(element)) {
+            forcedElements.set(element, element.style.backgroundColor);
+          }
+          element.style.backgroundColor = forcedBackground;
+        });
+      });
+    };
+
+    applyForcedTheme();
+
+    const observer =
+      typeof MutationObserver !== "undefined"
+        ? new MutationObserver((mutations) => {
+            for (const mutation of mutations) {
+              if (
+                mutation.type === "attributes" &&
+                mutation.attributeName === "data-theme" &&
+                root.getAttribute("data-theme") !== forceTheme
+              ) {
+                applyForcedTheme();
+              }
+            }
+          })
+        : null;
+
+    observer?.observe(root, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    return () => {
+      observer?.disconnect();
+
+      forcedElements.forEach((originalBackground, element) => {
+        if (originalBackground) {
+          element.style.backgroundColor = originalBackground;
+        } else {
+          element.style.removeProperty("background-color");
+        }
+      });
+
+      if (previousTheme !== null) {
+        root.setAttribute("data-theme", previousTheme);
+      } else {
+        root.removeAttribute("data-theme");
+      }
+
+      root.style.backgroundColor = previousRootBackground;
+      body.style.backgroundColor = previousBodyBackground;
+      body.style.color = previousBodyColor;
+    };
+  }, [forceTheme]);
+
+  return (
+    <div
+      style={{
+        fontFamily:
+          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+        backgroundColor: containerBackground,
+        color: containerColor,
+        minHeight: "100vh",
+        // Override Storybook's canvas padding completely
+        margin: "-1rem -1rem 0 -1rem",
+        padding: `calc(${padding} + 1rem)`,
+        // Ensure content is centered if maxWidth is set
+        display: maxWidth !== "none" ? "flex" : "block",
+        flexDirection: maxWidth !== "none" ? "column" : undefined,
+        alignItems: maxWidth !== "none" ? "center" : undefined,
+        boxSizing: "border-box",
+      }}
+    >
+      <div style={{ maxWidth, width: "100%" }}>{children}</div>
+    </div>
+  );
+};
 
 /**
  * Card component for displaying token information

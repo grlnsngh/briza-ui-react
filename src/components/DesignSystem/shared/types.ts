@@ -106,6 +106,8 @@ export interface StoryContainerProps {
   children: React.ReactNode;
   maxWidth?: string;
   padding?: string;
+  /** Force a specific Storybook theme while this container is mounted */
+  forceTheme?: "light" | "dark" | null;
 }
 
 export interface TokenCardProps {
