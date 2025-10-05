@@ -1,0 +1,444 @@
+/* =============================================================================
+ * Modal Component Styles - Modern Design
+ * ============================================================================= */
+
+/* =============================================================================
+ * Backdrop (Overlay)
+ * ============================================================================= */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  padding: var(--spacing-4);
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  animation: backdropFadeIn var(--transition-duration-200)
+    var(--transition-timing-ease);
+}
+
+.backdrop--center {
+  align-items: center;
+  justify-content: center;
+}
+
+.backdrop--top {
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: var(--spacing-8);
+}
+
+.backdrop--no-animation {
+  animation: none !important;
+}
+
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* =============================================================================
+ * Modal Container
+ * ============================================================================= */
+
+.modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: calc(100vh - var(--spacing-8));
+  background-color: var(--color-background);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  animation: modalSlideIn var(--transition-duration-300)
+    var(--transition-timing-ease);
+  outline: none;
+  overflow: hidden;
+}
+
+.modal--no-animation {
+  animation: none !important;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .modal {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.7),
+    0 10px 10px -5px rgba(0, 0, 0, 0.5);
+}
+
+/* =============================================================================
+ * Size Variants
+ * ============================================================================= */
+
+.modal--sm {
+  max-width: 400px;
+}
+
+.modal--md {
+  max-width: 600px;
+}
+
+.modal--lg {
+  max-width: 800px;
+}
+
+.modal--xl {
+  max-width: 1000px;
+}
+
+.modal--full {
+  max-width: calc(100vw - var(--spacing-8));
+  max-height: calc(100vh - var(--spacing-8));
+  margin: var(--spacing-4);
+}
+
+/* Tablet responsiveness */
+@media (max-width: 1024px) {
+  .backdrop {
+    padding: var(--spacing-2);
+  }
+
+  .modal--lg,
+  .modal--xl {
+    max-width: 95%;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  .backdrop {
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .backdrop--center,
+  .backdrop--top {
+    align-items: stretch;
+  }
+
+  .modal {
+    max-width: 100%;
+    max-height: 100vh;
+    height: 100vh;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  .modal--sm,
+  .modal--md,
+  .modal--lg,
+  .modal--xl,
+  .modal--full {
+    max-width: 100%;
+    max-height: 100vh;
+    height: 100vh;
+    border-radius: 0;
+  }
+}
+
+/* =============================================================================
+ * Modal Positioning (handled by backdrop--center and backdrop--top)
+ * ============================================================================= */
+
+/* =============================================================================
+ * Modal Header
+ * ============================================================================= */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-6);
+  padding-bottom: var(--spacing-4);
+  gap: var(--spacing-4);
+  border-bottom: 1px solid var(--color-default-200);
+}
+
+[data-theme="dark"] .header {
+  border-bottom-color: var(--color-default-200);
+}
+
+.header__content {
+  flex: 1;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-foreground);
+  line-height: var(--line-height-tight);
+}
+
+/* =============================================================================
+ * Close Button
+ * ============================================================================= */
+
+.close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-md);
+  background-color: transparent;
+  color: var(--color-default-600);
+  cursor: pointer;
+  transition: all var(--transition-duration-150) var(--transition-timing-ease);
+  outline: none;
+}
+
+.close:hover {
+  background-color: var(--color-default-100);
+  color: var(--color-default-900);
+}
+
+.close:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.close:active {
+  transform: scale(0.95);
+}
+
+[data-theme="dark"] .close {
+  color: var(--color-default-600);
+}
+
+[data-theme="dark"] .close:hover {
+  background-color: var(--color-default-200);
+  color: var(--color-default-800);
+}
+
+/* =============================================================================
+ * Modal Body
+ * ============================================================================= */
+
+.body {
+  flex: 1;
+  padding: var(--spacing-6);
+  overflow-y: auto;
+  overflow-x: hidden;
+  color: var(--color-foreground);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  /* Custom scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-default-300) transparent;
+}
+
+[data-theme="dark"] .body {
+  scrollbar-color: var(--color-default-400) transparent;
+}
+
+/* Webkit scrollbar styles */
+.body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.body::-webkit-scrollbar-thumb {
+  background-color: var(--color-default-300);
+  border-radius: var(--radius-full);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+[data-theme="dark"] .body::-webkit-scrollbar-thumb {
+  background-color: var(--color-default-600);
+}
+
+.body::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-default-400);
+}
+
+[data-theme="dark"] .body::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-default-500);
+}
+
+/* =============================================================================
+ * Modal Footer
+ * ============================================================================= */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4) var(--spacing-6);
+  padding-top: var(--spacing-4);
+  border-top: 1px solid var(--color-default-200);
+  background-color: var(--color-default-50);
+}
+
+[data-theme="dark"] .footer {
+  border-top-color: var(--color-default-200);
+  background-color: var(--color-default-100);
+}
+
+/* =============================================================================
+ * Animations & Transitions
+ * ============================================================================= */
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .backdrop,
+  .modal,
+  .close {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .backdrop--no-animation,
+  .modal--no-animation {
+    animation: none !important;
+  }
+}
+
+/* =============================================================================
+ * High Contrast Mode
+ * ============================================================================= */
+
+@media (prefers-contrast: high) {
+  .modal {
+    border: 2px solid var(--color-default-900);
+  }
+
+  [data-theme="dark"] .modal {
+    border-color: var(--color-default-100);
+  }
+
+  .header {
+    border-bottom-width: 2px;
+  }
+
+  .footer {
+    border-top-width: 2px;
+  }
+
+  .close {
+    border: 1px solid currentColor;
+  }
+}
+
+/* =============================================================================
+ * Focus Styles
+ * ============================================================================= */
+
+.modal:focus {
+  outline: none;
+}
+
+.modal:focus-visible {
+  box-shadow: 0 0 0 3px var(--color-primary-200),
+    0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] .modal:focus-visible {
+  box-shadow: 0 0 0 3px var(--color-primary-700),
+    0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* =============================================================================
+ * Print Styles
+ * ============================================================================= */
+
+@media print {
+  .backdrop {
+    position: static;
+    background: none;
+    backdrop-filter: none;
+    padding: 0;
+  }
+
+  .modal {
+    max-width: 100%;
+    max-height: none;
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+
+  .close {
+    display: none;
+  }
+}
+
+/* =============================================================================
+ * Tablet Responsiveness
+ * ============================================================================= */
+
+@media (max-width: 768px) {
+  .modal--lg,
+  .modal--xl {
+    max-width: calc(100vw - var(--spacing-8));
+  }
+
+  .header {
+    padding: var(--spacing-4);
+  }
+
+  .body {
+    padding: var(--spacing-4);
+  }
+
+  .footer {
+    padding: var(--spacing-3) var(--spacing-4);
+  }
+}
+
+/* =============================================================================
+ * Landscape Mobile
+ * ============================================================================= */
+
+@media (max-width: 640px) and (max-height: 500px) and (orientation: landscape) {
+  .modal {
+    max-height: 100vh;
+  }
+
+  .backdrop {
+    padding: var(--spacing-2);
+  }
+
+  .header {
+    padding: var(--spacing-3);
+    padding-bottom: var(--spacing-2);
+  }
+
+  .body {
+    padding: var(--spacing-3);
+  }
+
+  .footer {
+    padding: var(--spacing-2) var(--spacing-3);
+  }
+}

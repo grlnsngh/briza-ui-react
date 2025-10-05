@@ -4,6 +4,7 @@ export { Select } from "./Select";
 export { Checkbox, CheckboxGroup } from "./Checkbox";
 export { Radio, RadioGroup } from "./Radio";
 export { FormField } from "./FormField";
+export { Modal } from "./Modal";
 export type {
   ButtonColor,
   ButtonVariant,
@@ -36,3 +37,4 @@ export type {
   FormFieldSize,
   FormFieldStatus,
 } from "./FormField";
+export type { ModalProps } from "./Modal";
