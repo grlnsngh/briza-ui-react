@@ -3,6 +3,7 @@ export { Input } from "./Input";
 export { Select } from "./Select";
 export { Checkbox, CheckboxGroup } from "./Checkbox";
 export { Radio, RadioGroup } from "./Radio";
+export { FormField } from "./FormField";
 export type {
   ButtonColor,
   ButtonVariant,
@@ -30,3 +31,8 @@ export type {
   RadioGroupProps,
   RadioGroupOption,
 } from "./Radio";
+export type {
+  FormFieldProps,
+  FormFieldSize,
+  FormFieldStatus,
+} from "./FormField";

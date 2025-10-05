@@ -1,0 +1,304 @@
+/* =============================================================================
+ * FormField Component Styles - Modern Design
+ * ============================================================================= */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  width: 100%;
+}
+
+.wrapper--sm {
+  gap: var(--spacing-0_5);
+}
+
+.wrapper--md {
+  gap: var(--spacing-1);
+}
+
+.wrapper--lg {
+  gap: var(--spacing-1_5);
+}
+
+.wrapper[data-disabled="true"] .label {
+  color: var(--color-default-400);
+  opacity: 0.6;
+}
+
+/* =============================================================================
+ * Label Styling
+ * ============================================================================= */
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-0_5);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-foreground);
+  line-height: var(--line-height-tight);
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.label__required {
+  color: var(--color-danger);
+  font-weight: var(--font-weight-bold);
+  font-size: 1em;
+  margin-left: var(--spacing-0_5);
+}
+
+/* Dark theme adjustments for label */
+[data-theme="dark"] .label {
+  color: var(--color-default-100);
+}
+
+/* =============================================================================
+ * Description Styling
+ * ============================================================================= */
+
+.description {
+  font-size: var(--font-size-xs);
+  color: var(--color-default-600);
+  line-height: var(--line-height-relaxed);
+  margin-top: calc(var(--spacing-0_5) * -1);
+}
+
+/* Dark theme adjustments for description */
+[data-theme="dark"] .description {
+  color: var(--color-default-400);
+}
+
+/* =============================================================================
+ * Content Area (Form Control Container)
+ * ============================================================================= */
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =============================================================================
+ * Helper Text Styling
+ * ============================================================================= */
+
+.helper {
+  font-size: var(--font-size-xs);
+  color: var(--color-default-600);
+  line-height: var(--line-height-normal);
+  margin-top: calc(var(--spacing-0_5) * -1);
+}
+
+/* Dark theme adjustments for helper */
+[data-theme="dark"] .helper {
+  color: var(--color-default-400);
+}
+
+/* =============================================================================
+ * Error Message Styling
+ * ============================================================================= */
+
+.error {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-1);
+  font-size: var(--font-size-xs);
+  color: var(--color-danger);
+  line-height: var(--line-height-normal);
+  margin-top: calc(var(--spacing-0_5) * -1);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Error icon using CSS (optional, can be added via JS if needed) */
+.error::before {
+  content: "⚠";
+  display: inline-block;
+  flex-shrink: 0;
+  font-size: 1em;
+}
+
+/* Dark theme adjustments for error */
+[data-theme="dark"] .error {
+  color: var(--color-danger-400);
+}
+
+/* =============================================================================
+ * Success Message Styling
+ * ============================================================================= */
+
+.success {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-1);
+  font-size: var(--font-size-xs);
+  color: var(--color-success);
+  line-height: var(--line-height-normal);
+  margin-top: calc(var(--spacing-0_5) * -1);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Success icon using CSS */
+.success::before {
+  content: "✓";
+  display: inline-block;
+  flex-shrink: 0;
+  font-size: 1em;
+  font-weight: var(--font-weight-bold);
+}
+
+/* Dark theme adjustments for success */
+[data-theme="dark"] .success {
+  color: var(--color-success-400);
+}
+
+/* =============================================================================
+ * Size Variants
+ * ============================================================================= */
+
+/* Small size adjustments */
+.wrapper--sm .label {
+  font-size: var(--font-size-2xs);
+}
+
+.wrapper--sm .description,
+.wrapper--sm .helper,
+.wrapper--sm .error,
+.wrapper--sm .success {
+  font-size: var(--font-size-2xs);
+}
+
+/* Large size adjustments */
+.wrapper--lg .label {
+  font-size: var(--font-size-sm);
+}
+
+.wrapper--lg .description,
+.wrapper--lg .helper,
+.wrapper--lg .error,
+.wrapper--lg .success {
+  font-size: var(--font-size-sm);
+}
+
+/* =============================================================================
+ * Status Variants
+ * ============================================================================= */
+
+/* Error status - apply red tint to label */
+.wrapper[data-status="error"] .label {
+  color: var(--color-danger);
+}
+
+/* Success status - apply green tint to label */
+.wrapper[data-status="success"] .label {
+  color: var(--color-success);
+}
+
+/* =============================================================================
+ * Disabled State
+ * ============================================================================= */
+
+.wrapper[data-disabled="true"] {
+  opacity: 0.6;
+  pointer-events: none;
+  user-select: none;
+}
+
+.wrapper[data-disabled="true"] .label {
+  cursor: not-allowed;
+}
+
+.wrapper[data-disabled="true"] .description,
+.wrapper[data-disabled="true"] .helper {
+  color: var(--color-default-400);
+}
+
+/* =============================================================================
+ * Focus-within state for better visibility
+ * ============================================================================= */
+
+.wrapper:focus-within .label {
+  color: var(--color-primary);
+}
+
+.wrapper[data-status="error"]:focus-within .label {
+  color: var(--color-danger);
+}
+
+.wrapper[data-status="success"]:focus-within .label {
+  color: var(--color-success);
+}
+
+/* =============================================================================
+ * Animation and Transitions
+ * ============================================================================= */
+
+.label,
+.description,
+.helper,
+.error,
+.success {
+  transition: color var(--transition-duration-200) var(--transition-timing-ease),
+    opacity var(--transition-duration-200) var(--transition-timing-ease);
+}
+
+/* Error and success messages fade in */
+.error,
+.success {
+  animation: fadeIn var(--transition-duration-200) var(--transition-timing-ease);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =============================================================================
+ * Accessibility Enhancements
+ * ============================================================================= */
+
+/* Ensure high contrast for screen readers */
+@media (prefers-contrast: high) {
+  .label {
+    font-weight: var(--font-weight-bold);
+  }
+
+  .error,
+  .success {
+    font-weight: var(--font-weight-semibold);
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .label,
+  .description,
+  .helper,
+  .error,
+  .success {
+    transition: none;
+  }
+
+  .error,
+  .success {
+    animation: none;
+  }
+}
+
+/* =============================================================================
+ * Print Styles
+ * ============================================================================= */
+
+@media print {
+  .error::before,
+  .success::before {
+    display: none;
+  }
+}
