@@ -524,9 +524,7 @@ export const CheckboxGroup = React.forwardRef<
     return (
       <div
         ref={ref}
-        className={`${styles.group} ${
-          orientation === "horizontal" ? styles["group--horizontal"] : ""
-        } ${className || ""}`}
+        className={`${styles.group} ${className || ""}`}
         role="group"
         aria-labelledby={label ? `${groupId}-label` : undefined}
         aria-describedby={ariaDescribedBy}

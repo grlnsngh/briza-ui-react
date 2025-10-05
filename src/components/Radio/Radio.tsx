@@ -528,9 +528,7 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
     return (
       <div
         ref={ref}
-        className={`${styles.group} ${
-          orientation === "horizontal" ? styles["group--horizontal"] : ""
-        } ${className || ""}`}
+        className={`${styles.group} ${className || ""}`}
         role="radiogroup"
         aria-labelledby={label ? `${groupId}-label` : undefined}
         aria-describedby={ariaDescribedBy}

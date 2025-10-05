@@ -581,8 +581,10 @@ describe("CheckboxGroup", () => {
         />
       );
 
-      const group = container.querySelector('[role="group"]');
-      expect(group?.className).toContain("group--horizontal");
+      const optionsContainer = container.querySelector(
+        '[class*="groupOptions"]'
+      );
+      expect(optionsContainer?.className).toContain("groupOptions--horizontal");
     });
   });
 

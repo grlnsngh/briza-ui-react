@@ -216,20 +216,17 @@ export const RadioGroupWithDescriptions: Story = {
 
 export const RadioGroupHorizontal: Story = {
   render: () => (
-    <div style={{ maxWidth: "600px" }}>
-      <RadioGroup
-        label="Select size"
-        orientation="horizontal"
-        options={[
-          { value: "xs", label: "XS" },
-          { value: "s", label: "S" },
-          { value: "m", label: "M" },
-          { value: "l", label: "L" },
-          { value: "xl", label: "XL" },
-        ]}
-        defaultValue="m"
-      />
-    </div>
+    <RadioGroup
+      label="Shipping method"
+      description="Choose how you want to receive your order"
+      orientation="horizontal"
+      options={[
+        { value: "standard", label: "Standard" },
+        { value: "express", label: "Express" },
+        { value: "overnight", label: "Overnight" },
+      ]}
+      defaultValue="standard"
+    />
   ),
 };
 
