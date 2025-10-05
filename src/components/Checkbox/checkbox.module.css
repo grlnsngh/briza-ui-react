@@ -228,17 +228,17 @@
 }
 
 .label--sm {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xs); /* 12px */
   line-height: 1rem;
 }
 
 .label--md {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm); /* 14px */
   line-height: 1.25rem;
 }
 
 .label--lg {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-base); /* 16px */
   line-height: 1.5rem;
 }
 
