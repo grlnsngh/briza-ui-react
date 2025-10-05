@@ -1,0 +1,353 @@
+/* ============================================ */
+/* Radio Component Styles                      */
+/* ============================================ */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1); /* 4px */
+  font-family: var(--font-family-base);
+  color: var(--color-text-primary);
+}
+
+.wrapper--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================ */
+/* Radio Container                             */
+/* ============================================ */
+
+.radioContainer {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem; /* 8px spacing between radio and label */
+}
+
+/* ============================================ */
+/* Radio Input                                 */
+/* ============================================ */
+
+.input {
+  flex-shrink: 0;
+  appearance: none;
+  margin: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid #d1d5db; /* gray-300 for better visibility in light theme */
+  border-radius: 50%; /* circular radio button */
+  background-color: #ffffff; /* white background */
+  cursor: pointer;
+  position: relative;
+  transition: all var(--transition-fast);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* subtle shadow for depth */
+}
+
+.input:hover:not(:disabled) {
+  border-color: #9ca3af; /* gray-400 - darker border on hover */
+  background-color: #f9fafb; /* gray-50 - very subtle background change */
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1); /* slightly stronger shadow on hover */
+}
+
+.input:focus {
+  outline: none;
+  border-color: #3b82f6; /* blue-500 */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.input:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Checked state */
+.input:checked {
+  background-color: #3b82f6; /* blue-500 - primary color */
+  border-color: #3b82f6;
+  box-shadow: 0 1px 3px 0 rgba(59, 130, 246, 0.3); /* primary color shadow */
+}
+
+.input:checked:hover:not(:disabled) {
+  background-color: #2563eb; /* blue-600 - darker on hover */
+  border-color: #2563eb;
+  box-shadow: 0 1px 4px 0 rgba(37, 99, 235, 0.4);
+}
+
+.input:checked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.5rem; /* 8px inner dot */
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: white;
+}
+
+/* ============================================ */
+/* Size Variants                               */
+/* ============================================ */
+
+.input--sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+.input--sm:checked::before {
+  width: 0.375rem; /* 6px inner dot for small */
+  height: 0.375rem;
+}
+
+.input--md {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.input--lg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.input--lg:checked::before {
+  width: 0.625rem; /* 10px inner dot for large */
+  height: 0.625rem;
+}
+
+/* ============================================ */
+/* Status Variants                             */
+/* ============================================ */
+
+.input--error {
+  border-color: #ef4444; /* red-500 */
+}
+
+.input--error:hover:not(:disabled) {
+  border-color: #dc2626; /* red-600 */
+}
+
+.input--error:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.input--error:checked {
+  background-color: #ef4444;
+  border-color: #ef4444;
+  box-shadow: 0 1px 3px 0 rgba(239, 68, 68, 0.3);
+}
+
+.input--error:checked:hover:not(:disabled) {
+  background-color: #dc2626;
+  border-color: #dc2626;
+  box-shadow: 0 1px 4px 0 rgba(220, 38, 38, 0.4);
+}
+
+.input--success {
+  border-color: #22c55e; /* green-500 */
+}
+
+.input--success:hover:not(:disabled) {
+  border-color: #16a34a; /* green-600 */
+}
+
+.input--success:focus {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+}
+
+.input--success:checked {
+  background-color: #22c55e;
+  border-color: #22c55e;
+  box-shadow: 0 1px 3px 0 rgba(34, 197, 94, 0.3);
+}
+
+.input--success:checked:hover:not(:disabled) {
+  background-color: #16a34a;
+  border-color: #16a34a;
+  box-shadow: 0 1px 4px 0 rgba(22, 163, 74, 0.4);
+}
+
+/* ============================================ */
+/* Label                                       */
+/* ============================================ */
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1); /* 4px */
+  cursor: pointer;
+  user-select: none;
+}
+
+.label--sm {
+  font-size: var(--font-size-sm);
+  line-height: 1rem;
+}
+
+.label--md {
+  font-size: var(--font-size-base);
+  line-height: 1.25rem;
+}
+
+.label--lg {
+  font-size: var(--font-size-lg);
+  line-height: 1.5rem;
+}
+
+.labelText {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.required {
+  color: var(--color-error);
+  margin-left: var(--spacing-1); /* 4px */
+}
+
+/* ============================================ */
+/* Description                                 */
+/* ============================================ */
+
+.description {
+  font-size: 0.875rem; /* 14px - smaller than label */
+  color: #6b7280; /* gray-500 for light theme - lighter than label */
+  line-height: 1.5;
+  margin-top: 0.25rem; /* 4px spacing from label */
+  font-weight: 400; /* normal weight, not medium like label */
+}
+
+/* ============================================ */
+/* Helper Text & Messages                      */
+/* ============================================ */
+
+.helperText {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  margin-top: calc(var(--spacing-1) * -1); /* -4px */
+  padding-left: calc(1.25rem + 0.5rem); /* radio width + 8px gap */
+}
+
+.errorMessage {
+  font-size: var(--font-size-sm);
+  color: var(--color-error);
+  line-height: 1.4;
+  margin-top: calc(var(--spacing-1) * -1); /* -4px */
+  padding-left: calc(1.25rem + 0.5rem); /* radio width + 8px gap */
+}
+
+.successMessage {
+  font-size: var(--font-size-sm);
+  color: var(--color-success);
+  line-height: 1.4;
+  margin-top: calc(var(--spacing-1) * -1); /* -4px */
+  padding-left: calc(1.25rem + 0.5rem); /* radio width + 8px gap */
+}
+
+/* ============================================ */
+/* RadioGroup Styles                           */
+/* ============================================ */
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3); /* 12px */
+  font-family: var(--font-family-base);
+}
+
+.group--horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.groupLabel {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+.groupDescription {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  margin-top: calc(var(--spacing-1) * -1); /* -4px */
+}
+
+.groupOptions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3); /* 12px */
+}
+
+.groupOptions--horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--spacing-4); /* 16px */
+}
+
+/* ============================================ */
+/* Dark Theme Support                          */
+/* ============================================ */
+
+[data-theme="dark"] .input {
+  border-color: #4b5563; /* gray-600 for better visibility */
+  background-color: #1f2937; /* gray-800 - darker background */
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3); /* stronger shadow in dark theme */
+}
+
+[data-theme="dark"] .input:hover:not(:disabled) {
+  border-color: #6b7280; /* gray-500 - lighter border on hover */
+  background-color: #374151; /* gray-700 - lighter background on hover */
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .input:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+[data-theme="dark"] .labelText {
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .description,
+[data-theme="dark"] .helperText,
+[data-theme="dark"] .groupDescription {
+  color: #9ca3af; /* gray-400 - lighter gray for dark theme descriptions */
+}
+
+/* ============================================ */
+/* Accessibility Enhancements                  */
+/* ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .input {
+    transition: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .input {
+    border-width: 3px;
+  }
+
+  .input:focus {
+    outline-width: 3px;
+  }
+}
+
+/* Focus visible only for keyboard navigation */
+.input:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}

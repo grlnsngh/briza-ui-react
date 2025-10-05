@@ -2,6 +2,7 @@ export { Button } from "./Button";
 export { Input } from "./Input";
 export { Select } from "./Select";
 export { Checkbox, CheckboxGroup } from "./Checkbox";
+export { Radio, RadioGroup } from "./Radio";
 export type {
   ButtonColor,
   ButtonVariant,
@@ -22,3 +23,10 @@ export type {
   CheckboxGroupProps,
   CheckboxGroupOption,
 } from "./Checkbox";
+export type {
+  RadioProps,
+  RadioSize,
+  RadioStatus,
+  RadioGroupProps,
+  RadioGroupOption,
+} from "./Radio";
