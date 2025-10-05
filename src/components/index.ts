@@ -1,6 +1,7 @@
 export { Button } from "./Button";
 export { Input } from "./Input";
 export { Select } from "./Select";
+export { Checkbox, CheckboxGroup } from "./Checkbox";
 export type {
   ButtonColor,
   ButtonVariant,
@@ -14,3 +15,10 @@ export type {
   SelectSize,
   SelectStatus,
 } from "./Select";
+export type {
+  CheckboxProps,
+  CheckboxSize,
+  CheckboxStatus,
+  CheckboxGroupProps,
+  CheckboxGroupOption,
+} from "./Checkbox";
