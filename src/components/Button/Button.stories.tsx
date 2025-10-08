@@ -1,6 +1,7 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "./Button";
+import { Spinner } from "../Spinner/Spinner";
 
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
@@ -293,6 +294,178 @@ export const WithIcons: Story = {
         <Button color="success" startContent={startIcon} endContent={endIcon}>
           Complete Button
         </Button>
+      </div>
+    );
+  },
+};
+
+export const WithSpinner: Story = {
+  render: () => {
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "32px",
+        }}
+      >
+        {/* Loading State with Spinner */}
+        <div>
+          <h3
+            style={{
+              marginBottom: "16px",
+              fontSize: "16px",
+              fontWeight: 600,
+              color: "var(--color-foreground)",
+            }}
+          >
+            Loading State with Spinner
+          </h3>
+          <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+            <Button
+              color="primary"
+              variant="solid"
+              startContent={<Spinner size="sm" variant="inverse" />}
+            >
+              Loading...
+            </Button>
+            <Button
+              color="success"
+              variant="solid"
+              startContent={<Spinner size="sm" variant="inverse" type="dots" />}
+            >
+              Processing
+            </Button>
+            <Button
+              color="danger"
+              variant="solid"
+              startContent={<Spinner size="sm" variant="inverse" type="bars" />}
+            >
+              Deleting
+            </Button>
+          </div>
+        </div>
+
+        {/* Different Button Sizes */}
+        <div>
+          <h3
+            style={{
+              marginBottom: "16px",
+              fontSize: "16px",
+              fontWeight: 600,
+              color: "var(--color-foreground)",
+            }}
+          >
+            Different Button Sizes
+          </h3>
+          <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+            <Button
+              size="sm"
+              color="primary"
+              variant="solid"
+              startContent={<Spinner size="xs" variant="inverse" />}
+            >
+              Small
+            </Button>
+            <Button
+              size="md"
+              color="primary"
+              variant="solid"
+              startContent={<Spinner size="sm" variant="inverse" />}
+            >
+              Medium
+            </Button>
+            <Button
+              size="lg"
+              color="primary"
+              variant="solid"
+              startContent={<Spinner size="md" variant="inverse" />}
+            >
+              Large
+            </Button>
+          </div>
+        </div>
+
+        {/* Icon Only Button */}
+        <div>
+          <h3
+            style={{
+              marginBottom: "16px",
+              fontSize: "16px",
+              fontWeight: 600,
+              color: "var(--color-foreground)",
+            }}
+          >
+            Icon Only Button
+          </h3>
+          <div style={{ display: "flex", gap: "16px" }}>
+            <Button color="primary" variant="solid" isIconOnly>
+              <Spinner size="sm" variant="inverse" />
+            </Button>
+            <Button color="success" variant="solid" isIconOnly>
+              <Spinner size="sm" variant="inverse" type="dots" />
+            </Button>
+            <Button color="warning" variant="solid" isIconOnly>
+              <Spinner size="sm" variant="inverse" type="pulse" />
+            </Button>
+            <Button color="danger" variant="solid" isIconOnly>
+              <Spinner size="sm" variant="inverse" type="bars" />
+            </Button>
+          </div>
+        </div>
+
+        {/* Uploading with different variants */}
+        <div>
+          <h3
+            style={{
+              marginBottom: "16px",
+              fontSize: "16px",
+              fontWeight: 600,
+              color: "var(--color-foreground)",
+            }}
+          >
+            Uploading - Different Button Variants
+          </h3>
+          <p
+            style={{
+              marginBottom: "12px",
+              fontSize: "14px",
+              color: "var(--color-default-600)",
+            }}
+          >
+            Solid buttons use inverse (white) spinner, other variants use colored spinners
+          </p>
+          <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+            <Button
+              color="secondary"
+              variant="solid"
+              startContent={<Spinner size="sm" variant="inverse" />}
+            >
+              Uploading (Solid)
+            </Button>
+            <Button
+              color="secondary"
+              variant="faded"
+              startContent={<Spinner size="sm" variant="secondary" />}
+            >
+              Uploading (Faded)
+            </Button>
+            <Button
+              color="secondary"
+              variant="bordered"
+              startContent={<Spinner size="sm" variant="secondary" />}
+            >
+              Uploading (Bordered)
+            </Button>
+            <Button
+              color="secondary"
+              variant="light"
+              startContent={<Spinner size="sm" variant="secondary" />}
+            >
+              Uploading (Light)
+            </Button>
+          </div>
+        </div>
       </div>
     );
   },

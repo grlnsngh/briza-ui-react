@@ -1,0 +1,441 @@
+/**
+ * Spinner Component Styles
+ * 
+ * Uses design tokens from the theme system for consistent styling
+ * and full light/dark theme support. All animations are optimized
+ * for 60fps performance using transform and opacity properties.
+ */
+
+/* =============================================================================
+ * Container
+ * ============================================================================= */
+
+.spinnerContainer {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+}
+
+/* Container size variants */
+.spinnerContainer--xs {
+  gap: var(--spacing-1);
+}
+
+.spinnerContainer--sm {
+  gap: var(--spacing-1_5);
+}
+
+.spinnerContainer--md {
+  gap: var(--spacing-2);
+}
+
+.spinnerContainer--lg {
+  gap: var(--spacing-2_5);
+}
+
+.spinnerContainer--xl {
+  gap: var(--spacing-3);
+}
+
+/* =============================================================================
+ * Spinner Label
+ * ============================================================================= */
+
+.spinnerLabel {
+  color: var(--color-foreground);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  text-align: center;
+}
+
+/* =============================================================================
+ * Base Spinner Styles
+ * ============================================================================= */
+
+.spinner {
+  /* Will be sized based on size variant */
+  flex-shrink: 0;
+}
+
+/* =============================================================================
+ * Size Variants
+ * ============================================================================= */
+
+.spinner--xs {
+  width: 16px;
+  height: 16px;
+}
+
+.spinner--sm {
+  width: 20px;
+  height: 20px;
+}
+
+.spinner--md {
+  width: 28px;
+  height: 28px;
+}
+
+.spinner--lg {
+  width: 36px;
+  height: 36px;
+}
+
+.spinner--xl {
+  width: 48px;
+  height: 48px;
+}
+
+/* =============================================================================
+ * Circular Spinner
+ * ============================================================================= */
+
+.spinner--circular {
+  animation: spinnerRotate 1.4s linear infinite;
+}
+
+.spinnerCircleBackground {
+  stroke: currentColor;
+  opacity: 0.2;
+}
+
+.spinnerCircle {
+  stroke: currentColor;
+  stroke-dasharray: 80, 200;
+  stroke-dashoffset: 0;
+  animation: spinnerDash 1.4s ease-in-out infinite;
+}
+
+@keyframes spinnerRotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinnerDash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 100, 200;
+    stroke-dashoffset: -15;
+  }
+  100% {
+    stroke-dasharray: 100, 200;
+    stroke-dashoffset: -125;
+  }
+}
+
+/* =============================================================================
+ * Dots Spinner
+ * ============================================================================= */
+
+.spinner--dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25%;
+}
+
+.spinnerDot {
+  display: block;
+  background-color: currentColor;
+  border-radius: 50%;
+  animation: spinnerDotBounce 1.4s ease-in-out infinite both;
+}
+
+/* Size-based dot dimensions */
+.spinner--xs .spinnerDot {
+  width: 4px;
+  height: 4px;
+}
+
+.spinner--sm .spinnerDot {
+  width: 5px;
+  height: 5px;
+}
+
+.spinner--md .spinnerDot {
+  width: 7px;
+  height: 7px;
+}
+
+.spinner--lg .spinnerDot {
+  width: 9px;
+  height: 9px;
+}
+
+.spinner--xl .spinnerDot {
+  width: 12px;
+  height: 12px;
+}
+
+.spinnerDot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.spinnerDot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes spinnerDotBounce {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* =============================================================================
+ * Pulse Spinner
+ * ============================================================================= */
+
+.spinner--pulse {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinnerPulse {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: currentColor;
+  border-radius: 50%;
+  animation: spinnerPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes spinnerPulse {
+  0%,
+  100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* =============================================================================
+ * Bars Spinner
+ * ============================================================================= */
+
+.spinner--bars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20%;
+  height: 100%;
+}
+
+.spinnerBar {
+  display: block;
+  background-color: currentColor;
+  border-radius: var(--radius-sm);
+  animation: spinnerBarStretch 1.2s ease-in-out infinite;
+}
+
+/* Size-based bar dimensions */
+.spinner--xs .spinnerBar {
+  width: 2px;
+  height: 12px;
+}
+
+.spinner--sm .spinnerBar {
+  width: 3px;
+  height: 16px;
+}
+
+.spinner--md .spinnerBar {
+  width: 4px;
+  height: 22px;
+}
+
+.spinner--lg .spinnerBar {
+  width: 5px;
+  height: 28px;
+}
+
+.spinner--xl .spinnerBar {
+  width: 6px;
+  height: 38px;
+}
+
+.spinnerBar:nth-child(1) {
+  animation-delay: -0.48s;
+}
+
+.spinnerBar:nth-child(2) {
+  animation-delay: -0.36s;
+}
+
+.spinnerBar:nth-child(3) {
+  animation-delay: -0.24s;
+}
+
+.spinnerBar:nth-child(4) {
+  animation-delay: -0.12s;
+}
+
+@keyframes spinnerBarStretch {
+  0%,
+  40%,
+  100% {
+    transform: scaleY(0.4);
+    opacity: 0.5;
+  }
+  20% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+/* =============================================================================
+ * Color Variants
+ * ============================================================================= */
+
+.spinner--default {
+  color: var(--color-default-500);
+}
+
+.spinner--primary {
+  color: var(--color-primary-500);
+}
+
+.spinner--secondary {
+  color: var(--color-secondary-500);
+}
+
+.spinner--success {
+  color: var(--color-success-500);
+}
+
+.spinner--warning {
+  color: var(--color-warning-500);
+}
+
+.spinner--danger {
+  color: var(--color-danger-500);
+}
+
+.spinner--inverse {
+  color: #ffffff;
+}
+
+/* =============================================================================
+ * Dark Theme Adjustments
+ * ============================================================================= */
+
+[data-theme="dark"] .spinner--default {
+  color: var(--color-default-400);
+}
+
+[data-theme="dark"] .spinner--primary {
+  color: var(--color-primary-400);
+}
+
+[data-theme="dark"] .spinner--secondary {
+  color: var(--color-secondary-400);
+}
+
+[data-theme="dark"] .spinner--success {
+  color: var(--color-success-400);
+}
+
+[data-theme="dark"] .spinner--warning {
+  color: var(--color-warning-400);
+}
+
+[data-theme="dark"] .spinner--danger {
+  color: var(--color-danger-400);
+}
+
+[data-theme="dark"] .spinner--inverse {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .spinnerLabel {
+  color: var(--color-foreground);
+}
+
+/* System theme preference support */
+@media (prefers-color-scheme: dark) {
+  [data-theme="system"] .spinner--default {
+    color: var(--color-default-400);
+  }
+
+  [data-theme="system"] .spinner--primary {
+    color: var(--color-primary-400);
+  }
+
+  [data-theme="system"] .spinner--secondary {
+    color: var(--color-secondary-400);
+  }
+
+  [data-theme="system"] .spinner--success {
+    color: var(--color-success-400);
+  }
+
+  [data-theme="system"] .spinner--warning {
+    color: var(--color-warning-400);
+  }
+
+  [data-theme="system"] .spinner--danger {
+    color: var(--color-danger-400);
+  }
+
+  [data-theme="system"] .spinner--inverse {
+    color: #ffffff;
+  }
+
+  [data-theme="system"] .spinnerLabel {
+    color: var(--color-foreground);
+  }
+}
+
+/* =============================================================================
+ * Performance Optimizations
+ * ============================================================================= */
+
+/* Enable hardware acceleration for smooth animations */
+.spinner,
+.spinnerDot,
+.spinnerPulse,
+.spinnerBar {
+  will-change: transform, opacity;
+}
+
+/* Reduce motion for users with motion sensitivity */
+@media (prefers-reduced-motion: reduce) {
+  .spinner--circular {
+    animation: spinnerRotateReduced 2s linear infinite;
+  }
+
+  @keyframes spinnerRotateReduced {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .spinnerDot,
+  .spinnerPulse,
+  .spinnerBar {
+    animation: none;
+    opacity: 0.6;
+  }
+
+  .spinnerCircle {
+    animation: none;
+    stroke-dasharray: 80, 200;
+  }
+}

@@ -1,4 +1,20 @@
 <style>
+  /* Force white background for documentation pages in all themes */
+  #storybook-docs,
+  .sbdocs.sbdocs-wrapper,
+  .sbdocs.sbdocs-content {
+    background-color: #ffffff !important;
+    width: 100% !important;
+  }
+
+  /* Ensure docs container takes full width */
+  [data-theme="dark"] #storybook-docs,
+  [data-theme="dark"] .sbdocs.sbdocs-wrapper,
+  [data-theme="dark"] .sbdocs.sbdocs-content {
+    background-color: #ffffff !important;
+    width: 100% !important;
+  }
+
   /* Smooth theme transitions for preview area only */
   .docs-story,
   .sb-story {

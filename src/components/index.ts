@@ -6,6 +6,7 @@ export { Radio, RadioGroup } from "./Radio";
 export { FormField } from "./FormField";
 export { Modal } from "./Modal";
 export { Toast, ToastProvider, useToast } from "./Toast";
+export { Spinner } from "./Spinner";
 export type {
   ButtonColor,
   ButtonVariant,
@@ -48,3 +49,9 @@ export type {
   ToastProviderProps,
   ToastContextValue,
 } from "./Toast";
+export type {
+  SpinnerProps,
+  SpinnerVariant,
+  SpinnerSize,
+  SpinnerType,
+} from "./Spinner";
