@@ -7,6 +7,7 @@ export { FormField } from "./FormField";
 export { Modal } from "./Modal";
 export { Toast, ToastProvider, useToast } from "./Toast";
 export { Spinner } from "./Spinner";
+export { Progress } from "./Progress";
 export type {
   ButtonColor,
   ButtonVariant,
@@ -55,3 +56,9 @@ export type {
   SpinnerSize,
   SpinnerType,
 } from "./Spinner";
+export type {
+  ProgressProps,
+  ProgressVariant,
+  ProgressColor,
+  ProgressSize,
+} from "./Progress";

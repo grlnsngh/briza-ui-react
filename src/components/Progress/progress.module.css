@@ -1,0 +1,472 @@
+/**
+ * Progress Component Styles
+ * 
+ * Uses design tokens from the theme system for consistent styling
+ * and full light/dark theme support. All animations are optimized
+ * for 60fps performance using transform and opacity properties.
+ */
+
+/* =============================================================================
+ * Container
+ * ============================================================================= */
+
+.progressContainer {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  width: 100%;
+}
+
+.progressContainer--linear {
+  flex-direction: column;
+}
+
+.progressContainer--circular {
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+}
+
+/* Container size variants */
+.progressContainer--sm {
+  gap: var(--spacing-1_5);
+}
+
+.progressContainer--md {
+  gap: var(--spacing-2);
+}
+
+.progressContainer--lg {
+  gap: var(--spacing-2_5);
+}
+
+/* =============================================================================
+ * Labels
+ * ============================================================================= */
+
+.progressLabel {
+  color: var(--color-foreground);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-1);
+}
+
+.progressValueLabel {
+  color: var(--color-foreground);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  text-align: center;
+}
+
+/* =============================================================================
+ * Linear Progress
+ * ============================================================================= */
+
+.progressTrack {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-default-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+[data-theme="dark"] .progressTrack {
+  background-color: var(--color-default-800);
+}
+
+/* Track sizes */
+.progressTrack--sm {
+  height: 4px;
+}
+
+.progressTrack--md {
+  height: 8px;
+}
+
+.progressTrack--lg {
+  height: 12px;
+}
+
+/* =============================================================================
+ * Progress Bar (Linear)
+ * ============================================================================= */
+
+.progressBar {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width var(--transition-duration-300) var(--transition-timing-ease);
+  background-color: var(--color-primary-500);
+}
+
+/* Bar sizes (matches track) */
+.progressBar--sm {
+  min-height: 4px;
+}
+
+.progressBar--md {
+  min-height: 8px;
+}
+
+.progressBar--lg {
+  min-height: 12px;
+}
+
+/* Bar colors */
+.progressBar--default {
+  background-color: var(--color-default-500);
+}
+
+.progressBar--primary {
+  background-color: var(--color-primary-500);
+}
+
+.progressBar--secondary {
+  background-color: var(--color-secondary-500);
+}
+
+.progressBar--success {
+  background-color: var(--color-success-500);
+}
+
+.progressBar--warning {
+  background-color: var(--color-warning-500);
+}
+
+.progressBar--danger {
+  background-color: var(--color-danger-500);
+}
+
+/* Dark theme adjustments for bars */
+[data-theme="dark"] .progressBar--default {
+  background-color: var(--color-default-400);
+}
+
+[data-theme="dark"] .progressBar--primary {
+  background-color: var(--color-primary-400);
+}
+
+[data-theme="dark"] .progressBar--secondary {
+  background-color: var(--color-secondary-400);
+}
+
+[data-theme="dark"] .progressBar--success {
+  background-color: var(--color-success-400);
+}
+
+[data-theme="dark"] .progressBar--warning {
+  background-color: var(--color-warning-400);
+}
+
+[data-theme="dark"] .progressBar--danger {
+  background-color: var(--color-danger-400);
+}
+
+/* =============================================================================
+ * Indeterminate State (Linear)
+ * ============================================================================= */
+
+.progressBar--indeterminate {
+  width: 40% !important;
+  animation: progressBarIndeterminate 1.5s ease-in-out infinite;
+}
+
+@keyframes progressBarIndeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(250%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* =============================================================================
+ * Striped Pattern
+ * ============================================================================= */
+
+.progressBar--striped {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+}
+
+.progressBar--animated.progressBar--striped {
+  animation: progressBarStripes 1s linear infinite;
+}
+
+@keyframes progressBarStripes {
+  0% {
+    background-position: 1rem 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* Disable animation */
+.progressBar--no-animation {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* =============================================================================
+ * Circular Progress
+ * ============================================================================= */
+
+.progressCircular {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progressCircular--sm {
+  width: 40px;
+  height: 40px;
+}
+
+.progressCircular--md {
+  width: 50px;
+  height: 50px;
+}
+
+.progressCircular--lg {
+  width: 70px;
+  height: 70px;
+}
+
+/* =============================================================================
+ * Circular Progress - SVG Elements
+ * ============================================================================= */
+
+.progressCircleBackground {
+  stroke: var(--color-default-200);
+}
+
+[data-theme="dark"] .progressCircleBackground {
+  stroke: var(--color-default-800);
+}
+
+.progressCircle {
+  transition: stroke-dashoffset var(--transition-duration-300)
+    var(--transition-timing-ease);
+  stroke: var(--color-primary-500);
+}
+
+/* Circle colors */
+.progressCircle--default {
+  stroke: var(--color-default-500);
+}
+
+.progressCircle--primary {
+  stroke: var(--color-primary-500);
+}
+
+.progressCircle--secondary {
+  stroke: var(--color-secondary-500);
+}
+
+.progressCircle--success {
+  stroke: var(--color-success-500);
+}
+
+.progressCircle--warning {
+  stroke: var(--color-warning-500);
+}
+
+.progressCircle--danger {
+  stroke: var(--color-danger-500);
+}
+
+/* Dark theme adjustments for circles */
+[data-theme="dark"] .progressCircle--default {
+  stroke: var(--color-default-400);
+}
+
+[data-theme="dark"] .progressCircle--primary {
+  stroke: var(--color-primary-400);
+}
+
+[data-theme="dark"] .progressCircle--secondary {
+  stroke: var(--color-secondary-400);
+}
+
+[data-theme="dark"] .progressCircle--success {
+  stroke: var(--color-success-400);
+}
+
+[data-theme="dark"] .progressCircle--warning {
+  stroke: var(--color-warning-400);
+}
+
+[data-theme="dark"] .progressCircle--danger {
+  stroke: var(--color-danger-400);
+}
+
+/* =============================================================================
+ * Indeterminate State (Circular)
+ * ============================================================================= */
+
+.progressCircular--indeterminate svg {
+  animation: progressCircularRotate 1.4s linear infinite;
+}
+
+.progressCircular--indeterminate .progressCircle {
+  stroke-dasharray: 80 200;
+  stroke-dashoffset: 0;
+  animation: progressCircularDash 1.4s ease-in-out infinite;
+}
+
+@keyframes progressCircularRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes progressCircularDash {
+  0% {
+    stroke-dasharray: 1 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 100 200;
+    stroke-dashoffset: -15;
+  }
+  100% {
+    stroke-dasharray: 100 200;
+    stroke-dashoffset: -125;
+  }
+}
+
+/* Disable animation */
+.progressCircular--no-animation,
+.progressCircular--no-animation svg,
+.progressCircular--no-animation .progressCircle {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* =============================================================================
+ * Value Label for Circular Progress
+ * ============================================================================= */
+
+.progressCircular .progressValueLabel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+}
+
+.progressCircular--md .progressValueLabel {
+  font-size: var(--font-size-sm);
+}
+
+.progressCircular--lg .progressValueLabel {
+  font-size: var(--font-size-base);
+}
+
+/* =============================================================================
+ * Performance Optimizations
+ * ============================================================================= */
+
+/* Enable hardware acceleration for smooth animations */
+.progressBar,
+.progressCircle {
+  will-change: transform, stroke-dashoffset;
+}
+
+/* =============================================================================
+ * Reduced Motion Support
+ * ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .progressBar,
+  .progressCircle,
+  .progressBar--indeterminate,
+  .progressCircular--indeterminate svg,
+  .progressCircular--indeterminate .progressCircle,
+  .progressBar--animated {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =============================================================================
+ * System Theme Support
+ * ============================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  [data-theme="system"] .progressTrack {
+    background-color: var(--color-default-800);
+  }
+
+  [data-theme="system"] .progressCircleBackground {
+    stroke: var(--color-default-800);
+  }
+
+  [data-theme="system"] .progressBar--default {
+    background-color: var(--color-default-400);
+  }
+
+  [data-theme="system"] .progressBar--primary {
+    background-color: var(--color-primary-400);
+  }
+
+  [data-theme="system"] .progressBar--secondary {
+    background-color: var(--color-secondary-400);
+  }
+
+  [data-theme="system"] .progressBar--success {
+    background-color: var(--color-success-400);
+  }
+
+  [data-theme="system"] .progressBar--warning {
+    background-color: var(--color-warning-400);
+  }
+
+  [data-theme="system"] .progressBar--danger {
+    background-color: var(--color-danger-400);
+  }
+
+  [data-theme="system"] .progressCircle--default {
+    stroke: var(--color-default-400);
+  }
+
+  [data-theme="system"] .progressCircle--primary {
+    stroke: var(--color-primary-400);
+  }
+
+  [data-theme="system"] .progressCircle--secondary {
+    stroke: var(--color-secondary-400);
+  }
+
+  [data-theme="system"] .progressCircle--success {
+    stroke: var(--color-success-400);
+  }
+
+  [data-theme="system"] .progressCircle--warning {
+    stroke: var(--color-warning-400);
+  }
+
+  [data-theme="system"] .progressCircle--danger {
+    stroke: var(--color-danger-400);
+  }
+}
