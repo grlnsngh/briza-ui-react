@@ -10,6 +10,7 @@ export { Spinner } from "./Spinner";
 export { Progress } from "./Progress";
 export { Table } from "./Table";
 export { Tabs } from "./Tabs";
+export { Breadcrumb } from "./Breadcrumb";
 export type {
   ButtonColor,
   ButtonVariant,
@@ -80,3 +81,9 @@ export type {
   TabsVariant,
   TabsColor,
 } from "./Tabs";
+export type {
+  BreadcrumbProps,
+  BreadcrumbItem,
+  BreadcrumbSize,
+  BreadcrumbOverflow,
+} from "./Breadcrumb";
