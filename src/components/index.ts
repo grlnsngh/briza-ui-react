@@ -11,6 +11,7 @@ export { Progress } from "./Progress";
 export { Table } from "./Table";
 export { Tabs } from "./Tabs";
 export { Breadcrumb } from "./Breadcrumb";
+export { Pagination } from "./Pagination";
 export type {
   ButtonColor,
   ButtonVariant,
@@ -87,3 +88,8 @@ export type {
   BreadcrumbSize,
   BreadcrumbOverflow,
 } from "./Breadcrumb";
+export type {
+  PaginationProps,
+  PaginationSize,
+  PaginationVariant,
+} from "./Pagination";

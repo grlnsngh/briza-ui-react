@@ -161,6 +161,20 @@ const customStyles = {
 <Radio name="choice" label="Option B" value="b" />
 ```
 
+### Pagination
+
+```tsx
+<Pagination
+  totalPages={10}
+  currentPage={page}
+  onPageChange={setPage}
+  showFirstLast
+  showItemsPerPage
+  totalItems={100}
+  itemsPerPage={10}
+/>
+```
+
 ## Features
 
 - 🚀 Built with modern React 18+ and TypeScript
@@ -170,12 +184,13 @@ const customStyles = {
 - 📦 Tree-shakable for optimal bundle size
 - 🧪 Tested with Vitest and Playwright
 - 📖 Full TypeScript support with comprehensive type definitions
-- ♿ Accessible components following WCAG guidelines
+- ♿ Accessible components following WCAG 2.1 AA guidelines
 - 🎨 CSS Variables for dynamic theming
 - ⚡ Zero dependencies (only React and React DOM as peers)
 - 📱 Responsive and mobile-friendly
 - 🎭 Storybook documentation with interactive examples
 - 🧩 **Form Components**: Button, Input, Select, Checkbox, Radio with validation states
+- 📄 **Navigation Components**: Pagination, Breadcrumb, Tabs with keyboard support
 - 🔧 **Highly Customizable**: Multiple variants, sizes, colors, and states for all components
 
 ## Development
@@ -281,14 +296,20 @@ Contributions are welcome! Please feel free to submit a Pull Request. The projec
 - [x] **Design Tokens** - Comprehensive design system ✅
 - [x] **Form Components** - Input, Select, Checkbox, Radio with validation ✅
 - [x] **Button Component** - Multiple variants, sizes, and states ✅
-- [ ] Modal/Dialog component
+- [x] **Pagination Component** - Full-featured with keyboard navigation ✅
+- [x] **Modal Component** - Accessible dialog with portal rendering ✅
+- [x] **Toast/Notification System** - Toast notifications with queue management ✅
+- [x] **Data Table Component** - Sortable, selectable table with pagination ✅
+- [x] **Breadcrumb Component** - Navigation breadcrumbs with overflow handling ✅
+- [x] **Tabs Component** - Tabbed interface with multiple orientations ✅
+- [x] **Progress Component** - Progress bars and circular indicators ✅
+- [x] **Spinner Component** - Loading spinners with various styles ✅
 - [ ] DatePicker/Calendar component
+- [ ] Dropdown/Menu component
+- [ ] Tooltip component
+- [ ] Accordion component
 - [ ] Animation system with theme-aware transitions
-- [ ] More comprehensive testing coverage
-- [ ] Component composition patterns
-- [ ] Advanced theme customization
-- [ ] Data table component
-- [ ] Toast/Notification system
+- [ ] Advanced theme customization tools
 
 ## License
 
