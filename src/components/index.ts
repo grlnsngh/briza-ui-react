@@ -9,6 +9,7 @@ export { Toast, ToastProvider, useToast } from "./Toast";
 export { Spinner } from "./Spinner";
 export { Progress } from "./Progress";
 export { Table } from "./Table";
+export { Tabs } from "./Tabs";
 export type {
   ButtonColor,
   ButtonVariant,
@@ -71,3 +72,11 @@ export type {
   TableSelectionMode,
   TableSize,
 } from "./Table";
+export type {
+  TabsProps,
+  TabItem,
+  TabsOrientation,
+  TabsSize,
+  TabsVariant,
+  TabsColor,
+} from "./Tabs";

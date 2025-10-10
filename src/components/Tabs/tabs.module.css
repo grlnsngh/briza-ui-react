@@ -1,0 +1,675 @@
+/**
+ * Tabs Component Styles
+ *
+ * Uses design tokens from the theme system for consistent styling
+ * and full light/dark theme support.
+ */
+
+/* =============================================================================
+ * ROOT CONTAINER
+ * ============================================================================= */
+
+.tabs {
+  /* Layout */
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tabs--horizontal {
+  flex-direction: column;
+}
+
+.tabs--vertical {
+  flex-direction: row;
+  gap: var(--spacing-4);
+}
+
+/* =============================================================================
+ * TAB LIST
+ * ============================================================================= */
+
+.tabList {
+  /* Layout */
+  display: flex;
+  gap: var(--spacing-1);
+  position: relative;
+  outline: none;
+
+  /* Scrolling */
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for webkit browsers */
+.tabList::-webkit-scrollbar {
+  height: 4px;
+}
+
+.tabList::-webkit-scrollbar-track {
+  background: var(--color-default-100);
+  border-radius: var(--radius-full);
+}
+
+.tabList::-webkit-scrollbar-thumb {
+  background: var(--color-default-300);
+  border-radius: var(--radius-full);
+}
+
+.tabList::-webkit-scrollbar-thumb:hover {
+  background: var(--color-default-400);
+}
+
+.tabs--horizontal .tabList {
+  flex-direction: row;
+  border-bottom: 1px solid var(--color-default-200);
+  padding-bottom: 0;
+}
+
+.tabs--vertical .tabList {
+  flex-direction: column;
+  border-right: 1px solid var(--color-default-200);
+  padding-right: 0;
+  min-width: 200px;
+}
+
+/* Full width variant */
+.tabs--full-width .tabList {
+  width: 100%;
+}
+
+.tabs--full-width.tabs--horizontal .tab {
+  flex: 1;
+}
+
+/* =============================================================================
+ * TAB BUTTON
+ * ============================================================================= */
+
+.tab {
+  /* Reset */
+  all: unset;
+  box-sizing: border-box;
+
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  position: relative;
+  white-space: nowrap;
+
+  /* Typography */
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  color: var(--color-default-600);
+
+  /* Spacing */
+  padding: var(--spacing-2) var(--spacing-4);
+
+  /* Border */
+  border-radius: var(--radius-md);
+
+  /* Interaction */
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--transition-duration-200) var(--transition-timing-ease);
+
+  /* Focus */
+  outline: none;
+}
+
+.tab:hover:not(.tab--disabled) {
+  color: var(--color-default-900);
+  background-color: var(--color-default-100);
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  z-index: 1;
+}
+
+.tab--disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  color: var(--color-default-400);
+}
+
+/* Tab icon */
+.tabIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+}
+
+.tabLabel {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* =============================================================================
+ * SIZE VARIANTS
+ * ============================================================================= */
+
+.tabs--sm .tab {
+  padding: var(--spacing-1) var(--spacing-2);
+  font-size: var(--font-size-xs);
+}
+
+.tabs--md .tab {
+  padding: var(--spacing-2) var(--spacing-4);
+  font-size: var(--font-size-sm);
+}
+
+.tabs--lg .tab {
+  padding: var(--spacing-3) var(--spacing-6);
+  font-size: var(--font-size-base);
+}
+
+/* =============================================================================
+ * VARIANT STYLES - SOLID
+ * ============================================================================= */
+
+.tabs--solid .tab--selected {
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+  box-shadow: var(--shadow-sm);
+}
+
+.tabs--solid.tabs--primary .tab--selected {
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+}
+
+.tabs--solid.tabs--secondary .tab--selected {
+  background-color: var(--color-secondary);
+  color: var(--color-secondary-foreground);
+}
+
+.tabs--solid.tabs--success .tab--selected {
+  background-color: var(--color-success);
+  color: var(--color-success-foreground);
+}
+
+.tabs--solid.tabs--warning .tab--selected {
+  background-color: var(--color-warning);
+  color: var(--color-warning-foreground);
+}
+
+.tabs--solid.tabs--danger .tab--selected {
+  background-color: var(--color-danger);
+  color: var(--color-danger-foreground);
+}
+
+.tabs--solid.tabs--default .tab--selected {
+  background-color: var(--color-default);
+  color: var(--color-default-foreground);
+}
+
+/* =============================================================================
+ * VARIANT STYLES - UNDERLINED
+ * ============================================================================= */
+
+.tabs--underlined.tabs--horizontal .tabList {
+  gap: var(--spacing-6);
+  border-bottom: 2px solid var(--color-default-200);
+}
+
+.tabs--underlined.tabs--vertical .tabList {
+  gap: var(--spacing-2);
+  border-right: 2px solid var(--color-default-200);
+}
+
+.tabs--underlined .tab {
+  background-color: transparent;
+  border-radius: 0;
+  position: relative;
+}
+
+.tabs--underlined.tabs--horizontal .tab--selected::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: all var(--transition-duration-200) var(--transition-timing-ease);
+}
+
+.tabs--underlined.tabs--vertical .tab--selected::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--color-primary);
+  transition: all var(--transition-duration-200) var(--transition-timing-ease);
+}
+
+.tabs--underlined.tabs--primary .tab--selected {
+  color: var(--color-primary);
+}
+
+.tabs--underlined.tabs--primary .tab--selected::after {
+  background-color: var(--color-primary);
+}
+
+.tabs--underlined.tabs--secondary .tab--selected {
+  color: var(--color-secondary);
+}
+
+.tabs--underlined.tabs--secondary .tab--selected::after {
+  background-color: var(--color-secondary);
+}
+
+.tabs--underlined.tabs--success .tab--selected {
+  color: var(--color-success);
+}
+
+.tabs--underlined.tabs--success .tab--selected::after {
+  background-color: var(--color-success);
+}
+
+.tabs--underlined.tabs--warning .tab--selected {
+  color: var(--color-warning);
+}
+
+.tabs--underlined.tabs--warning .tab--selected::after {
+  background-color: var(--color-warning);
+}
+
+.tabs--underlined.tabs--danger .tab--selected {
+  color: var(--color-danger);
+}
+
+.tabs--underlined.tabs--danger .tab--selected::after {
+  background-color: var(--color-danger);
+}
+
+.tabs--underlined.tabs--default .tab--selected {
+  color: var(--color-default-900);
+}
+
+.tabs--underlined.tabs--default .tab--selected::after {
+  background-color: var(--color-default-900);
+}
+
+/* =============================================================================
+ * VARIANT STYLES - BORDERED
+ * ============================================================================= */
+
+.tabs--bordered .tab {
+  border: 1px solid var(--color-default-300);
+  margin-bottom: -1px;
+}
+
+.tabs--bordered .tab--selected {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background-color: var(--color-primary-50);
+  z-index: 1;
+}
+
+.tabs--bordered.tabs--primary .tab--selected {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background-color: var(--color-primary-50);
+}
+
+.tabs--bordered.tabs--secondary .tab--selected {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+  background-color: var(--color-secondary-50);
+}
+
+.tabs--bordered.tabs--success .tab--selected {
+  border-color: var(--color-success);
+  color: var(--color-success);
+  background-color: var(--color-success-50);
+}
+
+.tabs--bordered.tabs--warning .tab--selected {
+  border-color: var(--color-warning);
+  color: var(--color-warning);
+  background-color: var(--color-warning-50);
+}
+
+.tabs--bordered.tabs--danger .tab--selected {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+  background-color: var(--color-danger-50);
+}
+
+.tabs--bordered.tabs--default .tab--selected {
+  border-color: var(--color-default-900);
+  color: var(--color-default-900);
+  background-color: var(--color-default-100);
+}
+
+/* =============================================================================
+ * VARIANT STYLES - LIGHT
+ * ============================================================================= */
+
+.tabs--light .tab {
+  background-color: transparent;
+}
+
+.tabs--light .tab:hover:not(.tab--disabled) {
+  background-color: var(--color-primary-100);
+  color: var(--color-primary);
+}
+
+.tabs--light .tab--selected {
+  background-color: var(--color-primary-100);
+  color: var(--color-primary);
+}
+
+.tabs--light.tabs--primary .tab--selected {
+  background-color: var(--color-primary-100);
+  color: var(--color-primary);
+}
+
+.tabs--light.tabs--secondary .tab--selected {
+  background-color: var(--color-secondary-100);
+  color: var(--color-secondary);
+}
+
+.tabs--light.tabs--success .tab--selected {
+  background-color: var(--color-success-100);
+  color: var(--color-success);
+}
+
+.tabs--light.tabs--warning .tab--selected {
+  background-color: var(--color-warning-100);
+  color: var(--color-warning);
+}
+
+.tabs--light.tabs--danger .tab--selected {
+  background-color: var(--color-danger-100);
+  color: var(--color-danger);
+}
+
+.tabs--light.tabs--default .tab--selected {
+  background-color: var(--color-default-200);
+  color: var(--color-default-900);
+}
+
+/* =============================================================================
+ * TAB PANELS
+ * ============================================================================= */
+
+.tabPanels {
+  flex: 1;
+  position: relative;
+}
+
+.tabPanel {
+  /* Layout */
+  padding: var(--spacing-4);
+  outline: none;
+  animation: fadeIn var(--transition-duration-200) var(--transition-timing-ease);
+}
+
+.tabPanel[hidden] {
+  display: none;
+}
+
+.tabs--horizontal .tabPanels {
+  padding-top: var(--spacing-4);
+}
+
+.tabs--vertical .tabPanels {
+  padding-left: var(--spacing-4);
+}
+
+/* Panel fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =============================================================================
+ * DARK THEME
+ * ============================================================================= */
+
+[data-theme="dark"] .tabList {
+  border-color: var(--color-default-700);
+}
+
+[data-theme="dark"] .tabList::-webkit-scrollbar-track {
+  background: var(--color-default-800);
+}
+
+[data-theme="dark"] .tabList::-webkit-scrollbar-thumb {
+  background: var(--color-default-600);
+}
+
+[data-theme="dark"] .tabList::-webkit-scrollbar-thumb:hover {
+  background: var(--color-default-500);
+}
+
+[data-theme="dark"] .tab {
+  color: var(--color-default-400);
+}
+
+[data-theme="dark"] .tab:hover:not(.tab--disabled) {
+  color: var(--color-default-100);
+  background-color: var(--color-default-800);
+}
+
+[data-theme="dark"] .tab--disabled {
+  color: var(--color-default-600);
+}
+
+/* Dark theme - Solid variant */
+[data-theme="dark"] .tabs--solid.tabs--default .tab--selected {
+  background-color: var(--color-default-700);
+  color: var(--color-default-100);
+}
+
+/* Dark theme - Bordered variant */
+[data-theme="dark"] .tabs--bordered .tab {
+  border-color: var(--color-default-600);
+}
+
+[data-theme="dark"] .tabs--bordered.tabs--primary .tab--selected {
+  background-color: var(--color-primary-900);
+  color: var(--color-primary-100);
+}
+
+[data-theme="dark"] .tabs--bordered.tabs--secondary .tab--selected {
+  background-color: var(--color-secondary-900);
+  color: var(--color-secondary-100);
+}
+
+[data-theme="dark"] .tabs--bordered.tabs--success .tab--selected {
+  background-color: var(--color-success-900);
+  color: var(--color-success-100);
+}
+
+[data-theme="dark"] .tabs--bordered.tabs--warning .tab--selected {
+  background-color: var(--color-warning-900);
+  color: var(--color-warning-100);
+}
+
+[data-theme="dark"] .tabs--bordered.tabs--danger .tab--selected {
+  background-color: var(--color-danger-900);
+  color: var(--color-danger-100);
+}
+
+[data-theme="dark"] .tabs--bordered.tabs--default .tab--selected {
+  background-color: var(--color-default-800);
+  color: var(--color-default-100);
+}
+
+/* Dark theme - Light variant */
+[data-theme="dark"] .tabs--light .tab:hover:not(.tab--disabled) {
+  background-color: var(--color-primary-900);
+  color: var(--color-primary-100);
+}
+
+[data-theme="dark"] .tabs--light.tabs--primary .tab--selected {
+  background-color: var(--color-primary-900);
+  color: var(--color-primary-100);
+}
+
+[data-theme="dark"] .tabs--light.tabs--secondary .tab--selected {
+  background-color: var(--color-secondary-900);
+  color: var(--color-secondary-100);
+}
+
+[data-theme="dark"] .tabs--light.tabs--success .tab--selected {
+  background-color: var(--color-success-900);
+  color: var(--color-success-100);
+}
+
+[data-theme="dark"] .tabs--light.tabs--warning .tab--selected {
+  background-color: var(--color-warning-900);
+  color: var(--color-warning-100);
+}
+
+[data-theme="dark"] .tabs--light.tabs--danger .tab--selected {
+  background-color: var(--color-danger-900);
+  color: var(--color-danger-100);
+}
+
+[data-theme="dark"] .tabs--light.tabs--default .tab--selected {
+  background-color: var(--color-default-800);
+  color: var(--color-default-100);
+}
+
+/* =============================================================================
+ * SYSTEM THEME (Respects OS preference)
+ * ============================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  [data-theme="system"] .tabList {
+    border-color: var(--color-default-700);
+  }
+
+  [data-theme="system"] .tabList::-webkit-scrollbar-track {
+    background: var(--color-default-800);
+  }
+
+  [data-theme="system"] .tabList::-webkit-scrollbar-thumb {
+    background: var(--color-default-600);
+  }
+
+  [data-theme="system"] .tabList::-webkit-scrollbar-thumb:hover {
+    background: var(--color-default-500);
+  }
+
+  [data-theme="system"] .tab {
+    color: var(--color-default-400);
+  }
+
+  [data-theme="system"] .tab:hover:not(.tab--disabled) {
+    color: var(--color-default-100);
+    background-color: var(--color-default-800);
+  }
+
+  [data-theme="system"] .tab--disabled {
+    color: var(--color-default-600);
+  }
+
+  [data-theme="system"] .tabs--solid.tabs--default .tab--selected {
+    background-color: var(--color-default-700);
+    color: var(--color-default-100);
+  }
+
+  [data-theme="system"] .tabs--bordered .tab {
+    border-color: var(--color-default-600);
+  }
+
+  [data-theme="system"] .tabs--bordered.tabs--primary .tab--selected {
+    background-color: var(--color-primary-900);
+    color: var(--color-primary-100);
+  }
+
+  [data-theme="system"] .tabs--bordered.tabs--secondary .tab--selected {
+    background-color: var(--color-secondary-900);
+    color: var(--color-secondary-100);
+  }
+
+  [data-theme="system"] .tabs--bordered.tabs--success .tab--selected {
+    background-color: var(--color-success-900);
+    color: var(--color-success-100);
+  }
+
+  [data-theme="system"] .tabs--bordered.tabs--warning .tab--selected {
+    background-color: var(--color-warning-900);
+    color: var(--color-warning-100);
+  }
+
+  [data-theme="system"] .tabs--bordered.tabs--danger .tab--selected {
+    background-color: var(--color-danger-900);
+    color: var(--color-danger-100);
+  }
+
+  [data-theme="system"] .tabs--bordered.tabs--default .tab--selected {
+    background-color: var(--color-default-800);
+    color: var(--color-default-100);
+  }
+
+  [data-theme="system"] .tabs--light .tab:hover:not(.tab--disabled) {
+    background-color: var(--color-primary-900);
+    color: var(--color-primary-100);
+  }
+
+  [data-theme="system"] .tabs--light.tabs--primary .tab--selected {
+    background-color: var(--color-primary-900);
+    color: var(--color-primary-100);
+  }
+
+  [data-theme="system"] .tabs--light.tabs--secondary .tab--selected {
+    background-color: var(--color-secondary-900);
+    color: var(--color-secondary-100);
+  }
+
+  [data-theme="system"] .tabs--light.tabs--success .tab--selected {
+    background-color: var(--color-success-900);
+    color: var(--color-success-100);
+  }
+
+  [data-theme="system"] .tabs--light.tabs--warning .tab--selected {
+    background-color: var(--color-warning-900);
+    color: var(--color-warning-100);
+  }
+
+  [data-theme="system"] .tabs--light.tabs--danger .tab--selected {
+    background-color: var(--color-danger-900);
+    color: var(--color-danger-100);
+  }
+
+  [data-theme="system"] .tabs--light.tabs--default .tab--selected {
+    background-color: var(--color-default-800);
+    color: var(--color-default-100);
+  }
+}
+
+/* =============================================================================
+ * REDUCED MOTION SUPPORT
+ * ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .tab,
+  .tabPanel {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
