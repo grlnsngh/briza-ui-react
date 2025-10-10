@@ -8,6 +8,7 @@ export { Modal } from "./Modal";
 export { Toast, ToastProvider, useToast } from "./Toast";
 export { Spinner } from "./Spinner";
 export { Progress } from "./Progress";
+export { Table } from "./Table";
 export type {
   ButtonColor,
   ButtonVariant,
@@ -62,3 +63,11 @@ export type {
   ProgressColor,
   ProgressSize,
 } from "./Progress";
+export type {
+  TableProps,
+  TableColumn,
+  TableSort,
+  TableSortDirection,
+  TableSelectionMode,
+  TableSize,
+} from "./Table";

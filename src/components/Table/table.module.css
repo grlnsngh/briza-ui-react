@@ -1,0 +1,449 @@
+/**
+ * Table Component Styles
+ * 
+ * Uses design tokens from the theme system for consistent styling
+ * and full light/dark theme support.
+ */
+
+/* =============================================================================
+ * Table Container
+ * ============================================================================= */
+
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  position: relative;
+}
+
+.tableContainer--bordered {
+  border: 1px solid var(--color-default-200);
+  border-radius: var(--radius-md);
+}
+
+[data-theme="dark"] .tableContainer--bordered {
+  border-color: var(--color-default-700);
+}
+
+.tableContainer--stickyHeader {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+/* =============================================================================
+ * Table Element
+ * ============================================================================= */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+/* Size variants */
+.table--sm {
+  font-size: var(--font-size-sm);
+}
+
+.table--md {
+  font-size: var(--font-size-base);
+}
+
+.table--lg {
+  font-size: var(--font-size-lg);
+}
+
+/* Striped rows */
+.table--striped .tableRow:nth-child(even) {
+  background-color: var(--color-default-50);
+}
+
+[data-theme="dark"] .table--striped .tableRow:nth-child(even) {
+  background-color: var(--color-default-50);
+}
+
+/* Hoverable rows */
+.table--hoverable .tableRow:hover {
+  background-color: var(--color-default-100);
+  cursor: pointer;
+}
+
+[data-theme="dark"] .table--hoverable .tableRow:hover {
+  background-color: var(--color-default-200);
+}
+
+/* =============================================================================
+ * Caption
+ * ============================================================================= */
+
+.tableCaption {
+  caption-side: top;
+  padding: var(--spacing-3);
+  text-align: left;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+  color: var(--color-foreground);
+}
+
+/* =============================================================================
+ * Table Head
+ * ============================================================================= */
+
+.tableHead {
+  background-color: var(--color-default-100);
+  border-bottom: 2px solid var(--color-default-300);
+}
+
+[data-theme="dark"] .tableHead {
+  background-color: var(--color-default-50);
+  border-bottom-color: var(--color-default-200);
+}
+
+.tableContainer--stickyHeader .tableHead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* =============================================================================
+ * Table Header Cell
+ * ============================================================================= */
+
+.tableHeaderCell {
+  padding: var(--spacing-3) var(--spacing-4);
+  text-align: left;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-foreground);
+  white-space: nowrap;
+  position: relative;
+  user-select: none;
+}
+
+.table--sm .tableHeaderCell {
+  padding: var(--spacing-2) var(--spacing-3);
+}
+
+.table--lg .tableHeaderCell {
+  padding: var(--spacing-4) var(--spacing-5);
+}
+
+.tableHeaderCell--sortable {
+  cursor: pointer;
+  transition: background-color var(--transition-duration-200)
+    var(--transition-timing-ease);
+}
+
+.tableHeaderCell--sortable:hover {
+  background-color: var(--color-default-200);
+}
+
+[data-theme="dark"] .tableHeaderCell--sortable:hover {
+  background-color: var(--color-default-100);
+}
+
+.tableHeaderCell--selection {
+  width: 48px;
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-2);
+}
+
+/* Alignment */
+.tableHeaderCell--align-left {
+  text-align: left;
+}
+
+.tableHeaderCell--align-center {
+  text-align: center;
+}
+
+.tableHeaderCell--align-right {
+  text-align: right;
+}
+
+/* =============================================================================
+ * Table Header Content
+ * ============================================================================= */
+
+.tableHeaderContent {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+/* =============================================================================
+ * Sort Icon
+ * ============================================================================= */
+
+.tableSortIcon {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  opacity: 0.3;
+  transition: opacity var(--transition-duration-200)
+      var(--transition-timing-ease),
+    transform var(--transition-duration-200) var(--transition-timing-ease);
+}
+
+.tableSortIcon--active {
+  opacity: 1;
+}
+
+.tableSortIcon--desc {
+  transform: rotate(180deg);
+}
+
+/* =============================================================================
+ * Resize Handle
+ * ============================================================================= */
+
+.tableResizeHandle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: col-resize;
+  user-select: none;
+  transition: background-color var(--transition-duration-200)
+    var(--transition-timing-ease);
+}
+
+.tableResizeHandle:hover,
+.tableResizeHandle:active {
+  background-color: var(--color-primary-500);
+}
+
+/* =============================================================================
+ * Table Body
+ * ============================================================================= */
+
+.tableBody {
+  background-color: var(--color-background);
+}
+
+/* =============================================================================
+ * Table Row
+ * ============================================================================= */
+
+.tableRow {
+  border-bottom: 1px solid var(--color-default-200);
+  background-color: var(--color-background);
+  transition: background-color var(--transition-duration-200)
+    var(--transition-timing-ease);
+}
+
+[data-theme="dark"] .tableRow {
+  border-bottom-color: var(--color-default-200);
+  background-color: var(--color-default-100);
+}
+
+.tableRow--selected {
+  background-color: var(--color-primary-50) !important;
+}
+
+[data-theme="dark"] .tableRow--selected {
+  background-color: var(--color-primary-100) !important;
+}
+
+.tableRow--clickable {
+  cursor: pointer;
+}
+
+/* =============================================================================
+ * Table Cell
+ * ============================================================================= */
+
+.tableCell {
+  padding: var(--spacing-3) var(--spacing-4);
+  color: var(--color-foreground);
+  vertical-align: middle;
+}
+
+.table--sm .tableCell {
+  padding: var(--spacing-2) var(--spacing-3);
+}
+
+.table--lg .tableCell {
+  padding: var(--spacing-4) var(--spacing-5);
+}
+
+/* Alignment */
+.tableCell--align-left {
+  text-align: left;
+}
+
+.tableCell--align-center {
+  text-align: center;
+}
+
+.tableCell--align-right {
+  text-align: right;
+}
+
+.tableCell--focused {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: -2px;
+}
+
+/* =============================================================================
+ * Checkbox
+ * ============================================================================= */
+
+.tableCheckbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: var(--color-primary-500);
+}
+
+/* =============================================================================
+ * Empty State
+ * ============================================================================= */
+
+.tableEmptyCell {
+  padding: 0 !important;
+}
+
+.tableEmpty {
+  padding: var(--spacing-8) var(--spacing-4);
+  text-align: center;
+  color: var(--color-default-500);
+  font-size: var(--font-size-base);
+}
+
+[data-theme="dark"] .tableEmpty {
+  color: var(--color-default-500);
+}
+
+/* =============================================================================
+ * Loading Skeleton
+ * ============================================================================= */
+
+.skeleton {
+  height: 20px;
+  background: linear-gradient(
+    90deg,
+    var(--color-default-200) 0%,
+    var(--color-default-300) 50%,
+    var(--color-default-200) 100%
+  );
+  background-size: 200% 100%;
+  border-radius: var(--radius-sm);
+  animation: skeletonLoading 1.5s ease-in-out infinite;
+}
+
+[data-theme="dark"] .skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-default-200) 0%,
+    var(--color-default-300) 50%,
+    var(--color-default-200) 100%
+  );
+  background-size: 200% 100%;
+}
+
+@keyframes skeletonLoading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* =============================================================================
+ * Responsive
+ * ============================================================================= */
+
+@media (max-width: 768px) {
+  .tableContainer {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table--sm .tableHeaderCell,
+  .table--sm .tableCell {
+    padding: var(--spacing-1_5) var(--spacing-2);
+  }
+
+  .table--md .tableHeaderCell,
+  .table--md .tableCell {
+    padding: var(--spacing-2) var(--spacing-3);
+  }
+}
+
+/* =============================================================================
+ * System Theme Support
+ * ============================================================================= */
+
+@media (prefers-color-scheme: dark) {
+  [data-theme="system"] .tableContainer--bordered {
+    border-color: var(--color-default-200);
+  }
+
+  [data-theme="system"] .tableRow {
+    border-bottom-color: var(--color-default-200);
+    background-color: var(--color-default-100);
+  }
+
+  [data-theme="system"] .table--striped .tableRow:nth-child(even) {
+    background-color: var(--color-default-50);
+  }
+
+  [data-theme="system"] .table--hoverable .tableRow:hover {
+    background-color: var(--color-default-200);
+  }
+
+  [data-theme="system"] .tableHead {
+    background-color: var(--color-default-50);
+    border-bottom-color: var(--color-default-200);
+  }
+
+  [data-theme="system"] .tableHeaderCell--sortable:hover {
+    background-color: var(--color-default-100);
+  }
+
+  [data-theme="system"] .tableRow--selected {
+    background-color: var(--color-primary-100) !important;
+  }
+
+  [data-theme="system"] .tableEmpty {
+    color: var(--color-default-500);
+  }
+
+  [data-theme="system"] .skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--color-default-200) 0%,
+      var(--color-default-300) 50%,
+      var(--color-default-200) 100%
+    );
+    background-size: 200% 100%;
+  }
+}
+
+/* =============================================================================
+ * Performance Optimizations
+ * ============================================================================= */
+
+.table {
+  will-change: scroll-position;
+}
+
+/* =============================================================================
+ * Reduced Motion Support
+ * ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .tableSortIcon,
+  .tableResizeHandle,
+  .tableRow,
+  .skeleton {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
