@@ -32,7 +32,7 @@ function MyComponent() {
   return (
     <DatePicker
       value={date}
-      onChange={(date) => setDate(date ?? undefined)}
+      onChange={(date) => setDate(date || undefined)}
       label="Select Date"
     />
   );
@@ -96,11 +96,11 @@ export const Default: Story = {
 
 export const WithValue: Story = {
   render: () => {
-    const [date, setDate] = useState<Date>(new Date());
+    const [date, setDate] = useState<Date | undefined>(new Date());
     return (
       <DatePicker
         value={date}
-        onChange={(date) => setDate(date ?? undefined)}
+        onChange={(date) => setDate(date || undefined)}
         label="Appointment Date"
       />
     );
@@ -173,7 +173,7 @@ export const MinMaxDates: Story = {
     return (
       <DatePicker
         value={date}
-        onChange={(date) => setDate(date ?? undefined)}
+        onChange={(date) => setDate(date || undefined)}
         label="Select Date (Current Month Only)"
         minDate={minDate}
         maxDate={maxDate}
@@ -187,17 +187,24 @@ export const DisabledDates: Story = {
   render: () => {
     const [date, setDate] = useState<Date>();
     // Disable weekends
-    const disabledDates = (date: Date) => {
-      const day = date.getDay();
-      return day === 0 || day === 6;
-    };
+    // Generate disabled weekend dates for the next 3 months
+    const disabledDates: Date[] = [];
+    const today = new Date();
+    for (let i = 0; i < 90; i++) {
+      const checkDate = new Date(today);
+      checkDate.setDate(today.getDate() + i);
+      const day = checkDate.getDay();
+      if (day === 0 || day === 6) {
+        disabledDates.push(checkDate);
+      }
+    }
 
     return (
       <DatePicker
         value={date}
-        onChange={(date) => setDate(date ?? undefined)}
+        onChange={(date) => setDate(date || undefined)}
         label="Select Weekday"
-        isDateDisabled={disabledDates}
+        disabledDates={disabledDates}
         helperText="Weekends are disabled"
       />
     );
@@ -213,7 +220,7 @@ export const FutureDatesOnly: Story = {
     return (
       <DatePicker
         value={date}
-        onChange={(date) => setDate(date ?? undefined)}
+        onChange={(date) => setDate(date || undefined)}
         label="Select Future Date"
         minDate={tomorrow}
         helperText="Only future dates are available"
@@ -271,9 +278,9 @@ export const CustomDateFormat: Story = {
     return (
       <DatePicker
         value={date}
-        onChange={(date) => setDate(date ?? undefined)}
+        onChange={(date) => setDate(date || undefined)}
         label="Custom Format"
-        dateFormat="yyyy-MM-dd"
+        format="yyyy-MM-dd"
         helperText="Format: YYYY-MM-DD"
       />
     );
@@ -301,7 +308,7 @@ export const Required: Story = {
     return (
       <DatePicker
         value={date}
-        onChange={(date) => setDate(date ?? undefined)}
+        onChange={(date) => setDate(date || undefined)}
         label="Required Date"
         required
         helperText="This field is required"
@@ -316,9 +323,9 @@ export const WithError: Story = {
     return (
       <DatePicker
         value={date}
-        onChange={(date) => setDate(date ?? undefined)}
+        onChange={(date) => setDate(date || undefined)}
         label="Date with Error"
-        error="Please select a valid date"
+        errorMessage="Please select a valid date"
       />
     );
   },
@@ -326,11 +333,11 @@ export const WithError: Story = {
 
 export const WithClearButton: Story = {
   render: () => {
-    const [date, setDate] = useState<Date>(new Date());
+    const [date, setDate] = useState<Date | undefined>(new Date());
     return (
       <DatePicker
         value={date}
-        onChange={(date) => setDate(date ?? undefined)}
+        onChange={(date) => setDate(date || undefined)}
         label="Date with Clear Button"
         showClearButton
         helperText="Click the × button to clear"
@@ -345,16 +352,16 @@ export const WithClearButton: Story = {
 
 export const DateRangeBasic: Story = {
   render: () => {
-    const [startDate, setStartDate] = useState<Date>();
-    const [endDate, setEndDate] = useState<Date>();
+    const [rangeValue, setRangeValue] = useState<{
+      start: Date | null;
+      end: Date | null;
+    }>({ start: null, end: null });
 
     return (
       <DatePicker
         mode="range"
-        value={startDate}
-        endDate={endDate}
-        onChange={(date) => setStartDate(date ?? undefined)}
-        onEndDateChange={setEndDate}
+        rangeValue={rangeValue}
+        onRangeChange={setRangeValue}
         label="Trip Dates"
         placeholder="Select check-in and check-out dates"
         helperText="Select your travel dates"
@@ -365,18 +372,18 @@ export const DateRangeBasic: Story = {
 
 export const DateRangeWithRestrictions: Story = {
   render: () => {
-    const [startDate, setStartDate] = useState<Date>();
-    const [endDate, setEndDate] = useState<Date>();
+    const [rangeValue, setRangeValue] = useState<{
+      start: Date | null;
+      end: Date | null;
+    }>({ start: null, end: null });
     const today = new Date();
     const maxDate = new Date(today.getFullYear(), today.getMonth() + 3, 0);
 
     return (
       <DatePicker
         mode="range"
-        value={startDate}
-        endDate={endDate}
-        onChange={(date) => setStartDate(date ?? undefined)}
-        onEndDateChange={setEndDate}
+        rangeValue={rangeValue}
+        onRangeChange={setRangeValue}
         label="Booking Period"
         minDate={today}
         maxDate={maxDate}
@@ -404,7 +411,7 @@ export const KeyboardNavigation: Story = {
       >
         <DatePicker
           value={date}
-          onChange={(date) => setDate(date ?? undefined)}
+          onChange={(date) => setDate(date || undefined)}
           label="Keyboard Navigation"
           helperText="Use Arrow keys to navigate, Enter to select, Escape to close"
         />
@@ -442,7 +449,7 @@ export const ScreenReaderFriendly: Story = {
       >
         <DatePicker
           value={date}
-          onChange={(date) => setDate(date ?? undefined)}
+          onChange={(date) => setDate(date || undefined)}
           label="Appointment Date"
           placeholder="Select appointment date"
           helperText="All dates include proper ARIA labels"
@@ -537,21 +544,18 @@ export const EventScheduler: Story = {
       new Date(2025, 0, 1), // Jan 1
     ];
 
-    const isHoliday = (date: Date) => {
-      return holidays.some(
-        (holiday) =>
-          date.getDate() === holiday.getDate() &&
-          date.getMonth() === holiday.getMonth() &&
-          date.getFullYear() === holiday.getFullYear()
-      );
-    };
+    // Create array of disabled dates (weekends + holidays)
+    const disabledDates: Date[] = [...holidays];
 
-    const isWeekend = (date: Date) => {
-      const day = date.getDay();
-      return day === 0 || day === 6;
-    };
-
-    const isDisabled = (date: Date) => isWeekend(date) || isHoliday(date);
+    // Add weekends for the next 6 months
+    for (let i = 0; i < 180; i++) {
+      const checkDate = new Date(today);
+      checkDate.setDate(today.getDate() + i);
+      const day = checkDate.getDay();
+      if (day === 0 || day === 6) {
+        disabledDates.push(checkDate);
+      }
+    }
 
     return (
       <div
@@ -567,7 +571,7 @@ export const EventScheduler: Story = {
           onChange={(date) => setEventDate(date ?? undefined)}
           label="Event Date"
           minDate={today}
-          isDateDisabled={isDisabled}
+          disabledDates={disabledDates}
           helperText="Weekends and holidays are not available"
           required
           size="lg"
@@ -609,8 +613,10 @@ export const BirthdayPicker: Story = {
 
 export const ProjectDeadline: Story = {
   render: () => {
-    const [startDate, setStartDate] = useState<Date>();
-    const [endDate, setEndDate] = useState<Date>();
+    const [rangeValue, setRangeValue] = useState<{
+      start: Date | null;
+      end: Date | null;
+    }>({ start: null, end: null });
 
     return (
       <div
@@ -626,10 +632,8 @@ export const ProjectDeadline: Story = {
         </h3>
         <DatePicker
           mode="range"
-          value={startDate}
-          endDate={endDate}
-          onChange={(date) => setStartDate(date ?? undefined)}
-          onEndDateChange={setEndDate}
+          rangeValue={rangeValue}
+          onRangeChange={setRangeValue}
           label="Project Duration"
           placeholder="Select project start and end dates"
           minDate={new Date()}
@@ -637,7 +641,7 @@ export const ProjectDeadline: Story = {
           size="lg"
           showClearButton
         />
-        {startDate && endDate && (
+        {rangeValue.start && rangeValue.end && (
           <div
             style={{
               padding: "16px",
@@ -648,7 +652,8 @@ export const ProjectDeadline: Story = {
           >
             <strong>Project Duration:</strong>{" "}
             {Math.ceil(
-              (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
+              (rangeValue.end.getTime() - rangeValue.start.getTime()) /
+                (1000 * 60 * 60 * 24)
             )}{" "}
             days
           </div>
@@ -1051,7 +1056,7 @@ export const InteractivePlayground: Story = {
       <DatePicker
         {...args}
         value={date}
-        onChange={(date) => setDate(date ?? undefined)}
+        onChange={(date) => setDate(date || undefined)}
       />
     );
   },
