@@ -12,6 +12,7 @@ export { Table } from "./Table";
 export { Tabs } from "./Tabs";
 export { Breadcrumb } from "./Breadcrumb";
 export { Pagination } from "./Pagination";
+export { DatePicker } from "./DatePicker";
 export type {
   ButtonColor,
   ButtonVariant,
@@ -93,3 +94,8 @@ export type {
   PaginationSize,
   PaginationVariant,
 } from "./Pagination";
+export type {
+  DatePickerProps,
+  DatePickerMode,
+  DatePickerView,
+} from "./DatePicker";
