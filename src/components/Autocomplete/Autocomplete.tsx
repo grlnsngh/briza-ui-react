@@ -286,6 +286,7 @@ export function Autocomplete<T = unknown>(props: AutocompleteProps<T>) {
     left: number;
     width: number;
   } | null>(null);
+  const [portalTheme, setPortalTheme] = useState<string | undefined>(undefined);
 
   const wrapperRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -297,6 +298,27 @@ export function Autocomplete<T = unknown>(props: AutocompleteProps<T>) {
   const uniqueId = useId();
   const inputId = `autocomplete-input-${uniqueId}`;
   const listboxId = `autocomplete-listbox-${uniqueId}`;
+  // Keep portal aligned with active theme so dark mode styles apply when rendered outside the provider
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+
+    const root = document.documentElement;
+    const updateThemeAttribute = () => {
+      const currentTheme = root.getAttribute("data-theme") ?? undefined;
+      setPortalTheme((prev) => (prev === currentTheme ? prev : currentTheme));
+    };
+
+    updateThemeAttribute();
+
+    const observer = new MutationObserver(updateThemeAttribute);
+    observer.observe(root, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const labelId = label ? `autocomplete-label-${uniqueId}` : undefined;
   const descriptionId = description
     ? `autocomplete-description-${uniqueId}`
@@ -848,6 +870,7 @@ export function Autocomplete<T = unknown>(props: AutocompleteProps<T>) {
             id={listboxId}
             role="listbox"
             className={styles.dropdown}
+            data-theme={portalTheme}
             style={{
               position: "absolute",
               top: dropdownPosition.top + "px",
