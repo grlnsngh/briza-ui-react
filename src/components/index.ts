@@ -13,6 +13,7 @@ export { Tabs } from "./Tabs";
 export { Breadcrumb } from "./Breadcrumb";
 export { Pagination } from "./Pagination";
 export { DatePicker } from "./DatePicker";
+export { Autocomplete } from "./Autocomplete";
 export type {
   ButtonColor,
   ButtonVariant,
@@ -99,3 +100,9 @@ export type {
   DatePickerMode,
   DatePickerView,
 } from "./DatePicker";
+export type {
+  AutocompleteProps,
+  AutocompleteOption,
+  AutocompleteSize,
+  AutocompleteStatus,
+} from "./Autocomplete";
