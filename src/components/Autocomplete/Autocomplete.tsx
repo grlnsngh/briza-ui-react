@@ -285,6 +285,7 @@ export function Autocomplete<T = unknown>(props: AutocompleteProps<T>) {
     top: number;
     left: number;
     width: number;
+    placement: "bottom" | "top";
   } | null>(null);
   const [portalTheme, setPortalTheme] = useState<string | undefined>(undefined);
 
@@ -496,17 +497,44 @@ export function Autocomplete<T = unknown>(props: AutocompleteProps<T>) {
     [isControlled, onChange, onInputChange]
   );
 
-  // Calculate dropdown position
+  // Calculate dropdown position with smart placement (above/below input)
   const updateDropdownPosition = useCallback(() => {
     if (!wrapperRef.current) return;
 
     const rect = wrapperRef.current.getBoundingClientRect();
-    setDropdownPosition({
-      top: rect.bottom + window.scrollY,
-      left: rect.left + window.scrollX,
-      width: rect.width,
-    });
-  }, []);
+    const viewportHeight = window.innerHeight;
+    const spaceBelow = viewportHeight - rect.bottom;
+    const spaceAbove = rect.top;
+
+    // Calculate actual dropdown height needed (uses real height after render)
+    // This ensures proper positioning for both large and small option lists
+    const dropdownHeight = dropdownRef.current
+      ? Math.min(dropdownRef.current.scrollHeight, maxDropdownHeight)
+      : maxDropdownHeight;
+
+    // Determine if dropdown should open above or below
+    // Open above if there's not enough space below and more space above
+    const shouldOpenAbove =
+      spaceBelow < dropdownHeight && spaceAbove > spaceBelow;
+
+    if (shouldOpenAbove) {
+      // Position above the input - place it just above with a small gap
+      setDropdownPosition({
+        top: rect.top + window.scrollY - dropdownHeight - 4, // 4px gap
+        left: rect.left + window.scrollX,
+        width: rect.width,
+        placement: "top",
+      });
+    } else {
+      // Position below the input (default)
+      setDropdownPosition({
+        top: rect.bottom + window.scrollY,
+        left: rect.left + window.scrollX,
+        width: rect.width,
+        placement: "bottom",
+      });
+    }
+  }, [maxDropdownHeight]);
 
   // Handle keyboard navigation
   const handleKeyDown = useCallback(
@@ -652,6 +680,23 @@ export function Autocomplete<T = unknown>(props: AutocompleteProps<T>) {
       window.removeEventListener("resize", handleUpdate);
     };
   }, [isOpen, updateDropdownPosition]);
+
+  // Recalculate position when dropdown content changes
+  useEffect(() => {
+    if (isOpen && dropdownRef.current) {
+      // Small delay to ensure DOM is updated with new content
+      const timeoutId = setTimeout(() => {
+        updateDropdownPosition();
+      }, 0);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [
+    isOpen,
+    filteredOptions.length,
+    isLoading,
+    asyncError,
+    updateDropdownPosition,
+  ]);
 
   // Scroll highlighted option into view
   useEffect(() => {
@@ -869,7 +914,12 @@ export function Autocomplete<T = unknown>(props: AutocompleteProps<T>) {
             ref={dropdownRef}
             id={listboxId}
             role="listbox"
-            className={styles.dropdown}
+            className={[
+              styles.dropdown,
+              dropdownPosition.placement === "top" && styles["dropdown--top"],
+            ]
+              .filter(Boolean)
+              .join(" ")}
             data-theme={portalTheme}
             style={{
               position: "absolute",
