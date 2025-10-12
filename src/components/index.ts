@@ -1,3 +1,4 @@
+export { Accordion } from "./Accordion";
 export { Button } from "./Button";
 export { Input } from "./Input";
 export { Select } from "./Select";
@@ -18,6 +19,13 @@ export { Autocomplete } from "./Autocomplete";
 export { FileUpload } from "./FileUpload";
 export { Slider } from "./Slider";
 export { Card, CardHeader, CardBody, CardFooter, CardImage } from "./Card";
+export type {
+  AccordionProps,
+  AccordionItemProps,
+  AccordionVariant,
+  AccordionSize,
+  AccordionColor,
+} from "./Accordion";
 export type {
   ButtonColor,
   ButtonVariant,
