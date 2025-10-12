@@ -14,6 +14,7 @@ export { Breadcrumb } from "./Breadcrumb";
 export { Pagination } from "./Pagination";
 export { DatePicker } from "./DatePicker";
 export { Autocomplete } from "./Autocomplete";
+export { FileUpload } from "./FileUpload";
 export type {
   ButtonColor,
   ButtonVariant,
@@ -106,3 +107,9 @@ export type {
   AutocompleteSize,
   AutocompleteStatus,
 } from "./Autocomplete";
+export type {
+  FileUploadProps,
+  FileUploadSize,
+  FileUploadStatus,
+  UploadedFile,
+} from "./FileUpload";
