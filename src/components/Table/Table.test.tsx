@@ -1,11 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
-import { render, screen, within } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Table, TableColumn } from "./Table";
-import {
-  expectNoA11yViolations,
-} from "../../utils/test-helpers";
+import { expectNoA11yViolations } from "../../utils/test-helpers";
 
 // Sample test data
 interface TestData {
@@ -17,9 +15,21 @@ interface TestData {
 }
 
 const testData: TestData[] = [
-  { id: 1, name: "Alice", email: "alice@example.com", age: 30, status: "active" },
+  {
+    id: 1,
+    name: "Alice",
+    email: "alice@example.com",
+    age: 30,
+    status: "active",
+  },
   { id: 2, name: "Bob", email: "bob@example.com", age: 25, status: "inactive" },
-  { id: 3, name: "Charlie", email: "charlie@example.com", age: 35, status: "active" },
+  {
+    id: 3,
+    name: "Charlie",
+    email: "charlie@example.com",
+    age: 35,
+    status: "active",
+  },
 ];
 
 const basicColumns: TableColumn<TestData>[] = [
@@ -82,7 +92,10 @@ describe("Table", () => {
         />
       );
 
-      expect(screen.getByRole("table")).toHaveAttribute("aria-label", "User data table");
+      expect(screen.getByRole("table")).toHaveAttribute(
+        "aria-label",
+        "User data table"
+      );
     });
   });
 
@@ -275,7 +288,9 @@ describe("Table", () => {
         {
           key: "name",
           label: "Name",
-          renderHeader: () => <span data-testid="custom-header">Custom Name</span>,
+          renderHeader: () => (
+            <span data-testid="custom-header">Custom Name</span>
+          ),
         },
       ];
 
@@ -287,7 +302,9 @@ describe("Table", () => {
         />
       );
 
-      expect(screen.getByTestId("custom-header")).toHaveTextContent("Custom Name");
+      expect(screen.getByTestId("custom-header")).toHaveTextContent(
+        "Custom Name"
+      );
     });
   });
 
@@ -416,12 +433,7 @@ describe("Table", () => {
 
   describe("Edge Cases", () => {
     it("should handle empty data array", () => {
-      render(
-        <Table
-          columns={basicColumns as any}
-          data={[] as any}
-        />
-      );
+      render(<Table columns={basicColumns as any} data={[] as any} />);
 
       expect(screen.getByRole("table")).toBeInTheDocument();
       // Empty state will show a cell with the empty message
@@ -441,12 +453,7 @@ describe("Table", () => {
     });
 
     it("should handle missing rowKey", () => {
-      render(
-        <Table
-          columns={basicColumns as any}
-          data={testData as any}
-        />
-      );
+      render(<Table columns={basicColumns as any} data={testData as any} />);
 
       expect(screen.getByRole("table")).toBeInTheDocument();
       expect(screen.getByText("Alice")).toBeInTheDocument();
