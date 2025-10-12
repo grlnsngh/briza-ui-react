@@ -1,0 +1,356 @@
+/* =============================================================================
+ * Card Component Styles - Modern Design with Light/Dark Theme Support
+ * ============================================================================= */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-duration-200) var(--transition-timing-ease);
+  box-sizing: border-box;
+}
+
+/* =============================================================================
+ * VARIANTS
+ * ============================================================================= */
+
+.card--default {
+  border: 1px solid var(--color-default-200);
+}
+
+.card--bordered {
+  border: 2px solid var(--color-default-300);
+}
+
+.card--shadow {
+  border: 1px solid var(--color-default-200);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.card--elevated {
+  border: none;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Dark theme variants */
+[data-theme="dark"] .card--default {
+  border-color: var(--color-default-700);
+}
+
+[data-theme="dark"] .card--bordered {
+  border-color: var(--color-default-600);
+}
+
+[data-theme="dark"] .card--shadow {
+  border-color: var(--color-default-700);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .card--elevated {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4),
+    0 4px 6px -2px rgba(0, 0, 0, 0.3);
+}
+
+/* =============================================================================
+ * SIZES
+ * ============================================================================= */
+
+.card--sm {
+  padding: var(--spacing-3);
+}
+
+.card--md {
+  padding: var(--spacing-4);
+}
+
+.card--lg {
+  padding: var(--spacing-6);
+}
+
+/* =============================================================================
+ * BORDER RADIUS
+ * ============================================================================= */
+
+.card--radius-none {
+  border-radius: var(--radius-none);
+}
+
+.card--radius-sm {
+  border-radius: var(--radius-sm);
+}
+
+.card--radius-md {
+  border-radius: var(--radius-md);
+}
+
+.card--radius-lg {
+  border-radius: var(--radius-lg);
+}
+
+/* =============================================================================
+ * INTERACTIVE STATES
+ * ============================================================================= */
+
+.card--hoverable {
+  cursor: pointer;
+}
+
+.card--hoverable:hover {
+  transform: translateY(-2px);
+}
+
+.card--hoverable.card--shadow:hover,
+.card--hoverable.card--elevated:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] .card--hoverable.card--shadow:hover,
+[data-theme="dark"] .card--hoverable.card--elevated:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5),
+    0 10px 10px -5px rgba(0, 0, 0, 0.3);
+}
+
+.card--pressable:active {
+  transform: scale(0.98);
+}
+
+.card--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Focus state for interactive cards */
+.card[role="button"]:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.card[role="button"]:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+[data-theme="dark"] .card[role="button"]:focus,
+[data-theme="dark"] .card[role="button"]:focus-visible {
+  outline-color: var(--color-primary-500);
+}
+
+/* =============================================================================
+ * HEADER
+ * ============================================================================= */
+
+.card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-3);
+  padding: 0;
+}
+
+.card--sm .card__header {
+  margin-bottom: var(--spacing-2);
+  gap: var(--spacing-2);
+}
+
+.card--lg .card__header {
+  margin-bottom: var(--spacing-4);
+  gap: var(--spacing-4);
+}
+
+.card__header--divider {
+  padding-bottom: var(--spacing-3);
+  border-bottom: 1px solid var(--color-default-200);
+}
+
+.card--sm .card__header--divider {
+  padding-bottom: var(--spacing-2);
+}
+
+.card--lg .card__header--divider {
+  padding-bottom: var(--spacing-4);
+}
+
+[data-theme="dark"] .card__header--divider {
+  border-bottom-color: var(--color-default-700);
+}
+
+/* =============================================================================
+ * BODY
+ * ============================================================================= */
+
+.card__body {
+  flex: 1;
+  padding: 0;
+}
+
+.card__body:not(:first-child) {
+  margin-top: var(--spacing-3);
+}
+
+.card__body:not(:last-child) {
+  margin-bottom: var(--spacing-3);
+}
+
+.card--sm .card__body:not(:first-child) {
+  margin-top: var(--spacing-2);
+}
+
+.card--sm .card__body:not(:last-child) {
+  margin-bottom: var(--spacing-2);
+}
+
+.card--lg .card__body:not(:first-child) {
+  margin-top: var(--spacing-4);
+}
+
+.card--lg .card__body:not(:last-child) {
+  margin-bottom: var(--spacing-4);
+}
+
+/* =============================================================================
+ * FOOTER
+ * ============================================================================= */
+
+.card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-3);
+  padding: 0;
+}
+
+.card--sm .card__footer {
+  margin-top: var(--spacing-2);
+  gap: var(--spacing-1);
+}
+
+.card--lg .card__footer {
+  margin-top: var(--spacing-4);
+  gap: var(--spacing-3);
+}
+
+.card__footer--divider {
+  padding-top: var(--spacing-3);
+  border-top: 1px solid var(--color-default-200);
+}
+
+.card--sm .card__footer--divider {
+  padding-top: var(--spacing-2);
+}
+
+.card--lg .card__footer--divider {
+  padding-top: var(--spacing-4);
+}
+
+[data-theme="dark"] .card__footer--divider {
+  border-top-color: var(--color-default-700);
+}
+
+/* =============================================================================
+ * IMAGE
+ * ============================================================================= */
+
+.card__image {
+  display: block;
+  width: calc(100% + var(--spacing-4) * 2);
+  height: auto;
+  margin: calc(var(--spacing-4) * -1) calc(var(--spacing-4) * -1)
+    var(--spacing-4);
+  border-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.card--sm .card__image {
+  width: calc(100% + var(--spacing-3) * 2);
+  margin: calc(var(--spacing-3) * -1) calc(var(--spacing-3) * -1)
+    var(--spacing-3);
+}
+
+.card--lg .card__image {
+  width: calc(100% + var(--spacing-6) * 2);
+  margin: calc(var(--spacing-6) * -1) calc(var(--spacing-6) * -1)
+    var(--spacing-6);
+}
+
+.card__image--cover {
+  object-fit: cover;
+}
+
+.card__image--contain {
+  object-fit: contain;
+}
+
+.card__image--fill {
+  object-fit: fill;
+}
+
+.card__image--none {
+  object-fit: none;
+}
+
+.card__image--scale-down {
+  object-fit: scale-down;
+}
+
+/* =============================================================================
+ * CARD WITH IMAGE (NO PADDING AT TOP)
+ * ============================================================================= */
+
+.card:has(.card__image:first-child) {
+  padding-top: 0;
+}
+
+/* =============================================================================
+ * ACCESSIBILITY
+ * ============================================================================= */
+
+/* Ensure proper contrast for interactive cards */
+.card--hoverable:focus,
+.card--pressable:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card--hoverable,
+  .card--pressable {
+    transition: none;
+  }
+
+  .card--hoverable:hover {
+    transform: none;
+  }
+
+  .card--pressable:active {
+    transform: none;
+  }
+}
+
+/* =============================================================================
+ * UTILITY CLASSES
+ * ============================================================================= */
+
+/* Remove default margin on last child */
+.card__body > *:last-child,
+.card__header > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Remove default margin on first child */
+.card__body > *:first-child,
+.card__header > *:first-child {
+  margin-top: 0;
+}
