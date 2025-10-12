@@ -1,0 +1,363 @@
+/* =============================================================================
+ * Slider Component Styles - Modern Design with Light/Dark Theme Support
+ * ============================================================================= */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  width: 100%;
+  max-width: 600px;
+}
+
+.wrapper--sm {
+  gap: var(--spacing-1);
+}
+
+.wrapper--md {
+  gap: var(--spacing-2);
+}
+
+.wrapper--lg {
+  gap: var(--spacing-3);
+}
+
+.wrapper--horizontal {
+  flex-direction: column;
+}
+
+.wrapper--vertical {
+  height: 300px;
+  width: auto;
+  max-width: none;
+}
+
+.wrapper--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =============================================================================
+ * LABEL
+ * ============================================================================= */
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-0_5);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-foreground);
+  line-height: var(--line-height-tight);
+  margin-bottom: 0;
+}
+
+/* =============================================================================
+ * CONTAINER
+ * ============================================================================= */
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  position: relative;
+}
+
+.wrapper--vertical .container {
+  flex-direction: column-reverse;
+  height: 100%;
+}
+
+/* =============================================================================
+ * TRACK
+ * ============================================================================= */
+
+.track {
+  position: relative;
+  flex: 1;
+  background-color: var(--color-default-200);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background-color var(--transition-duration-150)
+    var(--transition-timing-ease);
+}
+
+.wrapper--horizontal .track {
+  height: 8px;
+}
+
+.wrapper--sm.wrapper--horizontal .track {
+  height: 4px;
+}
+
+.wrapper--lg.wrapper--horizontal .track {
+  height: 12px;
+}
+
+.wrapper--vertical .track {
+  width: 8px;
+  height: 100%;
+}
+
+.wrapper--sm.wrapper--vertical .track {
+  width: 4px;
+}
+
+.wrapper--lg.wrapper--vertical .track {
+  width: 12px;
+}
+
+.track:hover {
+  background-color: var(--color-default-300);
+}
+
+.track--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.track--disabled:hover {
+  background-color: var(--color-default-200);
+}
+
+/* Dark theme */
+[data-theme="dark"] .track {
+  background-color: var(--color-default-700);
+}
+
+[data-theme="dark"] .track:hover {
+  background-color: var(--color-default-600);
+}
+
+[data-theme="dark"] .track--disabled:hover {
+  background-color: var(--color-default-700);
+}
+
+/* =============================================================================
+ * TRACK FILL (Progress)
+ * ============================================================================= */
+
+.track-fill {
+  position: absolute;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-duration-150) var(--transition-timing-ease);
+  pointer-events: none;
+}
+
+.wrapper--horizontal .track-fill {
+  height: 100%;
+  left: 0;
+}
+
+.wrapper--vertical .track-fill {
+  width: 100%;
+  bottom: 0;
+}
+
+/* Dark theme */
+[data-theme="dark"] .track-fill {
+  background-color: var(--color-primary-500);
+}
+
+/* =============================================================================
+ * THUMB
+ * ============================================================================= */
+
+.thumb {
+  position: absolute;
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-background);
+  border-radius: var(--radius-full);
+  cursor: grab;
+  transition: all var(--transition-duration-150) var(--transition-timing-ease);
+  outline: none;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.wrapper--horizontal .thumb {
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wrapper--sm.wrapper--horizontal .thumb {
+  width: 16px;
+  height: 16px;
+}
+
+.wrapper--lg.wrapper--horizontal .thumb {
+  width: 24px;
+  height: 24px;
+}
+
+.wrapper--vertical .thumb {
+  width: 20px;
+  height: 20px;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.wrapper--sm.wrapper--vertical .thumb {
+  width: 16px;
+  height: 16px;
+}
+
+.wrapper--lg.wrapper--vertical .thumb {
+  width: 24px;
+  height: 24px;
+}
+
+.thumb:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.wrapper--vertical .thumb:hover {
+  transform: translate(-50%, 50%) scale(1.1);
+}
+
+.thumb:focus {
+  box-shadow: 0 0 0 3px var(--color-primary-100), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.thumb--active {
+  cursor: grabbing;
+  transform: translate(-50%, -50%) scale(1.15);
+  box-shadow: 0 0 0 3px var(--color-primary-100),
+    0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper--vertical .thumb--active {
+  transform: translate(-50%, 50%) scale(1.15);
+}
+
+.wrapper--disabled .thumb {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.wrapper--disabled .thumb:hover {
+  transform: translate(-50%, -50%);
+}
+
+.wrapper--vertical.wrapper--disabled .thumb:hover {
+  transform: translate(-50%, 50%);
+}
+
+/* Dark theme */
+[data-theme="dark"] .thumb {
+  background-color: var(--color-primary-500);
+  border-color: var(--color-background);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .thumb:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .thumb:focus {
+  box-shadow: 0 0 0 3px var(--color-primary-900), 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .thumb--active {
+  box-shadow: 0 0 0 3px var(--color-primary-900),
+    0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* =============================================================================
+ * THUMB VALUE DISPLAY
+ * ============================================================================= */
+
+.thumb-value {
+  position: absolute;
+  top: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--spacing-1) var(--spacing-2);
+  background-color: var(--color-default-900);
+  color: var(--color-default-50);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-duration-150)
+    var(--transition-timing-ease);
+}
+
+.thumb:hover .thumb-value,
+.thumb:focus .thumb-value,
+.thumb--active .thumb-value {
+  opacity: 1;
+}
+
+.wrapper--vertical .thumb-value {
+  top: 50%;
+  left: -40px;
+  transform: translateY(-50%);
+}
+
+/* Dark theme */
+[data-theme="dark"] .thumb-value {
+  background-color: var(--color-default-100);
+  color: var(--color-default-900);
+}
+
+/* =============================================================================
+ * VALUE DISPLAY (Outside slider)
+ * ============================================================================= */
+
+.value-display {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-foreground);
+  min-width: 3rem;
+  text-align: center;
+}
+
+.wrapper--sm .value-display {
+  font-size: var(--font-size-xs);
+  min-width: 2.5rem;
+}
+
+.wrapper--lg .value-display {
+  font-size: var(--font-size-base);
+  min-width: 3.5rem;
+}
+
+/* =============================================================================
+ * HELPER TEXT
+ * ============================================================================= */
+
+.helper-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-default-600);
+  line-height: var(--line-height-normal);
+}
+
+.wrapper--sm .helper-text {
+  font-size: var(--font-size-xs);
+}
+
+/* Dark theme */
+[data-theme="dark"] .helper-text {
+  color: var(--color-default-400);
+}
+
+/* =============================================================================
+ * ACCESSIBILITY - FOCUS VISIBLE
+ * ============================================================================= */
+
+.thumb:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+[data-theme="dark"] .thumb:focus-visible {
+  outline-color: var(--color-primary-500);
+}

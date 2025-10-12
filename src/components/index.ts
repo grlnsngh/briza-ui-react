@@ -15,6 +15,7 @@ export { Pagination } from "./Pagination";
 export { DatePicker } from "./DatePicker";
 export { Autocomplete } from "./Autocomplete";
 export { FileUpload } from "./FileUpload";
+export { Slider } from "./Slider";
 export type {
   ButtonColor,
   ButtonVariant,
@@ -113,3 +114,4 @@ export type {
   FileUploadStatus,
   UploadedFile,
 } from "./FileUpload";
+export type { SliderProps, SliderSize, SliderOrientation } from "./Slider";
