@@ -1,4 +1,5 @@
 export { Accordion } from "./Accordion";
+export { Avatar, AvatarGroup } from "./Avatar";
 export { Button } from "./Button";
 export { Input } from "./Input";
 export { Select } from "./Select";
@@ -26,6 +27,14 @@ export type {
   AccordionSize,
   AccordionColor,
 } from "./Accordion";
+export type {
+  AvatarProps,
+  AvatarGroupProps,
+  AvatarSize,
+  AvatarRadius,
+  AvatarColor,
+  AvatarStatus,
+} from "./Avatar";
 export type {
   ButtonColor,
   ButtonVariant,

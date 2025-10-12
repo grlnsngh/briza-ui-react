@@ -1,0 +1,104 @@
+/**
+ * AvatarGroup Component Styles
+ *
+ * Styles for grouping multiple avatars with overlapping layout
+ */
+
+.avatar-group {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.avatar-group__item {
+  position: relative;
+  margin-left: -0.5rem;
+  transition: transform var(--transition-duration-200)
+    var(--transition-timing-ease);
+}
+
+.avatar-group__item:first-child {
+  margin-left: 0;
+}
+
+.avatar-group__item:hover {
+  transform: translateY(-2px);
+  z-index: 10;
+}
+
+/* Size-specific spacing */
+.avatar-group--xs .avatar-group__item {
+  margin-left: -0.375rem;
+}
+
+.avatar-group--sm .avatar-group__item {
+  margin-left: -0.5rem;
+}
+
+.avatar-group--md .avatar-group__item {
+  margin-left: -0.625rem;
+}
+
+.avatar-group--lg .avatar-group__item {
+  margin-left: -0.875rem;
+}
+
+.avatar-group--xl .avatar-group__item {
+  margin-left: -1.25rem;
+}
+
+/* Count Avatar */
+.avatar-group__count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-group__count-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background-color: var(--color-default-200);
+  color: var(--color-default-foreground);
+  border: 2px solid var(--color-background);
+  font-weight: var(--font-weight-medium);
+  user-select: none;
+}
+
+.avatar-group__count-avatar--xs {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: var(--font-size-xs);
+}
+
+.avatar-group__count-avatar--sm {
+  width: 2rem;
+  height: 2rem;
+  font-size: var(--font-size-xs);
+}
+
+.avatar-group__count-avatar--md {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: var(--font-size-sm);
+}
+
+.avatar-group__count-avatar--lg {
+  width: 3.5rem;
+  height: 3.5rem;
+  font-size: var(--font-size-base);
+}
+
+.avatar-group__count-avatar--xl {
+  width: 5rem;
+  height: 5rem;
+  font-size: var(--font-size-lg);
+}
+
+.avatar-group__count-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

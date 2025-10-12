@@ -1,0 +1,303 @@
+/**
+ * Avatar Component Styles
+ *
+ * Uses design tokens from the theme system for consistent styling
+ * and full light/dark theme support.
+ */
+
+.avatar {
+  /* Layout */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  /* Default size */
+  width: 2.5rem;
+  height: 2.5rem;
+
+  /* Border & Radius */
+  border-radius: var(--radius-full);
+  overflow: hidden;
+
+  /* Default appearance */
+  background-color: var(--color-default-200);
+  color: var(--color-default-foreground);
+
+  /* Typography */
+  font-weight: var(--font-weight-medium);
+
+  /* Transition */
+  transition: all var(--transition-duration-200) var(--transition-timing-ease);
+
+  /* Box model */
+  box-sizing: border-box;
+}
+
+/* =============================================================================
+ * SIZE VARIANTS
+ * ============================================================================= */
+
+.avatar--xs {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: var(--font-size-xs);
+}
+
+.avatar--sm {
+  width: 2rem;
+  height: 2rem;
+  font-size: var(--font-size-sm);
+}
+
+.avatar--md {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: var(--font-size-base);
+}
+
+.avatar--lg {
+  width: 3.5rem;
+  height: 3.5rem;
+  font-size: var(--font-size-lg);
+}
+
+.avatar--xl {
+  width: 5rem;
+  height: 5rem;
+  font-size: var(--font-size-xl);
+}
+
+/* =============================================================================
+ * RADIUS VARIANTS
+ * ============================================================================= */
+
+.avatar--radius-none {
+  border-radius: var(--radius-none);
+}
+
+.avatar--radius-sm {
+  border-radius: var(--radius-sm);
+}
+
+.avatar--radius-md {
+  border-radius: var(--radius-md);
+}
+
+.avatar--radius-lg {
+  border-radius: var(--radius-lg);
+}
+
+.avatar--radius-full {
+  border-radius: var(--radius-full);
+}
+
+/* =============================================================================
+ * COLOR VARIANTS
+ * ============================================================================= */
+
+.avatar--default {
+  background-color: var(--color-default-200);
+  color: var(--color-default-foreground);
+}
+
+.avatar--primary {
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+}
+
+.avatar--secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-secondary-foreground);
+}
+
+.avatar--success {
+  background-color: var(--color-success);
+  color: var(--color-success-foreground);
+}
+
+.avatar--warning {
+  background-color: var(--color-warning);
+  color: var(--color-warning-foreground);
+}
+
+.avatar--danger {
+  background-color: var(--color-danger);
+  color: var(--color-danger-foreground);
+}
+
+/* =============================================================================
+ * STATE VARIANTS
+ * ============================================================================= */
+
+/* Bordered */
+.avatar--bordered {
+  border: 2px solid var(--color-background);
+  box-shadow: 0 0 0 2px var(--color-default-300);
+}
+
+/* Disabled */
+.avatar--disabled {
+  opacity: var(--opacity-40);
+  cursor: not-allowed;
+}
+
+/* Loading */
+.avatar--loading {
+  opacity: var(--opacity-70);
+}
+
+/* =============================================================================
+ * CONTENT ELEMENTS
+ * ============================================================================= */
+
+/* Image */
+.avatar__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Image loading skeleton */
+.avatar__image-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-default-100);
+}
+
+.avatar__skeleton {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--color-default-200) 25%,
+    var(--color-default-300) 50%,
+    var(--color-default-200) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Initials */
+.avatar__initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Icon */
+.avatar__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  height: 60%;
+}
+
+.avatar__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Placeholder */
+.avatar__placeholder {
+  width: 60%;
+  height: 60%;
+  opacity: var(--opacity-60);
+}
+
+/* Loading spinner */
+.avatar__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.avatar__spinner {
+  width: 50%;
+  height: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =============================================================================
+ * STATUS INDICATOR
+ * ============================================================================= */
+
+.avatar__status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 25%;
+  height: 25%;
+  min-width: 0.5rem;
+  min-height: 0.5rem;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-background);
+  box-sizing: border-box;
+}
+
+.avatar__status--online {
+  background-color: var(--color-success);
+}
+
+.avatar__status--offline {
+  background-color: var(--color-default-400);
+}
+
+.avatar__status--away {
+  background-color: var(--color-warning);
+}
+
+.avatar__status--busy {
+  background-color: var(--color-danger);
+}
+
+/* Adjust status position for smaller avatars */
+.avatar--xs .avatar__status {
+  width: 0.375rem;
+  height: 0.375rem;
+  min-width: 0.375rem;
+  min-height: 0.375rem;
+  border-width: 1px;
+}
+
+.avatar--sm .avatar__status {
+  width: 0.5rem;
+  height: 0.5rem;
+  min-width: 0.5rem;
+  min-height: 0.5rem;
+  border-width: 1.5px;
+}
