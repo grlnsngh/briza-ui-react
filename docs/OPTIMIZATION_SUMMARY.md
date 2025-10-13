@@ -276,6 +276,5 @@ All requirements from GitHub issue #28 have been successfully implemented.
 
 ---
 
-**Author:** GitHub Copilot  
 **Date:** October 12, 2025  
 **Version:** 0.7.0

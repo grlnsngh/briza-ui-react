@@ -252,6 +252,5 @@ This release represents a major milestone in the library's maturity:
 
 ---
 
-**Contributors:** GitHub Copilot  
 **Release Type:** Minor (0.7.0)  
 **Date:** October 12, 2025

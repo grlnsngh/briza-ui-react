@@ -520,9 +520,8 @@ function MyComponent() {
 - [React Portal Documentation](https://react.dev/reference/react-dom/createPortal)
 - [Focus Management Best Practices](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/)
 
-## Implementation Team
+## Implementation Details
 
-- Developer: GitHub Copilot
 - Date: December 2024
 - Status: ✅ Complete and Production Ready
 
