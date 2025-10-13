@@ -90,7 +90,7 @@ export interface CardProps {
  * </Card>
  * ```
  */
-export const Card = React.forwardRef<HTMLDivElement, CardProps>(
+const CardComponent = React.forwardRef<HTMLDivElement, CardProps>(
   (props, ref) => {
     const {
       children,
@@ -150,7 +150,9 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
   }
 );
 
-Card.displayName = "Card";
+CardComponent.displayName = "Card";
+
+export const Card = React.memo(CardComponent);
 
 export interface CardHeaderProps {
   /**
@@ -180,7 +182,7 @@ export interface CardHeaderProps {
  * </CardHeader>
  * ```
  */
-export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
+const CardHeaderComponent = React.forwardRef<HTMLDivElement, CardHeaderProps>(
   (props, ref) => {
     const { children, className, divider = false, ...rest } = props;
 
@@ -200,7 +202,9 @@ export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
   }
 );
 
-CardHeader.displayName = "CardHeader";
+CardHeaderComponent.displayName = "CardHeader";
+
+export const CardHeader = React.memo(CardHeaderComponent);
 
 export interface CardBodyProps {
   /**
@@ -225,7 +229,7 @@ export interface CardBodyProps {
  * </CardBody>
  * ```
  */
-export const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>(
+const CardBodyComponent = React.forwardRef<HTMLDivElement, CardBodyProps>(
   (props, ref) => {
     const { children, className, ...rest } = props;
 
@@ -241,7 +245,9 @@ export const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>(
   }
 );
 
-CardBody.displayName = "CardBody";
+CardBodyComponent.displayName = "CardBody";
+
+export const CardBody = React.memo(CardBodyComponent);
 
 export interface CardFooterProps {
   /**
@@ -271,7 +277,7 @@ export interface CardFooterProps {
  * </CardFooter>
  * ```
  */
-export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
+const CardFooterComponent = React.forwardRef<HTMLDivElement, CardFooterProps>(
   (props, ref) => {
     const { children, className, divider = false, ...rest } = props;
 
@@ -291,7 +297,9 @@ export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
   }
 );
 
-CardFooter.displayName = "CardFooter";
+CardFooterComponent.displayName = "CardFooter";
+
+export const CardFooter = React.memo(CardFooterComponent);
 
 export interface CardImageProps {
   /**
@@ -331,7 +339,7 @@ export interface CardImageProps {
  * />
  * ```
  */
-export const CardImage = React.forwardRef<HTMLImageElement, CardImageProps>(
+const CardImageComponent = React.forwardRef<HTMLImageElement, CardImageProps>(
   (props, ref) => {
     const {
       src,
@@ -363,4 +371,6 @@ export const CardImage = React.forwardRef<HTMLImageElement, CardImageProps>(
   }
 );
 
-CardImage.displayName = "CardImage";
+CardImageComponent.displayName = "CardImage";
+
+export const CardImage = React.memo(CardImageComponent);

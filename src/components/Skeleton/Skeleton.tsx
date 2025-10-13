@@ -50,7 +50,7 @@ export interface SkeletonProps {
  * <Skeleton variant="rectangular" width="100%" height={200} />
  * ```
  */
-export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
+const SkeletonComponent = React.forwardRef<HTMLDivElement, SkeletonProps>(
   (props, ref) => {
     const {
       variant = "text",
@@ -93,4 +93,6 @@ export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
   }
 );
 
-Skeleton.displayName = "Skeleton";
+SkeletonComponent.displayName = "Skeleton";
+
+export const Skeleton = React.memo(SkeletonComponent);

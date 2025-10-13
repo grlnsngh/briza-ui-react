@@ -104,7 +104,7 @@ export interface SpinnerProps {
  * <Spinner type="bars" />
  * ```
  */
-export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
+const SpinnerComponent = React.forwardRef<HTMLDivElement, SpinnerProps>(
   function Spinner(props, ref) {
     const {
       variant = "primary",
@@ -212,3 +212,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
     );
   }
 );
+
+SpinnerComponent.displayName = "Spinner";
+
+export const Spinner = React.memo(SpinnerComponent);

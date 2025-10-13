@@ -270,7 +270,7 @@ export interface TableProps<T = Record<string, unknown>> {
  * />
  * ```
  */
-export const Table = React.forwardRef<HTMLTableElement, TableProps>(
+const TableComponent = React.forwardRef<HTMLTableElement, TableProps>(
   function Table(props, ref) {
     const {
       columns,
@@ -769,4 +769,6 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
   }
 );
 
-Table.displayName = "Table";
+TableComponent.displayName = "Table";
+
+export const Table = React.memo(TableComponent);

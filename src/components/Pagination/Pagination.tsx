@@ -286,7 +286,7 @@ const getPaginationRange = (
   return range;
 };
 
-export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
+const PaginationComponent = React.forwardRef<HTMLElement, PaginationProps>(
   function Pagination(props, ref) {
     const {
       currentPage = 1,
@@ -587,3 +587,7 @@ export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
     );
   }
 );
+
+PaginationComponent.displayName = "Pagination";
+
+export const Pagination = React.memo(PaginationComponent);

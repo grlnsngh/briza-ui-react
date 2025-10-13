@@ -285,6 +285,33 @@ The library uses CSS variables for easy customization. You can override these va
 }
 ```
 
+## Bundle Size & Tree-Shaking
+
+Briza UI is fully optimized for tree-shaking and modern bundlers. Import only what you need:
+
+```tsx
+// ✅ Tree-shakeable - Only Button is included in your bundle
+import { Button } from "briza-ui-react";
+
+// ✅ Also tree-shakeable - Multiple named imports
+import { Button, Input, Card } from "briza-ui-react";
+```
+
+### Bundle Size Metrics
+
+| Component    | Size (gzipped) |
+| ------------ | -------------- |
+| Button       | ~5 KB          |
+| Input        | ~10 KB         |
+| Card         | ~5 KB          |
+| Modal        | ~10 KB         |
+| Table        | ~15 KB         |
+| Full Library | ~150 KB        |
+
+All components are wrapped with `React.memo` for optimal performance and to prevent unnecessary re-renders.
+
+**📖 For detailed optimization strategies, see [Bundle Optimization Guide](./docs/BUNDLE_OPTIMIZATION.md)**
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. The project follows a component-co-location pattern where each component lives in its own directory with all related files (component, styles, stories, tests).

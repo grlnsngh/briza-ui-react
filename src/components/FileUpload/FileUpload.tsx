@@ -189,7 +189,7 @@ const generateFileId = (): string => {
  * A comprehensive file upload component with drag-and-drop support,
  * file validation, progress indicators, and previews.
  */
-export const FileUpload = React.forwardRef<HTMLDivElement, FileUploadProps>(
+const FileUploadComponent = React.forwardRef<HTMLDivElement, FileUploadProps>(
   function FileUpload(props, ref) {
     const {
       size = "md",
@@ -751,3 +751,7 @@ export const FileUpload = React.forwardRef<HTMLDivElement, FileUploadProps>(
     );
   }
 );
+
+FileUploadComponent.displayName = "FileUpload";
+
+export const FileUpload = React.memo(FileUploadComponent);

@@ -185,7 +185,7 @@ export interface CheckboxProps extends NativeInputProps {
  * />
  * ```
  */
-export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
+const CheckboxComponent = React.forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
       size = "md",
@@ -312,7 +312,9 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   }
 );
 
-Checkbox.displayName = "Checkbox";
+CheckboxComponent.displayName = "Checkbox";
+
+export const Checkbox = React.memo(CheckboxComponent);
 
 // ============================================
 // CheckboxGroup Component
@@ -462,7 +464,7 @@ export interface CheckboxGroupProps {
  * />
  * ```
  */
-export const CheckboxGroup = React.forwardRef<
+const CheckboxGroupComponent = React.forwardRef<
   HTMLDivElement,
   CheckboxGroupProps
 >(
@@ -589,4 +591,6 @@ export const CheckboxGroup = React.forwardRef<
   }
 );
 
-CheckboxGroup.displayName = "CheckboxGroup";
+CheckboxGroupComponent.displayName = "CheckboxGroup";
+
+export const CheckboxGroup = React.memo(CheckboxGroupComponent);

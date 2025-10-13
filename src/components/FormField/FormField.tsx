@@ -154,7 +154,7 @@ export interface FormFieldProps {
   }) => void;
 }
 
-export const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>(
+const FormFieldComponent = React.forwardRef<HTMLDivElement, FormFieldProps>(
   function FormField(props, ref) {
     const {
       size = "md",
@@ -302,4 +302,6 @@ export const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>(
   }
 );
 
-FormField.displayName = "FormField";
+FormFieldComponent.displayName = "FormField";
+
+export const FormField = React.memo(FormFieldComponent);

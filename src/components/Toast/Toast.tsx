@@ -275,7 +275,7 @@ const getDefaultIcon = (variant: ToastVariant): React.ReactNode => {
   }
 };
 
-export const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
+const ToastComponent = React.forwardRef<HTMLDivElement, ToastProps>(
   function Toast(props, ref) {
     const {
       variant = "default",
@@ -414,3 +414,7 @@ export const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
     );
   }
 );
+
+ToastComponent.displayName = "Toast";
+
+export const Toast = React.memo(ToastComponent);

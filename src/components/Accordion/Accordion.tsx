@@ -231,7 +231,7 @@ const ChevronDownIcon = () => (
  * />
  * ```
  */
-export const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
+const AccordionComponent = React.forwardRef<HTMLDivElement, AccordionProps>(
   (props, ref) => {
     const {
       items,
@@ -482,4 +482,6 @@ export const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
   }
 );
 
-Accordion.displayName = "Accordion";
+AccordionComponent.displayName = "Accordion";
+
+export const Accordion = React.memo(AccordionComponent);

@@ -168,7 +168,7 @@ export interface RadioProps extends NativeInputProps {
  * />
  * ```
  */
-export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
+const RadioComponent = React.forwardRef<HTMLInputElement, RadioProps>(
   (
     {
       size = "md",
@@ -281,7 +281,9 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
   }
 );
 
-Radio.displayName = "Radio";
+RadioComponent.displayName = "Radio";
+
+export const Radio = React.memo(RadioComponent);
 
 // ============================================
 // RadioGroup Component
@@ -431,7 +433,7 @@ export interface RadioGroupProps {
  * />
  * ```
  */
-export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
+const RadioGroupComponent = React.forwardRef<HTMLDivElement, RadioGroupProps>(
   (
     {
       label,
@@ -594,4 +596,6 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
   }
 );
 
-RadioGroup.displayName = "RadioGroup";
+RadioGroupComponent.displayName = "RadioGroup";
+
+export const RadioGroup = React.memo(RadioGroupComponent);

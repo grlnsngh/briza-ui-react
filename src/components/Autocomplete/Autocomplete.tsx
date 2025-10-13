@@ -238,7 +238,7 @@ const defaultFilterOption = <T,>(
   return label.includes(search);
 };
 
-export function Autocomplete<T = unknown>(props: AutocompleteProps<T>) {
+function AutocompleteComponent<T = unknown>(props: AutocompleteProps<T>) {
   const {
     size = "md",
     status = "default",
@@ -937,4 +937,8 @@ export function Autocomplete<T = unknown>(props: AutocompleteProps<T>) {
   );
 }
 
-Autocomplete.displayName = "Autocomplete";
+AutocompleteComponent.displayName = "Autocomplete";
+
+export const Autocomplete = React.memo(
+  AutocompleteComponent
+) as typeof AutocompleteComponent;

@@ -5,12 +5,30 @@
   "type": "module",
   "main": "./dist/briza-ui-react.umd.js",
   "module": "./dist/briza-ui-react.es.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": [
+    "*.css",
+    "**/*.css"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/briza-ui-react.es.js",
       "require": "./dist/briza-ui-react.umd.js"
-    }
+    },
+    "./components/*": {
+      "types": "./dist/components/*/index.d.ts",
+      "import": "./dist/components/*/index.js"
+    },
+    "./theme": {
+      "types": "./dist/theme/index.d.ts",
+      "import": "./dist/theme/index.js"
+    },
+    "./hooks": {
+      "types": "./dist/hooks/index.d.ts",
+      "import": "./dist/hooks/index.js"
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "dist"
@@ -34,12 +52,15 @@
   },
   "scripts": {
     "build": "tsc -b tsconfig.build.json && vite build",
+    "build:analyze": "tsc -b tsconfig.build.json && vite build --mode analyze",
     "test": "vitest",
     "test:a11y": "vitest --run --config vite.config.ts --project unit",
     "test:ci": "vitest --run --coverage --project unit",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --ext ts,tsx --fix",
     "lint:a11y": "eslint . --ext ts,tsx --config eslint.config.js",
+    "size": "size-limit",
+    "size:why": "size-limit --why",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "publish-beta": "npm version prerelease --preid=beta --no-git-tag-version && npm run build && npm publish --tag beta",
@@ -53,6 +74,7 @@
     "@axe-core/react": "^4.10.2",
     "@chromatic-com/storybook": "^4.1.1",
     "@eslint/js": "^9.33.0",
+    "@size-limit/preset-small-lib": "^11.2.0",
     "@storybook/addon-a11y": "^9.1.5",
     "@storybook/addon-docs": "^9.1.5",
     "@storybook/addon-links": "^9.1.7",
@@ -78,7 +100,9 @@
     "jest-axe": "^10.0.0",
     "jsdom": "^27.0.0",
     "playwright": "^1.55.0",
+    "rollup-plugin-visualizer": "^6.0.4",
     "storybook": "^9.1.5",
+    "terser": "^5.44.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1",
     "vite": "^7.1.2",

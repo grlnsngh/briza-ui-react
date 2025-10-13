@@ -125,7 +125,7 @@ const getInitials = (name: string): string => {
  * <Avatar isLoading />
  * ```
  */
-export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
+const AvatarComponent = React.forwardRef<HTMLDivElement, AvatarProps>(
   (props, ref) => {
     const {
       src,
@@ -264,4 +264,6 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
   }
 );
 
-Avatar.displayName = "Avatar";
+AvatarComponent.displayName = "Avatar";
+
+export const Avatar = React.memo(AvatarComponent);

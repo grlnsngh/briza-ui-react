@@ -298,7 +298,7 @@ const CloseIcon = () => (
   </svg>
 );
 
-export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
+const DatePickerComponent = React.forwardRef<HTMLInputElement, DatePickerProps>(
   function DatePicker(props, forwardedRef) {
     const {
       size = "md",
@@ -878,3 +878,7 @@ export const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
     );
   }
 );
+
+DatePickerComponent.displayName = "DatePicker";
+
+export const DatePicker = React.memo(DatePickerComponent);

@@ -46,7 +46,7 @@ export interface AvatarGroupProps {
  * </AvatarGroup>
  * ```
  */
-export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
+const AvatarGroupComponent = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
   (props, ref) => {
     const {
       children,
@@ -95,4 +95,6 @@ export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
   }
 );
 
-AvatarGroup.displayName = "AvatarGroup";
+AvatarGroupComponent.displayName = "AvatarGroup";
+
+export const AvatarGroup = React.memo(AvatarGroupComponent);

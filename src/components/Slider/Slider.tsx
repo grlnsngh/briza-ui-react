@@ -155,7 +155,7 @@ const getValueFromPercentage = (
  * />
  * ```
  */
-export const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
+const SliderComponent = React.forwardRef<HTMLDivElement, SliderProps>(
   (props, ref) => {
     const {
       size = "md",
@@ -676,4 +676,6 @@ export const Slider = React.forwardRef<HTMLDivElement, SliderProps>(
   }
 );
 
-Slider.displayName = "Slider";
+SliderComponent.displayName = "Slider";
+
+export const Slider = React.memo(SliderComponent);

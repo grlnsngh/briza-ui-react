@@ -234,7 +234,7 @@ export interface ModalProps {
   disableAnimation?: boolean;
 }
 
-export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
+const ModalComponent = React.forwardRef<HTMLDivElement, ModalProps>(
   function Modal(props, ref) {
     const {
       isOpen,
@@ -494,4 +494,6 @@ export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
   }
 );
 
-Modal.displayName = "Modal";
+ModalComponent.displayName = "Modal";
+
+export const Modal = React.memo(ModalComponent);

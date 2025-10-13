@@ -244,7 +244,7 @@ const LoadingSpinner = () => (
   </svg>
 );
 
-export function Select<T = unknown>(props: SelectProps<T>) {
+function SelectComponent<T = unknown>(props: SelectProps<T>) {
   const {
     size = "md",
     status = "default",
@@ -806,3 +806,7 @@ export function Select<T = unknown>(props: SelectProps<T>) {
     </div>
   );
 }
+
+SelectComponent.displayName = "Select";
+
+export const Select = React.memo(SelectComponent) as typeof SelectComponent;

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Entire Library (ES)",
+    "path": "dist/briza-ui-react.es.js",
+    "limit": "60 KB",
+    "gzip": true
+  },
+  {
+    "name": "Entire Library (UMD)",
+    "path": "dist/briza-ui-react.umd.js",
+    "limit": "45 KB",
+    "gzip": true
+  }
+]

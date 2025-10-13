@@ -161,7 +161,7 @@ export interface BreadcrumbProps {
  * />
  * ```
  */
-export const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
+const BreadcrumbComponent = React.forwardRef<HTMLElement, BreadcrumbProps>(
   function Breadcrumb(
     {
       items,
@@ -395,4 +395,6 @@ export const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
   }
 );
 
-Breadcrumb.displayName = "Breadcrumb";
+BreadcrumbComponent.displayName = "Breadcrumb";
+
+export const Breadcrumb = React.memo(BreadcrumbComponent);

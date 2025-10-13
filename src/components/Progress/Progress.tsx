@@ -91,7 +91,7 @@ export interface ProgressProps {
  * Supports determinate and indeterminate modes with customizable styling,
  * animations, and accessibility features.
  */
-export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
+const ProgressComponent = React.forwardRef<HTMLDivElement, ProgressProps>(
   function Progress(props, ref) {
     const {
       variant = "linear",
@@ -266,3 +266,7 @@ export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
     );
   }
 );
+
+ProgressComponent.displayName = "Progress";
+
+export const Progress = React.memo(ProgressComponent);

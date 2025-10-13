@@ -523,4 +523,6 @@ function InputInner<
 
 InputInner.displayName = "Input";
 
-export const Input = React.forwardRef(InputInner) as InputComponent;
+const InputWithRef = React.forwardRef(InputInner) as InputComponent;
+
+export const Input = React.memo(InputWithRef) as InputComponent;

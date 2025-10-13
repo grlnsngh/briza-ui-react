@@ -210,7 +210,7 @@ export interface TabsProps {
  * />
  * ```
  */
-export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(function Tabs(
+const TabsComponent = React.forwardRef<HTMLDivElement, TabsProps>(function Tabs(
   {
     items,
     orientation = "horizontal",
@@ -477,4 +477,6 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(function Tabs(
   );
 });
 
-Tabs.displayName = "Tabs";
+TabsComponent.displayName = "Tabs";
+
+export const Tabs = React.memo(TabsComponent);

@@ -92,7 +92,7 @@ export interface ButtonProps extends ButtonOwnProps {
   [key: string]: unknown;
 }
 
-export const Button = React.forwardRef<HTMLElement, ButtonProps>(
+const ButtonComponent = React.forwardRef<HTMLElement, ButtonProps>(
   function Button(props, ref) {
     const {
       as = "button",
@@ -192,3 +192,5 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>(
     );
   }
 );
+
+export const Button = React.memo(ButtonComponent);
